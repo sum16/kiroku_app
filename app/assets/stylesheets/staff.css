@@ -1,0 +1,4 @@
+/*
+*stylesheet/staffディレクトリをパイプラインの処理対象としている
+*= require_tree ./staff
+*/
