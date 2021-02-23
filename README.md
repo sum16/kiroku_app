@@ -1,24 +1,27 @@
-# README
+# KIROKU
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#業務要件
+入所している高齢者が外出する際に、行動歴や体調を記録できるシステム
+入所者の家族が使用
+家族は入所者の行動歴を記憶で管理していることが多い。服薬もつい忘れてしましがちとう問題がある。
+行動歴を随時記録できるため記録忘れを防げる。服薬忘れの防止。記録に残しているため、正確な情報を職員へ伝えられることで問題解決を図る。
 
-Things you may want to cover:
 
-* Ruby version
+#機能要件
+アプリの種類
+WEBアプリケーションのみ
 
-* System dependencies
+#機能一覧
+後ほど記入
 
-* Configuration
+#セキュリティ要件
+ユーザーのログインパスワードは不可逆暗号化した上でDBに保存することとする
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rails 6.0.3.5 
+* ruby 2.6.6
+* PostgreSQL 13.1
+* バージョン管理 git version 2.30.0
+* 開発環境 Docker version 19.03.13, docker-compose version 1.27.4
+* インフラ　AWS
