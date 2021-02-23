@@ -1,3 +1,3 @@
 Rails.application.configure do
-  config.host << "kiroku2.application.com"
+  config.hosts << "kiroku2.application.com"
 end
