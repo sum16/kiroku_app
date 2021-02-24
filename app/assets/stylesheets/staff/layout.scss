@@ -12,3 +12,29 @@ div#wrapper {
   padding-bottom: 48px;
   background-color: #cccccc;
 }
+
+
+header {
+  padding: 5px;
+  height: 50px;
+  background-color: #FF9933;
+  color: #FFFFFF;
+  span.logo-mark {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    padding: 7px;
+  }
+  .staff-mark {
+    float: right;
+    padding: 10px 20px 0 0; 
+    a.staff-login {
+      text-decoration: none;
+    }
+  }
+ 
+}
+
+footer {
+  
+}
