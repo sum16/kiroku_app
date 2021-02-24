@@ -1,3 +1,5 @@
+@import "colors";
+
 html, body {
   margin: 0;
   padding: 0;
@@ -10,15 +12,15 @@ div#wrapper {
   min-height: 100%;
   margin: 0 auto;
   padding-bottom: 48px;
-  background-color: #cccccc;
+  background-color: $right_yellow;
 }
 
 
 header {
   padding: 5px;
   height: 50px;
-  background-color: #FF9933;
-  color: #FFFFFF;
+  background-color: orange;
+  color: white;
   span.logo-mark {
     font-weight: bold;
     font-size: 20px;
@@ -36,5 +38,14 @@ header {
 }
 
 footer {
-  
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  background-color: $right_gray;
+  color: $white;
+  p {
+    text-align: center;
+    padding: 5px;
+    margin: 0;
+  }
 }
