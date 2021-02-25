@@ -32,5 +32,5 @@ test:
 production:
   <<: *default
   database: kiroku_production
-  username: kiroku
+  username: yasuyuki
   password: <%= ENV['KIROKU_DATABASE_PASSWORD'] %>
