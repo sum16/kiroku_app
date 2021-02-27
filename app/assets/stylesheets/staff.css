@@ -1,4 +1,5 @@
 /*
-*stylesheet/staffディレクトリをパイプラインの処理対象としている
+*stylesheet/staff、sharedディレクトリをパイプラインの処理対象としている
+*= require_tree ./shared
 *= require_tree ./staff
 */
