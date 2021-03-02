@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_131314) do
+ActiveRecord::Schema.define(version: 2021_03_02_132128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "care_recipitents", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.integer "age", null: false
+    t.integer "gender", null: false
+    t.integer "degree_of_care_required", null: false
+    t.integer "degree_of_support_required", null: false
+    t.date "birthday", null: false
+    t.text "remarks"
+    t.boolean "suspend", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_name_kana", "given_name_kana"], name: "index_care_recipitents_on_family_name_kana_and_given_name_kana"
+  end
 
   create_table "caregivers", force: :cascade do |t|
     t.string "name", null: false
