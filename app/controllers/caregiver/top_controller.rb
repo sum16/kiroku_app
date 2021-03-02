@@ -1,4 +1,4 @@
-class Caregiver::TopController  < ApplicationController
+class Caregiver::TopController  < Caregiver::Base
   def index
     @caregivers = Caregiver.order(created_at: :desc)
   end

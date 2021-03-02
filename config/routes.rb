@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'caregivers' => "caregiver/top#index"
-  get 'caregivers/show'
-  get 'caregivers/new'
-  get 'caregivers/create'
-  get 'caregivers/edit'
+  namespace :caregiver do
+    root "top#index"
+    get "login" => "sessions#new", as: :login
+    post "session" => "sessions#create", as: :session
+    delete "session" => "sessions#destroy"
+  end
+ 
   get "staff" => "staff/top#index"  
     resources :staff
 end

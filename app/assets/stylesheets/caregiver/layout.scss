@@ -27,12 +27,13 @@ header {
     display: inline-block;
     padding: 7px;
   }
-  .staff-mark {
+  a {
     float: right;
-    padding: 10px 20px 0 0; 
-    a.staff-login {
-      text-decoration: none;
-    }
+    margin: 10px 20px 0 0;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
   }
  
 }
