@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_132128) do
+ActiveRecord::Schema.define(version: 2021_03_03_064310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,4 +52,19 @@ ActiveRecord::Schema.define(version: 2021_03_02_132128) do
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
+  create_table "vitals", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.date "measuring_date", null: false
+    t.float "temperature", null: false
+    t.integer "hign_blood_pressure", null: false
+    t.integer "low_blood_pressure", null: false
+    t.integer "breathing", null: false
+    t.float "spo2", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "pulse", null: false
+    t.index ["care_recipitent_id"], name: "index_vitals_on_care_recipitent_id"
+  end
+
+  add_foreign_key "vitals", "care_recipitents"
 end

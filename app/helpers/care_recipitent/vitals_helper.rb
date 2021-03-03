@@ -1,0 +1,2 @@
+module CareRecipitent::VitalsHelper
+end

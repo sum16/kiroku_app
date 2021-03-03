@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.7'
 gem "kaminari"
 gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
+gem "bullet"
 # gem 'redis', '~> 4.0'
 
 

@@ -12,12 +12,14 @@
 
   <body>
   <div id="wrapper">
-    <%= render "shared/header" %>
-    <div id="container">
-      <%= yield %>
-      <%= render "shared/footer" %>
-    </div>
+    <%= render "care_recipitent/shared/header" %>
+  
+      <div id="container">
+        <%= yield %>
+      </div>
+    <%= render "care_recipitent/shared/footer" %>
   </div>
+ 
    
   </body>
 </html>
