@@ -1,0 +1,2 @@
+module CareRecipitent::ExcretumHelper
+end

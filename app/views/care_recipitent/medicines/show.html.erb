@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 <% @title = "服薬確認" %>
 <h1><%= @title %></h1>
 
@@ -27,7 +17,8 @@
       <th>点眼</th>
       
     </tr>
-    <tr><td></td>
+    <tr>
+      <td></td>
       <td><%= medicine.medicine_date %></td>
       <td><%= medicine.check_before_breakfast ? "○" : "×" %></td>
       <td><%= medicine.check_after_breakfast ? "○" : "×" %></td>

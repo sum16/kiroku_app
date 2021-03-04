@@ -1,0 +1,23 @@
+<% @title = "排便確認" %>
+<h1><%= @title %></h1>
+
+
+ <table border="5">
+ <% @care_recipitent.excretums.each do |excretum| %>
+    <tr bgcolor="pink">
+      <th bgcolor="	#E0FFFF">服薬確認</th>
+      <th>ID</th>
+      <th>日付</th>
+      <th>排便</th>
+      <th>排尿</th>
+      
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= excretum.id %></td>
+      <td><%= excretum.excreta_date %></td>
+      <td><%= excretum.judge_shit ? "○" : "×" %></td>
+      <td><%= excretum.judge_pee ? "○" : "×" %></td>
+    </tr> 
+    <% end %>
+  </table>

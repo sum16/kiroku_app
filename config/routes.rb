@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+
   namespace :care_recipitent do
     root "top#index"
-    resources :vitals
-    resources :intake_waters
-    resources :medicines
+    resources :vitals, only:[:index, :show]
+    resources :intake_waters, only:[:index, :show]
+    resources :medicines, only:[:index, :show]
+    resources :excretum, only:[:index, :show]
   end
 
   namespace :caregiver do

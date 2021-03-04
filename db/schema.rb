@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_063715) do
+ActiveRecord::Schema.define(version: 2021_03_04_072533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2021_03_04_063715) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "hashed_password", null: false
+  end
+
+  create_table "excreta", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.date "excreta_date", null: false
+    t.boolean "judge_shit", default: false, null: false
+    t.boolean "judge_pee", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["care_recipitent_id"], name: "index_excreta_on_care_recipitent_id"
   end
 
   create_table "intake_waters", force: :cascade do |t|
@@ -91,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_063715) do
     t.index ["care_recipitent_id"], name: "index_vitals_on_care_recipitent_id"
   end
 
+  add_foreign_key "excreta", "care_recipitents"
   add_foreign_key "intake_waters", "care_recipitents"
   add_foreign_key "medicines", "care_recipitents"
   add_foreign_key "vitals", "care_recipitents"
