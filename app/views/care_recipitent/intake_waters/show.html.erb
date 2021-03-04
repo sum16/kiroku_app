@@ -1,0 +1,18 @@
+<% @title = "水分量" %>
+<h1><%= @title %></h1>
+
+ <table border="5">
+  <% @care_recipitent.intake_waters.each do |intake_water| %>
+    <tr bgcolor="pink">
+      <th bgcolor="	#E0FFFF">水分量</th>
+      <th>日付</th>
+      <th>水分量</th>
+
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= intake_water.drink_date %></td>
+      <td><%= intake_water.amount_of_water %></td>
+    </tr> 
+  <% end %>
+  </table>

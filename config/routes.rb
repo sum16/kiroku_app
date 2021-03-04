@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
   namespace :care_recipitent do
+    get 'intake_waters/index'
+    get 'intake_waters/show'
+    get 'intake_waters/edit'
+    get 'intake_waters/create'
+    get 'intake_waters/destroy'
+  end
+  namespace :care_recipitent do
     root "top#index"
     resources :vitals
+    resources :intake_waters
   end
 
   namespace :caregiver do

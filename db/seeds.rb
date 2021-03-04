@@ -1,4 +1,4 @@
-table_names = %w(caregivers care_recipitent vital)
+table_names = %w(caregivers care_recipitent vital intake_water)
 
 table_names.each do |table_name|
   path = Rails.root.join("db", "seeds", Rails.env, "#{table_name}.rb")

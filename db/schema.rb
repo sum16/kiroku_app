@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_064310) do
+ActiveRecord::Schema.define(version: 2021_03_04_041139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2021_03_03_064310) do
     t.string "hashed_password", null: false
   end
 
+  create_table "intake_waters", force: :cascade do |t|
+    t.date "drink_date", null: false
+    t.integer "amount_of_water", null: false
+    t.bigint "care_recipitent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["care_recipitent_id"], name: "index_intake_waters_on_care_recipitent_id"
+  end
+
   create_table "staffs", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "age", null: false
@@ -66,5 +75,6 @@ ActiveRecord::Schema.define(version: 2021_03_03_064310) do
     t.index ["care_recipitent_id"], name: "index_vitals_on_care_recipitent_id"
   end
 
+  add_foreign_key "intake_waters", "care_recipitents"
   add_foreign_key "vitals", "care_recipitents"
 end
