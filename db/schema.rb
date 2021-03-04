@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_041139) do
+ActiveRecord::Schema.define(version: 2021_03_04_063715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(version: 2021_03_04_041139) do
     t.index ["care_recipitent_id"], name: "index_intake_waters_on_care_recipitent_id"
   end
 
+  create_table "medicines", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.date "medicine_date", null: false
+    t.boolean "check_before_breakfast", default: false, null: false
+    t.boolean "check_before_lunch", default: false, null: false
+    t.boolean "check_after_lunch", default: false, null: false
+    t.boolean "check_before_dinner", default: false, null: false
+    t.boolean "check_after_dinner", default: false, null: false
+    t.boolean "check_ointment", default: false, null: false
+    t.boolean "check_eye_drops", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "check_after_breakfast", default: false, null: false
+    t.index ["care_recipitent_id"], name: "index_medicines_on_care_recipitent_id"
+  end
+
   create_table "staffs", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "age", null: false
@@ -76,5 +92,6 @@ ActiveRecord::Schema.define(version: 2021_03_04_041139) do
   end
 
   add_foreign_key "intake_waters", "care_recipitents"
+  add_foreign_key "medicines", "care_recipitents"
   add_foreign_key "vitals", "care_recipitents"
 end

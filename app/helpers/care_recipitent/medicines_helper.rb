@@ -1,0 +1,2 @@
+module CareRecipitent::MedicinesHelper
+end
