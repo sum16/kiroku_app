@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_014229) do
+ActiveRecord::Schema.define(version: 2021_03_05_092217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 2021_03_05_014229) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["care_recipitent_id"], name: "index_excreta_on_care_recipitent_id"
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.string "address", null: false
+    t.integer "gender", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["care_recipitent_id"], name: "index_families_on_care_recipitent_id"
   end
 
   create_table "intake_waters", force: :cascade do |t|
@@ -134,6 +147,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_014229) do
 
   add_foreign_key "behavior_histories", "care_recipitents"
   add_foreign_key "excreta", "care_recipitents"
+  add_foreign_key "families", "care_recipitents"
   add_foreign_key "intake_waters", "care_recipitents"
   add_foreign_key "meals", "care_recipitents"
   add_foreign_key "medical_histories", "care_recipitents"

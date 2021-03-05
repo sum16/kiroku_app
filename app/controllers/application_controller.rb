@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   private
 
    def set_layout
-    if params[:controller].match(%r{\A(staff|caregiver|care_recipitent)/})
+    if params[:controller].match(%r{\A(staff|caregiver|care_recipitent|family)/})
       Regexp.last_match[1]
     end
   end

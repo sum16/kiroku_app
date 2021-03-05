@@ -6,7 +6,9 @@ class CareRecipitent < ApplicationRecord
   has_many :meals
   has_many :medical_histories
   has_many :behavior_histories
+  has_many :families
   
+
   enum gender: { man: 0, woman: 1}
   
 end

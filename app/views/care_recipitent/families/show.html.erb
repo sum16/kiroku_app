@@ -1,0 +1,20 @@
+<%= @care_recipitent.family_name %><%= @care_recipitent.given_name %>さん
+
+ <table border="5">
+  <% @care_recipitent.families.each do |family| %>
+    <tr bgcolor="pink">
+      <th bgcolor="	#E0FFFF">家族情報</th>
+      <th>名前</th>
+      <th>名前(カナ)</th>
+      <th>住所</th>
+      <th>性別</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= family.family_name %><%= family.given_name %></td>
+      <td><%= family.family_name_kana %><%= family.given_name_kana %></td>
+      <td><%= family.address%></td>
+      <td><%= family.gender %></td>
+      <% end %>
+    </tr> 
+  </table>
