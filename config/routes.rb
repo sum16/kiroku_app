@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :excretums, only:[:index, :show]
     resources :meals, only:[:index, :show]
     resources :medical_histories, only:[:index, :show]
+    resources :behavior_histories, only:[:index, :show]
   end
 
   namespace :caregiver do

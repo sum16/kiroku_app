@@ -1,0 +1,18 @@
+<%= @care_recipitent.family_name %><%= @care_recipitent.given_name %>さん
+
+ <table border="5">
+  <% @care_recipitent.behavior_histories.each do |behavior_history| %>
+    <tr bgcolor="pink">
+      <th bgcolor="	#E0FFFF">活動記録</th>
+      <th>日付</th>
+      <th>時間</th>
+      <th>記録内容</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= behavior_history.behavior_history_date %></td>
+      <td><%= behavior_history.behavior_time.to_s(:jp_time) %></td>
+      <td><%= behavior_history.action_record %></td>
+    </tr> 
+   <% end %>
+  </table>
