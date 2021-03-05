@@ -1,0 +1,2 @@
+module CareRecipitent::MealsHelper
+end

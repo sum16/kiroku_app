@@ -1,5 +1,6 @@
 class Caregiver::TopController  < Caregiver::Base
   def index
+    session.clear
     @caregivers = Caregiver.order(created_at: :desc)
   end
 

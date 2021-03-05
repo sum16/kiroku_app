@@ -1,4 +1,5 @@
 class Caregiver < ApplicationRecord
+  
 
   def password=(raw_password)
     if raw_password.kind_of?(String)

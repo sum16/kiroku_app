@@ -2,10 +2,13 @@
   <span class="logo-mark">kiroku</span>
    <%= 
    if current_caregiver_member
-    link_to "ログアウト", caregiver_session_path, method: :delete
+    link_to "ログアウト", :caregiver_session, method: :delete
    else 
     link_to "ログイン", caregiver_login_path
    end
    %>
   </div>
 </header>
+
+
+

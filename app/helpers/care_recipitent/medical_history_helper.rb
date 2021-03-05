@@ -1,0 +1,2 @@
+module CareRecipitent::MedicalHistoryHelper
+end

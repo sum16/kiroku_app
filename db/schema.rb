@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_072533) do
+ActiveRecord::Schema.define(version: 2021_03_05_000358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,27 @@ ActiveRecord::Schema.define(version: 2021_03_04_072533) do
     t.index ["care_recipitent_id"], name: "index_intake_waters_on_care_recipitent_id"
   end
 
+  create_table "meals", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.boolean "breakfast", default: false, null: false
+    t.boolean "lunch", default: false, null: false
+    t.boolean "dinner", default: false, null: false
+    t.boolean "snack", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "meal_date", null: false
+    t.index ["care_recipitent_id"], name: "index_meals_on_care_recipitent_id"
+  end
+
+  create_table "medical_histories", force: :cascade do |t|
+    t.bigint "care_recipitent_id", null: false
+    t.string "past_disease"
+    t.string "current_disease"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["care_recipitent_id"], name: "index_medical_histories_on_care_recipitent_id"
+  end
+
   create_table "medicines", force: :cascade do |t|
     t.bigint "care_recipitent_id", null: false
     t.date "medicine_date", null: false
@@ -103,6 +124,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_072533) do
 
   add_foreign_key "excreta", "care_recipitents"
   add_foreign_key "intake_waters", "care_recipitents"
+  add_foreign_key "meals", "care_recipitents"
+  add_foreign_key "medical_histories", "care_recipitents"
   add_foreign_key "medicines", "care_recipitents"
   add_foreign_key "vitals", "care_recipitents"
 end
