@@ -1,5 +1,7 @@
 <p>職員一覧</p>
 
+
+
 <div class="profil-container">
 <% @caregivers.each do |caregiver| %>
   <div class="original-profile">
@@ -18,6 +20,9 @@
         </div>
   </div>
  <% end %>
+</div>
+<div>
+<%= paginate @caregivers_paginate %>
 </div>
 
 

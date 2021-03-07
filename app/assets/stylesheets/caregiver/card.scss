@@ -1,14 +1,20 @@
 .profil-container {
   margin-left: 30px;
+
+
 }
 
 .original-profile {
-  width: 200px;
-  height: 150px;
+  width: 180px;
+  height: 130px;
   background: #f0ebea;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
   font-size: 16px;
+  display: inline-block; 
+  margin-left: 5px;
+  margin-bottom: 10px;
+
 }
 
 .original-profile-title {
@@ -40,5 +46,6 @@
 
 .original-profile-description {
   margin-bottom: 10px;
+  font-size: 15px;
   text-align: center;
 }

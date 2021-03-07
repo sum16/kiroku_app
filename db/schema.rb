@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_024255) do
+ActiveRecord::Schema.define(version: 2021_03_07_050213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2021_03_06_024255) do
     t.time "behavior_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "family_id"
     t.index ["care_recipitent_id"], name: "index_behavior_histories_on_care_recipitent_id"
+    t.index ["family_id"], name: "index_behavior_histories_on_family_id"
   end
 
   create_table "care_recipitents", force: :cascade do |t|
@@ -147,6 +149,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_024255) do
   end
 
   add_foreign_key "behavior_histories", "care_recipitents"
+  add_foreign_key "behavior_histories", "families"
   add_foreign_key "excreta", "care_recipitents"
   add_foreign_key "families", "care_recipitents"
   add_foreign_key "intake_waters", "care_recipitents"

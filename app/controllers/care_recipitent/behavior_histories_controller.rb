@@ -4,5 +4,6 @@ class CareRecipitent::BehaviorHistoriesController < ApplicationController
 
   def show
     @care_recipitent = CareRecipitent.find(params[:id])
+    @family = Family.find(params[:id])
   end
 end
