@@ -1,4 +1,9 @@
-class CareRecipitent::FamiliesController < ApplicationController
+class Family::FamiliesController < ApplicationController
+
+  def top 
+
+  end
+  
   def index
   end
 
