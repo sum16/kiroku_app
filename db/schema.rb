@@ -10,37 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_050213) do
+ActiveRecord::Schema.define(version: 2021_03_09_053028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "behavior_histories", force: :cascade do |t|
-    t.bigint "care_recipitent_id", null: false
     t.date "behavior_history_date", null: false
     t.text "action_record", null: false
     t.time "behavior_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "family_id"
-    t.index ["care_recipitent_id"], name: "index_behavior_histories_on_care_recipitent_id"
     t.index ["family_id"], name: "index_behavior_histories_on_family_id"
   end
 
   create_table "care_recipitents", force: :cascade do |t|
-    t.string "family_name", null: false
-    t.string "given_name", null: false
-    t.string "family_name_kana", null: false
-    t.string "given_name_kana", null: false
-    t.integer "age", null: false
-    t.integer "gender", null: false
-    t.integer "degree_of_care_required", null: false
-    t.integer "degree_of_support_required", null: false
-    t.date "birthday", null: false
+    t.string "family_name"
+    t.string "given_name"
+    t.string "family_name_kana"
+    t.string "given_name_kana"
+    t.integer "age"
+    t.integer "gender"
+    t.integer "degree_of_care_required"
+    t.integer "degree_of_support_required"
+    t.date "birthday"
     t.text "remarks"
-    t.boolean "suspend", default: false, null: false
+    t.boolean "suspend", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "caregiver_id"
+    t.index ["caregiver_id"], name: "index_care_recipitents_on_caregiver_id"
     t.index ["family_name_kana", "given_name_kana"], name: "index_care_recipitents_on_family_name_kana_and_given_name_kana"
   end
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_050213) do
     t.integer "age", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "hashed_password", null: false
+    t.string "password_digest"
   end
 
   create_table "excreta", force: :cascade do |t|
@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(version: 2021_03_07_050213) do
     t.index ["care_recipitent_id"], name: "index_vitals_on_care_recipitent_id"
   end
 
-  add_foreign_key "behavior_histories", "care_recipitents"
   add_foreign_key "behavior_histories", "families"
+  add_foreign_key "care_recipitents", "caregivers"
   add_foreign_key "excreta", "care_recipitents"
   add_foreign_key "families", "care_recipitents"
   add_foreign_key "intake_waters", "care_recipitents"

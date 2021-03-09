@@ -1,7 +1,7 @@
-<%= @care_recipitent.family_name %><%= @care_recipitent.given_name %>さん
+利用者：<%= @care_recipitent.family_name %><%= @care_recipitent.given_name %>さん
 
  <table border="5">
-  <% @care_recipitent.families.each do |family| %>
+
     <tr bgcolor="pink">
       <th bgcolor="	#E0FFFF">家族情報</th>
       <th>名前</th>
@@ -12,11 +12,13 @@
     </tr>
     <tr>
       <td></td>
-      <td><%= family.family_name %><%= family.given_name %></td>
-      <td><%= family.family_name_kana %><%= family.given_name_kana %></td>
-      <td><%= family.address%></td>
-      <td><%= family.gender %></td>
-      <td><%= family.relationship %></td>
-      <% end %>
+      <td><%= @care_recipitent.family.family_name %><%= @care_recipitent.family.given_name %></td>
+      <td><%= @care_recipitent.family.family_name_kana %><%= @care_recipitent.family.given_name_kana %></td>
+      <td><%= @care_recipitent.family.address%></td>
+      <td><%= @care_recipitent.family.gender %></td>
+      <td><%= @care_recipitent.family.relationship %></td>
     </tr> 
   </table>
+
+
+<%= link_to @care_recipitent.family_name + @care_recipitent.given_name + "さんの記録を作成する"  %>

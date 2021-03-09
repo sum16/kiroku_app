@@ -1,32 +1,31 @@
 class Caregiver::SessionsController < Caregiver::Base 
-  def new
-    if current_caregiver_member
-      redirect_to caregiver_root_path
-    else
-      @form = Caregiver::LoginForm.new
-      render :new
-    end
-  end
+  before_action :already_login?, except: :destroy
+  protect_from_forgery :except => [:destroy]
   
+  def new 
 
-  def create
+  end
+
+  def create 
     caregiver = Caregiver.find_by_name(params[:name])
-    if caregiver 
+    if caregiver && caregiver.authenticate(params[:password])
       session[:caregiver_id] = caregiver.id
-      redirect_to caregiver_root_path
+      redirect_to caregiver_top_path(caregiver.id), notce: "ログインしました。"
     else
-        render :new
+      flash.now[:alert] = "名前またはパスワードが間違っています。"
+      render :new
     end
   end
 
   def destroy
-    session.delete(:caregiver_id)
-    redirect_to caregiver_root_path
+    session[:caregiver_id] = nil
+    redirect_to caregiver_root_path, notice: "ログアウトしました。"
   end
-
+  
+  
   private
 
-  def login_params
+  def caregiver_params
      params.require(:caregiver_login_form).permit(:name, :password)
   end
 end

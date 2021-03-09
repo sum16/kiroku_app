@@ -1,11 +1,9 @@
 
 
 <div id="family-form">
-  <h1>一括フォーム</h1>
+  <h1>行動記録を登録</h1>
 
-   <%= form_with model: @behavior_history, url: :care_recipitent_behavior_histories do |f| %>
-   <%= f.hidden_field :care_recipitent_id %>
-   <%= f.hidden_field :family_id %>
+   <%= form_with model: @behavior_history, url: :family_families do |f| %>
 
   <div>
     <%= f.label :behavior_history_date, "日付" %>
