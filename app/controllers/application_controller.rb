@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
+  
 
   class Forbidden < ActionController::ActionControllerError
   end
 
   class IpAdressRejected < ActionController::ActionControllerError
   end
-
+  
   include ErrorHandlers if Rails.env.production?
-
+  
 
   private
 

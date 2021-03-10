@@ -1,7 +1,7 @@
 <div class="form-container">
 <h1>職員登録フォーム</h1>
 
-  <%= form_with model: @caregiver, url: caregiver_tops_path, local: true do |f| %>
+  <%= form_with model: @caregiver, url: :caregiver_tops, local: true do |f| %>
     <div class="field">
       <%= f.label :name, "名前" %><br>
       <%= f.text_field :name %>

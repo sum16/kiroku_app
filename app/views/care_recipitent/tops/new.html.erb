@@ -1,0 +1,67 @@
+
+
+<%= form_with model: @care_recipitent, url: :care_recipitent_tops do |form| %>
+
+  <div class="cp_iptxt">
+  <h1>利用者情報の入力</h1>
+    <div>
+      <%= form.label :family_name, "名字", class: "ef" %>
+      <%= form.text_field :family_name %>
+    </div>
+
+    <div>
+      <%= form.label :given_name, "名前", class: "ef"  %>
+      <%= form.text_field :given_name %>
+    </div>
+
+    <div>
+      <%= form.label :given_name_kana, "名字(カナ)", class: "ef"  %>
+      <%= form.text_field :given_name_kana %>
+    </div>
+
+    <div>
+      <%= form.label :given_name_kana, "名前(カナ)", class: "ef" %>
+      <%= form.text_field :given_name_kana %>
+    </div>
+
+    <div>
+      <%= form.label :age, "年齢", class: "ef"  %>
+      <%= form.number_field :age %>
+    </div>
+
+    <div>
+      <%= form.label :gender, "男性", class: "ef"  %>
+      <%= form.radio_button :gender, 0 %>
+      <%= form.label :gender, "女性", class: "ef"  %>
+      <%= form.radio_button :gender, 1 %>
+    </div>
+
+    <div>
+      <%= form.label :degree_of_care_required, "要介護度" %>
+      <%= form.number_field :degree_of_care_required %>
+    </div>
+
+    <div>
+      <%= form.label :degree_of_support_required, "要支援度" %>
+      <%= form.number_field :degree_of_support_required %>
+    </div>
+
+    <div>
+      <%= form.label :birthday, "誕生日" %>
+      <%= form.date_field :birthday %>
+    </div>
+
+    <div>
+      <%= form.label :remarks, "備考欄" %>
+      <%= form.text_area :remarks, rows: 4  %>
+    </div>
+
+    <%= form.hidden_field :caregiver_id, value:current_caregiver_member.id %> 
+    
+    <div>
+      <%= form.submit "登録" %>
+    </div>
+    
+  <% end %>
+</div>
+
