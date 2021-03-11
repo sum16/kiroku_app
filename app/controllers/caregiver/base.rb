@@ -8,7 +8,7 @@ class Caregiver::Base < ApplicationController
 
   def already_login?
     unless current_caregiver_member.nil? 
-      redirect_to caregiver_top_path(current_caregiver_member.id)
+      redirect_to caregiver_staff_member_path(current_caregiver_member.id)
     end
   end
 

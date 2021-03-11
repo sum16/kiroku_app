@@ -1,38 +1,30 @@
 class Caregiver::TopsController  < Caregiver::Base
-  before_action :already_login?, only: [:new, :create]
-  before_action :login?, only: [:show]
 
   def index
-    #session.clear
-    @caregivers = Caregiver.order(created_at: :desc)
-    @caregivers_paginate = @caregivers.page(params[:page])
+
   end
 
   def new
-    @caregiver = Caregiver.new
+    @care_recipitent = CareRecipitent.new
+  end
+
+  def show
+    @caregiver = Caregiver.find(params[:staff_member_id])
+    @care_recipitents = @caregiver.care_recipitents
   end
 
   def create
-    caregiver = Caregiver.new(caregiver_params)
-    if caregiver.save!
-    session[:caregiver_id] = caregiver.id 
-    redirect_to caregiver_top_path(caregiver.id), notce: "登録が完了しました。"
-    else
-      render :new
-    end
-
-  end
- 
-  def show
-    @caregiver = Caregiver.find(params[:id])
+    @care_recipitent = CareRecipitent.new(care_recipitent_params)  
+    @care_recipitent.caregiver_id = session[:caregiver_id]
+    @care_recipitent.save
+    redirect_to caregiver_staff_member_top_path(params[:staff_member_id], @care_recipitent.id)
   end
 
-  def edit
-  end
+  private
 
-  def caregiver_params
-    params.require(:caregiver).permit(:name, :age, :password, :password_confirmation)
-    
+  def care_recipitent_params
+    params.permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :age, :gender,
+      :degree_of_care_required, :degree_of_support_required, :remarks, :suspend)
   end
 
 end

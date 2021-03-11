@@ -1,30 +1,29 @@
+<div class="form-container">
+<h1>一括登録フォーム</h1>
 
+  <%= form_with model: @family, url: :family_tops, local: true do |f| %>
+  
 
-<div id="family-form">
-  <h1>一括フォーム</h1>
+<%= f.fields_for :vitals do |vital| %>
 
-   <%= form_with model: @behavior_history, url: :care_recipitent_behavior_histories do |f| %>
-   <%= f.hidden_field :care_recipitent_id %>
-   <%= f.hidden_field :family_id %>
+<%= vital.label :measuring_date, "日付" %>
+<%= vital.date_field :measuring_date, required: true %>
+</div>
 
-  <div>
-    <%= f.label :behavior_history_date, "日付" %>
-    <%= f.date_field :behavior_history_date, required: true %>
-  </div>
+<div>
+<%= vital.label :temperature, "体温" %>
+<%= vital.number_field  :behavior_time, required: true %>
+</div>
 
-  <div>
-    <%= f.label :behavior_time, "時間" %>
-    <%= f.time_select :behavior_time, required: true  %>
-  </div>
+<div>
+<%= vital.label :hign_blood_pressure, "血圧(上)" %>
+<%= vital.number_field :hign_blood_pressure, placeholder: "血圧を入力", required: true %>
+</div>
 
-  <div>
-    <%= f.label :action_record, "活動記録" %>
-    <%= f.text_area :action_record, placeholder: "記録を入力", required: true  %>
-  </div>
+<div>
+<%= vital.label :low_blood_pressure, "血圧(下)" %>
+<%= vital.number_field :low_blood_pressure, placeholder: "血圧を入力", required: true %>
+</div>
 
-  <div>
-    <%= f.submit "送信" %>
-  </div>
   <% end %>
-  </div>
-
+</div>

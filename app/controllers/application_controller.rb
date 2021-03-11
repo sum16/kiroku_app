@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
-  
+
 
   class Forbidden < ActionController::ActionControllerError
   end

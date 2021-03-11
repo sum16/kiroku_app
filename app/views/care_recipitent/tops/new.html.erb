@@ -55,8 +55,6 @@
       <%= form.label :remarks, "備考欄" %>
       <%= form.text_area :remarks, rows: 4  %>
     </div>
-
-    <%= form.hidden_field :caregiver_id, value:current_caregiver_member.id %> 
     
     <div>
       <%= form.submit "登録" %>

@@ -1,0 +1,2 @@
+class BathingDay < ApplicationRecord
+end

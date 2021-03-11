@@ -1,1 +1,14 @@
 <h1>家族画面トップページ</h1>
+
+<%= @family.care_recipitent.given_name %>さん
+<p>入所している家族の情報を<strong>記録</strong>できるサービスです。</p>
+
+<br>
+
+<%= image_tag 'family-title', class: 'hoge'%>
+
+<br>
+<%= image_tag 'family-title2', class: 'hoge' %>
+
+<p>まずは登録をお願いします</p>
+<%= link_to "#{@family.care_recipitent.given_name}さんの記録を登録する",new_family_family_path %>

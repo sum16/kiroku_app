@@ -1,0 +1,30 @@
+<div class="form-container">
+<h1>職員登録フォーム</h1>
+
+  <%= form_with model: @caregiver, url: :caregiver_tops, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name, "名前" %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :age, "年齢" %><br>
+      <%= f.text_field :age %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "パスワード" %><br>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワードをもう１度入力してください。" %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div>
+      <%= f.submit "登録する" %>
+    </div>
+
+    <%= link_to "ログインはこちらから", caregiver_login_path %>
+  <% end %>
+</div>

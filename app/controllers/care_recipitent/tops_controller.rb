@@ -12,8 +12,7 @@ before_action :current_caregiver_member
 
   def create
     @care_recipitent  = CareRecipitent.new(care_recipitent_params)
-    session[:caregiver_id] = params[:caregiver][:caregiver_id]
-    binding.pry
+    @care_recipitent.build_family #子のfamilyモデルを含んで作成
     @care_recipitent.save!
     redirect_to care_recipitent_top_path
   end

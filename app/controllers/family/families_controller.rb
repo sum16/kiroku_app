@@ -1,7 +1,7 @@
-class Family::FamiliesController < ApplicationController
+class Family::FamiliesController < Family::Base
 
   def top 
-
+    @family = Family.find(1)
   end
   
   def index
@@ -12,8 +12,9 @@ class Family::FamiliesController < ApplicationController
   end
 
   def new
-    @care_recipitent = CareRecipitent.find(params[:id])
-    
+    @family = Family.new
+    @family.vitals.build
+
   end
 
   def create 

@@ -1,30 +1,61 @@
-<div class="form-container">
-<h1>職員登録フォーム</h1>
+<h1>利用者情報の登録</h1>
 
-  <%= form_with model: @caregiver, url: :caregiver_tops, local: true do |f| %>
-    <div class="field">
-      <%= f.label :name, "名前" %><br>
-      <%= f.text_field :name %>
-    </div>
+<%= form_with model: @caregiver, url: :caregiver_staff_member_tops do |form| %>
 
-    <div class="field">
-      <%= f.label :age, "年齢" %><br>
-      <%= f.text_field :age %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password, "パスワード" %><br>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワードをもう１度入力してください。" %><br>
-      <%= f.password_field :password_confirmation %>
-    </div>
+  <div class="cp_iptxt">
     <div>
-      <%= f.submit "登録する" %>
+      <%= form.label :family_name, "名字", class: "ef" %>
+      <%= form.text_field :family_name %>
     </div>
 
-    <%= link_to "ログインはこちらから", caregiver_login_path %>
+    <div>
+      <%= form.label :given_name, "名前", class: "ef"  %>
+      <%= form.text_field :given_name %>
+    </div>
+
+    <div>
+      <%= form.label :given_name_kana, "名字(カナ)", class: "ef"  %>
+      <%= form.text_field :given_name_kana %>
+    </div>
+
+    <div>
+      <%= form.label :given_name_kana, "名前(カナ)", class: "ef" %>
+      <%= form.text_field :given_name_kana %>
+    </div>
+
+    <div>
+      <%= form.label :age, "年齢", class: "ef"  %>
+      <%= form.number_field :age %>
+    </div>
+
+    <div>
+      <%= form.label :gender, "男性", class: "ef"  %>
+      <%= form.select :gender, CareRecipitent.genders.keys %>
+    </div>
+
+    <div>
+      <%= form.label :degree_of_care_required, "要介護度" %>
+      <%= form.number_field :degree_of_care_required %>
+    </div>
+
+    <div>
+      <%= form.label :degree_of_support_required, "要支援度" %>
+      <%= form.number_field :degree_of_support_required %>
+    </div>
+
+    <div>
+      <%= form.label :birthday, "誕生日" %>
+      <%= form.date_field :birthday %>
+    </div>
+
+    <div>
+      <%= form.label :remarks, "備考欄" %>
+      <%= form.text_area :remarks, row: 4 %>
+    </div>
+
+    <div>
+    <%= form.submit "登録" %>
+    </div>
   <% end %>
 </div>
+

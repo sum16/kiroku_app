@@ -1,3 +1,3 @@
 class IntakeWater < ApplicationRecord
-  belongs_to :care_recipitent
+  belongs_to :family
 end

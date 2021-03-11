@@ -1,3 +1,46 @@
-<p><strong><%= current_caregiver_member.name %></strong>としてログインしています。</p>
-<%= button_to "ログアウト", caregiver_logout_path, method: :delete %>
+<% @care_recipitents.each do |f| %>
+
+  <p>作成日：<%= f.created_at.to_s(:jp_time)%></p>
+
+ <table border="5">
+    <tr bgcolor="pink">
+      <th bgcolor="	#E0FFFF">利用者情報</th>
+      <th>名字</th>
+      <th>名前</th>
+      <th>名字(カナ)</th>
+      <th>名前(カナ)</th>
+      <th>年齢</th>
+      <th>性別</th>
+      <th>誕生日</th>
+      <th>要介護度</th>
+      <th>要支援度</th>
+      <th>備考欄</th>
+      <th>退所フラグ</th>
+      <th>担当スタッフ</th>
+      
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.family_name %></td>
+      <td><%= f.given_name %></td>
+      <td><%= f.family_name_kana %></td>
+      <td><%= f.given_name_kana %></td>
+      <td><%= f.age %></td>
+      <td> <%= f.gender %></td>
+      <td><%= f.birthday %></td>
+      <td><%= f.degree_of_care_required %></td>
+      <td><%= f.degree_of_support_required %></td>
+      <td><%= f.suspend%></td>
+      <td><%= f.remarks %></td>
+      <td><%= f.caregiver.name %></td>
+      
+    </tr> 
+  </table>
+
+
+
+
+
+<% end %>
+
 
