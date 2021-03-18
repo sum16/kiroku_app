@@ -1,0 +1,206 @@
+<div class="form-container">
+<h1>一括登録フォーム</h1>
+
+  <%= form_with model: @family, url: :family_family_tops, local: true do |form| %>
+  
+
+<p>バイタル</p>
+<%= form.fields_for :vitals, @family.vitals do |a| %>
+
+<div>
+<%= a.label :measuring_date, "日付" %>
+<%= a.date_field :measuring_date, required: true %>
+</div>
+
+<div>
+<%= a.label :temperature, "体温" %>
+<%= a.number_field  :temperature, required: true %>
+</div>
+
+<div>
+<%= a.label :hign_blood_pressure, "血圧(上)" %>
+<%= a.number_field :hign_blood_pressure, placeholder: "血圧を入力", required: true %>
+</div>
+
+<div>
+<%= a.label :low_blood_pressure, "血圧(下)" %>
+<%= a.number_field :low_blood_pressure, placeholder: "血圧を入力", required: true %>
+</div>
+
+<div>
+<%= a.label :pulse, "脈拍" %>
+<%= a.number_field :pulse, placeholder: "脈拍を入力", required: true %>回
+</div>
+
+<div>
+<%= a.label :breathing, "呼吸回数/1分" %>
+<%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>
+</div>
+
+<div>
+<%= a.label :spo2, "spo2" %>
+<%= a.number_field :spo2, placeholder: "spo2を入力", required: true %>%%
+</div>
+ <% end %>
+
+
+---------------------------
+
+<p>入浴日</p>
+<%= form.fields_for :bathing_days, @family.bathing_days do |b| %>
+
+  <div>
+    <%= b.label :bathing_date, "入浴日" %>
+    <%= b.date_field :bathing_date, required: true %>
+  </div>
+
+  <div>
+    <%= b.label :judge_bath, "入浴したらチェック" %>
+    <%= b.check_box  :judge_bath, required: true %>
+  </div>
+ <% end %>
+
+---------------------------
+
+<p>水分量</p>
+<%= form.fields_for :intake_waters, @family.intake_waters do |c| %>
+
+  <div>
+    <%= c.label :drink_date, "日付" %>
+    <%= c.date_field :drink_date, required: true %>
+  </div>
+
+  <div>
+    <%= c.label :amount_of_water, "水分量" %>
+    <%= c.number_field :amount_of_water, required: true %>ml
+  </div>
+ <% end %>
+
+ ---------------------------
+
+<p>服薬チェック</p>
+<%= form.fields_for :medicines, @family.medicines do |d| %>
+
+  <div>
+    <%= d.label :medicine_date, "日付" %>
+    <%= d.date_field :medicine_date, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_before_breakfast, "朝食前" %>
+    <%= d.check_box :check_before_breakfast, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_after_breakfast, "朝食後" %>
+    <%= d.check_box :check_after_breakfast, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_after_lunch, "昼食前" %>
+    <%= d.check_box :check_after_lunch, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_after_lunch, "昼食後" %>
+    <%= d.check_box :check_after_lunch, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_before_breakfast, "夕食前" %>
+    <%= d.check_box :check_before_breakfast, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_after_dinner, "夕食後" %>
+    <%= d.check_box :check_after_dinner, required: true %>
+  </div>
+
+  <div>
+    <%= d.label :check_eye_drops, "目薬" %>
+    <%= d.check_box :check_eye_drops, required: true %>
+  </div>
+
+   <div>
+    <%= d.label :check_ointment, "軟膏" %>
+    <%= d.check_box :check_ointment, required: true %>
+  </div>
+ <% end %>
+
+
+ ---------------------------
+
+<p>排泄記録</p>
+<%= form.fields_for :excretas, @family.excretas do |e| %>
+
+  <div>
+    <%= e.label :excreta_date, "日付" %>
+    <%= e.date_field :excreta_date, required: true %>
+  </div>
+
+  <div>
+    <%= e.label :judge_pee, "排尿" %>
+    <%= e.check_box :judge_pee, required: true %>
+  </div>
+
+  <div>
+    <%= e.label :judge_shit, "排便" %>
+    <%= e.check_box :judge_shit, required: true %>
+  </div>
+<% end %>
+
+ ---------------------------
+
+<p>食事量</p>
+<%= form.fields_for :meals, @family.meals do |e| %>
+
+    <div>
+    <%= e.label :breakfast, "朝食" %>
+    <%= e.check_box :breakfast, required: true %>
+  </div>
+
+  <div>
+    <%= e.label :lunch, "昼食" %>
+    <%= e.check_box :lunch, required: true %>
+  </div>
+
+  <div>
+    <%= e.label :snack, "おやつ" %>
+    <%= e.check_box :snack, required: true %>
+  </div>
+
+   <div>
+    <%= e.label :dinner, "夕食" %>
+    <%= e.check_box :dinner, required: true %>
+  </div> 
+<% end %>
+
+ ---------------------------
+
+
+<p>活動記録</p>
+<%= form.fields_for :behavior_histories, @family.behavior_histories do |e| %>
+
+  <div>
+    <%= e.label :behavior_history_date, "日付" %>
+    <%= e.date_field :behavior_history_date, required: true %>
+  </div>
+
+    <div>
+    <%= e.label :behavior_time, "時間" %>
+    <%= e.time_field :behavior_time, required: true %>
+  </div>
+
+  <div>
+    <%= e.label :action_record, "活動記録" %>
+    <%= e.text_area :action_record, required: true %>
+  </div>
+<% end %>
+
+ <div>
+  <%= form.submit "登録する" %>
+ </div>
+
+
+  <% end %>
+</div>

@@ -18,7 +18,6 @@ class Caregiver::TopsController  < Caregiver::Base
    else
     render :new
    end
-
   end
 
   def show

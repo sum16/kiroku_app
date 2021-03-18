@@ -1,13 +1,20 @@
 class Family < ApplicationRecord
-  belongs_to :care_recipitent
+  #belongs_to :care_recipitent
   has_many :vitals
+  has_many :bathing_days
   has_many :intake_waters
   has_many :medicines
-  has_many :excretums
+  has_many :excretas
   has_many :meals
-  has_many :medical_histories
   has_many :behavior_histories
+  accepts_nested_attributes_for :vitals
+  accepts_nested_attributes_for :bathing_days
+  accepts_nested_attributes_for :intake_waters
+  accepts_nested_attributes_for :medicines
+  accepts_nested_attributes_for :excretas
+  accepts_nested_attributes_for :meals
+  accepts_nested_attributes_for :behavior_histories
 
 
-  enum gender: { man: 0, woman: 1}
+  enum gender: { 男性: 0, 女性: 1 }
 end

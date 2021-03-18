@@ -40,8 +40,13 @@ end
     namespace :family, path: config[:family][:path] do
       root "families#top"
       resources  :families, only:[:show, :new, :create, :edit, :destroy] do
-        resources :behavior_histories, only:[:index, :new, :create, :show]
+        get :main, on: :collection
+      
+      resources :tops do
       end
+    end
+        resources :behavior_histories, only:[:index, :new, :create, :show]
+      
     end
   end
  
