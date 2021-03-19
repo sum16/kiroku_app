@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_063642) do
+ActiveRecord::Schema.define(version: 2021_03_19_115110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.string "type", null: false
+    t.string "postal_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "address1", null: false
+    t.string "address2", null: false
+    t.string "company_name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+    t.index ["type", "customer_id"], name: "index_addresses_on_type_and_customer_id", unique: true
+  end
 
   create_table "bathing_days", force: :cascade do |t|
     t.date "bathing_date", null: false
@@ -61,6 +76,18 @@ ActiveRecord::Schema.define(version: 2021_03_10_063642) do
     t.string "password_digest"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.string "gender"
+    t.string "hashed_password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_name_kana", "given_name_kana"], name: "index_customers_on_family_name_kana_and_given_name_kana"
+  end
+
   create_table "excreta", force: :cascade do |t|
     t.date "excreta_date", null: false
     t.boolean "judge_shit", default: false, null: false
@@ -72,7 +99,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_063642) do
   end
 
   create_table "families", force: :cascade do |t|
-    t.bigint "care_recipitent_id", null: false
     t.string "family_name", null: false
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
@@ -82,7 +108,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_063642) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "relationship", default: "", null: false
-    t.index ["care_recipitent_id"], name: "index_families_on_care_recipitent_id"
   end
 
   create_table "intake_waters", force: :cascade do |t|
@@ -157,11 +182,11 @@ ActiveRecord::Schema.define(version: 2021_03_10_063642) do
     t.index ["family_id"], name: "index_vitals_on_family_id"
   end
 
+  add_foreign_key "addresses", "customers"
   add_foreign_key "bathing_days", "families"
   add_foreign_key "behavior_histories", "families"
   add_foreign_key "care_recipitents", "caregivers"
   add_foreign_key "excreta", "families"
-  add_foreign_key "families", "care_recipitents"
   add_foreign_key "intake_waters", "families"
   add_foreign_key "meals", "families"
   add_foreign_key "medical_histories", "care_recipitents"
