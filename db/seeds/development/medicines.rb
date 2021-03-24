@@ -1,5 +1,5 @@
 Medicine.create!(
-  care_recipitent_id: 1,
+  family_id: 1,
   medicine_date: Date.yesterday,
   check_before_breakfast: false,
   check_after_breakfast: true,

@@ -1,6 +1,5 @@
 class Family::FamiliesController < Family::Base
-
-  #家族登録用のコントローラー
+#家族登録用のコントローラー
 
   def index
   end

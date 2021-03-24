@@ -1,0 +1,8 @@
+<% @title = "ダッシュボード" %>
+<h1><%= @title %></h1>
+
+<ul class="menu">
+  <li>
+  <%= link_to "利用者管理", caregiver_staff_member_customers_path(@caregiver.id) %>
+  </li>
+</ul>

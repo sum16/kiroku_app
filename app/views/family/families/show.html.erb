@@ -1,24 +1,24 @@
-利用者：<%= @care_recipitent.family_name %><%= @care_recipitent.given_name %>さん
+<p>詳細画面</p>
 
- <table border="5">
+<table border="5">
 
-    <tr bgcolor="pink">
-      <th bgcolor="	#E0FFFF">家族情報</th>
-      <th>名前</th>
-      <th>名前(カナ)</th>
-      <th>住所</th>
-      <th>性別</th>
-      <th>続柄</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= @care_recipitent.family.family_name %><%= @care_recipitent.family.given_name %></td>
-      <td><%= @care_recipitent.family.family_name_kana %><%= @care_recipitent.family.given_name_kana %></td>
-      <td><%= @care_recipitent.family.address%></td>
-      <td><%= @care_recipitent.family.gender %></td>
-      <td><%= @care_recipitent.family.relationship %></td>
-    </tr> 
-  </table>
+<tr bgcolor="pink">
+<th bgcolor=" #E0FFFF"><%= "#{@family.family_name}" %><%= "#{@family.given_name}" %>さんの情報</th>
+<th>名前</th>
+<th>名前(カナ)</th>
+<th>住所</th>
+<th>性別</th>
+<th>続柄</th>
+</tr>
+<tr>
+<td></td>
+<td><%= @family.family_name %><%= @family.given_name %></td>
+<td><%= @family.family_name_kana %><%= @family.given_name_kana %></td>
+<td><%= @family.address%></td>
+<td><%= @family.gender %></td>
+<td><%= @family.relationship %></td>
+</tr>
+</table>
 
 
-<%= link_to @care_recipitent.family_name + @care_recipitent.given_name + "さんの記録を作成する"  %>
+<%= link_to "記録を作成する", new_family_family_top_path(@family.id) %>

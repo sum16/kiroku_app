@@ -3,7 +3,6 @@ class Caregiver::StaffMembersController < Caregiver::Base
   before_action :login?, only: [:show]
 
   def index
-    #session.clear
     @caregivers = Caregiver.order(created_at: :desc)
     @caregivers_paginate = @caregivers.page(params[:page])
   end
@@ -24,6 +23,13 @@ class Caregiver::StaffMembersController < Caregiver::Base
  
   def show
     @caregiver = Caregiver.find(params[:id])
+
+    if current_caregiver_member
+      render :dashboard
+    else
+      render :show
+    end
+
   end
 
   def edit

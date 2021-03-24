@@ -1,0 +1,93 @@
+<% @title = "顧客の新規登録" %>
+<h1><%= @title %></h1>
+
+<div id="generic-form">
+  <%= form_with model: @customer_form, scope: "form", url: :caregiver_staff_member_customers do |f| %>
+
+    <fieldset>
+      <legend>基本情報</legend>
+    
+       <div class="input-block">
+              <%= fields_for :customer do |ff| %>
+          <div>
+              <%= ff.label :family_name, "名字" %>
+              <%= ff.text_field :family_name %>
+          </div>
+
+          <div>
+              <%= ff.label :given_name, "名前" %>
+              <%= ff.text_field :given_name %>
+          </div>
+
+          <div>
+              <%= ff.label :family_name, "名字(カナ)" %>
+              <%= ff.text_field :family_name %>
+          </div>
+
+          <div>
+              <%= ff.label :given_name, "名前(カナ)" %>
+              <%= ff.text_field :given_name %>
+          </div>
+
+        <% end %>
+       </div>
+    </fieldset>
+
+    --------------------------
+
+    <fieldset>
+      <legend>自宅住所</legend>
+        <div class="input-block">
+          <%= fields_for :home_address do |ff| %>
+        <div>
+            <%= ff.label :postal_code, "郵便番号" %>
+            <%= ff.text_field :postal_code, size: 7 %>
+        </div>
+
+        <div>
+            <%= ff.label :prefecture, "都道府県" %>
+            <%= ff.select :prefecture, Address::PREFECTURE_NAMES %>
+        </div>
+
+         <div>
+            <%= ff.label :city, "市区町村" %>
+            <%= ff.text_field :city, size: 16 %>
+        </div>
+
+        <div>
+            <%= ff.label :address1, "町域、番地等" %>
+            <%= ff.text_field :address1, size: 40 %>
+        </div>
+
+         <div>
+            <%= ff.label :address2, "建物名、部屋番号等" %>
+            <%= ff.text_field :address2, size: 40 %>
+        </div>
+        <% end %>
+        </div>
+    </fieldset>
+
+     --------------------------
+
+     <br>
+       <br>
+
+    <fieldset>
+      <legend>勤務先</legend>
+      <div class="input-block">
+              <%= fields_for :work_address do |ff| %>
+          <div>
+              <%= ff.label :company_name, "会社名" %>
+              <%= ff.text_field :company_name %>
+          </div>
+        <% end %>
+       </div>
+    </fieldset>
+
+
+    <div class="buttons">
+      <%= f.submit "登録" %>
+      <%= link_to "キャンセル"%>
+    </div>
+  <% end %>
+</div>

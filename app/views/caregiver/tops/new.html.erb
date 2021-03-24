@@ -1,6 +1,6 @@
 <h1>利用者情報の登録</h1>
 
-<%= form_with model: @caregiver, url: :caregiver_staff_member_tops do |form| %>
+<%= form_with model: @caregiver, url: :new_caregiver_top do |form| %>
 
   <div class="cp_iptxt">
     <div>
@@ -29,7 +29,7 @@
     </div>
 
     <div>
-      <%= form.label :gender, "男性", class: "ef"  %>
+      <%= form.label :gender, "性別", class: "ef"  %>
       <%= form.select :gender, CareRecipitent.genders.keys %>
     </div>
 
