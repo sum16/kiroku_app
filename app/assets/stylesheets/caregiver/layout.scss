@@ -4,18 +4,102 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-size: 15px;
 }
 
-
 div#wrapper {
+  height: 50px;
+}
+
+div#container-field {
   position: relative;
   box-sizing: border-box;
-  /*
   min-height: 100%;
   margin: 0 auto;
   padding-bottom: 48px;
   background-color: $right_yellow;
-  */
+ h2 {
+   text-align: center;
+   padding-top: 10px;
+ }
+
+ .page-title {
+   background-color: $right_gray;
+   height: 50px;
+ }
+
+ .pagination {
+   text-align: center;
+ }
+
+ .list a.list{
+   text-decoration: none;
+ }
+
+  ul { 
+    list-style: none;
+      li {
+        display: inline-block;
+        a {
+          text-decoration: none;
+          float: left;
+          margin: 0 10px;
+          
+        }
+      }
+
+   }
+   .btn {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
+  
+  a.btn--yellow {
+    color: #000;
+    background-color: #fff100;
+    border-bottom: 5px solid #ccc100;
+  }
+  
+  a.btn--yellow:hover {
+    margin-top: 3px;
+    color: #000;
+    background: #fff20a;
+    border-bottom: 2px solid #ccc100;
+  }
+
+  .link-list {
+   text-align: center;
+  }
+
+  .clearfix::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+   
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 
@@ -43,11 +127,11 @@ header {
 }
 
 footer {
-  bottom: 0;
-  position: absolute;
   width: 100%;
+  height: 50px;
   background-color: $right_gray;
   color: $white;
+  position: absolute; bottom: 0; 
   p {
     text-align: center;
     padding: 5px;

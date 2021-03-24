@@ -10,14 +10,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <div id="wrapper">
-    <%= render "family/shared/header" %>
-    <div id="container">
-      <%= yield %>
-      <%= render "family/shared/footer" %>
+     <body>
+    <div id="wrapper">
+      <%= render "family/shared/header" %>
     </div>
-  </div>
-   
+
+      <div id="container-field">
+        <div id="container">
+          <%= yield %>
+        </div>
+      <%= render "family/shared/footer" %>
+      </div>
+  
   </body>
 </html>
