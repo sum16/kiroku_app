@@ -1,0 +1,36 @@
+@import "_dimensions";
+ 
+div#container {
+   
+   .form-container {
+     text-align: center;
+
+     a.new-session-button {
+       padding-top: 25px;
+     }
+   }
+
+   .field {
+     margin: 20px 0 20px;
+   }
+
+   input {
+     width: 350px;
+     padding: 10px 15px;
+     font-size: 16px;
+     border-radius: 3px;
+     border: 2px solid #ddd;
+     margin-bottom: 10px; 
+   }
+
+   h2 {
+     padding-left: 110px;
+   }
+
+   .submit {
+     padding-top: 20px;
+   }
+
+   
+}
+

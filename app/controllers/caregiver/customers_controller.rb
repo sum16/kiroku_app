@@ -1,7 +1,6 @@
 class Caregiver::CustomersController < Caregiver::Base
-
   protect_from_forgery :except => [:destroy]
-  
+
 def index 
   @customers = Customer.order(:family_name_kana, :given_name_kana).page(params[:page])
 end
@@ -12,7 +11,13 @@ end
 
 def create 
   @customer_form = Caregiver::CustomerForm.new
-  @customer_form.assign_attributes(params[:form])
+  @customer_form = params[:customer],params[:home_address], params[:work_address]
+  @customer ||= Customer.new(gender: "male")
+  @customer.build_home_address unless @customer.home_address
+  @customer.build_work_address unless @customer.work_address
+  @customer.assign_attributes(customer_params)
+  @customer.home_address.assign_attributes(home_address_params)
+  @customer.work_address.assign_attributes(work_address_params)
   if @customer_form.save
     flash.notice = "顧客を追加しました"
     redirect_to action: "index"
@@ -49,6 +54,23 @@ def edit
   @customer_form = Caregiver::CustomerForm.new
   @customer = Customer.find(params[:id])
 end
+
+
+
+
+private
+
+  def customer_params
+    params.require(:customer).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :gender)
+  end
+
+  def home_address_params
+    params.require(:home_address).permit(:postal_code, :prefecture, :city, :address1, :address2)
+  end
+
+  def work_address_params
+    params.require(:work_address).permit(:postal_code, :prefecture, :city, :address1, :address2, :company_name)
+  end
 
 
 end

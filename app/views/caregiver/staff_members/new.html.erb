@@ -1,5 +1,6 @@
+
+<h2 class="page-title">職員登録フォーム</h2>
 <div class="form-container">
-<h1>職員登録フォーム</h1>
 
   <%= form_with model: @caregiver, url: :caregiver_tops, local: true do |f| %>
     <div class="field">
@@ -21,10 +22,10 @@
       <%= f.label :password_confirmation, "パスワードをもう１度入力してください。" %><br>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div>
+    <div class="submit">
       <%= f.submit "登録する" %>
     </div>
 
-    <%= link_to "ログインはこちらから", caregiver_login_path %>
+    <%= link_to "ログインはこちらから", caregiver_login_path, class: "submit-button" %>
   <% end %>
 </div>

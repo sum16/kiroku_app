@@ -32,16 +32,12 @@
   padding-bottom: 20px;
 }
 
-.original-profile-img {
-  margin-top: 3px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
 .original-profile-name {
   font-weight: bold;
   text-align: center;
+  a {
+    text-decoration: none;
+  }
 }
 
 .original-profile-description {

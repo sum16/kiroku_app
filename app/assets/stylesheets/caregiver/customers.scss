@@ -1,22 +1,6 @@
 @import "colors";
 @import "dimensions";
 
-div#wrapper {
-  div#container {
-    h1 {
-      margin: 0;
-      padding: $moderate * 1.5 $moderate;
-      font-size: $large;
-      font-weight: normal;
-      background-color: $very_dark_yellow;
-      color: $light_gray;
-    }
-  }
-}
-
-@import "colors";
-@import "dimensions";
-
 div.table-wrapper {
   width: 90%;
   margin: 0 auto;
@@ -40,6 +24,7 @@ div.table-wrapper {
       td.actions {
         text-align: center;
         color: $dark_gray;
+        
       }
     }
   }
@@ -49,4 +34,8 @@ div.table-wrapper {
     tr:nth-child(even) { background-color: $very_light_gray; }
     tr:nth-child(odd) { background-color: $light_gray; }
   }
+
+  .actions input .abc{
+    width: 10px;
+        }
 }

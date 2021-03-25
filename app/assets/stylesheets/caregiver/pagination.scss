@@ -1,16 +1,30 @@
-/*ページネーション自体*/
-.pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
+@import "colors";
+@import "dimensions";
 
-/* 表示しているページ番号 */
-.pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
-}
-
-/*ホバー時*/
-.pagination>li>a:hover {        
-  border-radius: 15px;    /*角を丸くする*/
+nav.pagination {
+  margin: $moderate 0;
+  padding: $moderate 0;
+  display: inline-block;
+  border-top: solid $very_light_gray 1px;
+  border-bottom: solid $very_light_gray 1px;
+  padding-bottom: $very-wide;
+  span.page, span.first, span.prev, span.next, span.last {
+    display: inline-block;
+    background-color: $orange;
+    padding: $narrow $moderate;
+    a {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+  span.current {
+    background-color: $dark_gray;
+    color: $white;
+  }
+  span.disabled {
+    color: $gray;
+  }
+  span.gap {
+    background-color: transparent;
+  }
 }

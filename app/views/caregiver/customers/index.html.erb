@@ -1,5 +1,5 @@
-<% @title = "顧客管理" %>
-<h1><%= @title %></h1>
+<% @title = "利用者管理画面" %>
+<h2><%= @title %></h2>
 
 <div class="table-wrapper">
   <div class="links">
@@ -23,16 +23,12 @@
         <td><%= c.given_name_kana %></td>
         <td><%= p.gender %></td>
         <td class="actions">
-          <%= link_to "詳細", caregiver_staff_member_customer_path(:staff_member_id, c.id) %>|
-          <%= button_to "削除", caregiver_staff_member_customer_path(:staff_member_id, c.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "詳細", caregiver_staff_member_customer_path(:staff_member_id, c.id) %>
+          <%= button_to "削除", caregiver_staff_member_customer_path(:staff_member_id, c.id), method: :delete %>
         </td>
       </tr>
     <% end %>
   </table>
 
   <%= paginate @customers %>
-
-  <div class="links">
-    <%#= link_to "新規登録", :new_staff_customer %>
-  </div>
 </div>

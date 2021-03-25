@@ -1,14 +1,14 @@
-<% @title = "顧客の新規登録" %>
-<h1><%= @title %></h1>
+<% @title = "利用者情報の登録" %>
+<h2><%= @title %></h2>
 
 <div id="generic-form">
-  <%= form_with model: @customer_form, scope: "form", url: :caregiver_staff_member_customers do |f| %>
+  <%= form_with model: @customer_form, scope: "form", url: :caregiver_staff_member_customers, local: true do |f| %>
 
     <fieldset>
       <legend>基本情報</legend>
     
-       <div class="input-block">
-              <%= fields_for :customer do |ff| %>
+         <div class="input-block">
+              <%= fields_for :customer, f.object.customer do |ff| %>
           <div>
               <%= ff.label :family_name, "名字" %>
               <%= ff.text_field :family_name %>
@@ -20,30 +20,28 @@
           </div>
 
           <div>
-              <%= ff.label :family_name, "名字(カナ)" %>
-              <%= ff.text_field :family_name %>
+              <%= ff.label :family_name_kana, "名字(カナ)" %>
+              <%= ff.text_field :family_name_kana %>
           </div>
 
           <div>
-              <%= ff.label :given_name, "名前(カナ)" %>
-              <%= ff.text_field :given_name %>
+              <%= ff.label :given_name_kana, "名前(カナ)" %>
+              <%= ff.text_field :given_name_kana %>
           </div>
 
         <% end %>
        </div>
     </fieldset>
 
-    --------------------------
-
     <div class="check-boxes">
-      <%= f.check_box :inputs_home_address %>
-      <%= f.label :inputs_home_address, "自宅の住所を入力する" %>
+      <%#= f.check_box :inputs_home_address %>
+      <%#= f.label :inputs_home_address, "自宅の住所を入力する" %>
     </div>
 
     <fieldset>
       <legend>自宅住所</legend>
         <div class="input-block">
-          <%= fields_for :home_address do |ff| %>
+          <%= fields_for :home_address, f.object.customer.home_address do |ff| %>
         <div>
             <%= ff.label :postal_code, "郵便番号" %>
             <%= ff.text_field :postal_code, size: 7 %>
@@ -72,22 +70,15 @@
         </div>
     </fieldset>
 
-  <br>
-   <br>
-     --------------------------
-
      <div class="check-boxes">
-      <%= f.check_box :inputs_work_address %>
-      <%= f.label :inputs_work_address, "勤務先の情報を入力する" %>
+      <%#= f.check_box :inputs_work_address %>
+      <%#= f.label :inputs_work_address, "勤務先の情報を入力する" %>
      </div>
-
-     <br>
-     
 
     <fieldset>
       <legend>勤務先</legend>
       <div class="input-block">
-              <%= fields_for :work_address do |ff| %>
+              <%= fields_for :work_address, f.object.customer.work_address do |ff| %>
           <div>
               <%= ff.label :company_name, "会社名" %>
               <%= ff.text_field :company_name %>

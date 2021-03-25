@@ -6,19 +6,20 @@
 <div class="profil-container ">
       <div class="link-list clearfix">
             <ul>
-                  <li><%= link_to "ログインはこちらから", caregiver_login_path, class: "btn btn--yellow btn--cubic" %></li>
-                  <li><%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %></li>
-                  <li><%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %></li>     
+              <% if current_caregiver_member %>
+                    <li><%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %></li> 
+                  <% else %>
+                    <li><%= link_to "ログインはこちらから", caregiver_login_path, class: "btn btn--yellow btn--cubic" %></li>
+                    <li><%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %></li>
+               <% end %> 
             </ul>
       </div>
       <% @caregivers.each do |caregiver| %>
       <div class="original-profile">
-      <div class="original-profile-title"><i class="fas fa-pencil-alt"></i> スタッフ</div>
+      <div class="original-profile-title">スタッフ</div>
             <div class="original-profile-body">
-                  <div class="original-profile-left">
-                  </div>
             <div class="original-profile-right">
-                  <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= caregiver.name %></span></p>
+                  <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(caregiver.id) %></span></p>
                   <div class="original-profile-description"><p>プロフィール説明文</p></div>
             </div>
       </div>

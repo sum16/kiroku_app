@@ -2,7 +2,7 @@ class Caregiver::TopsController  < Caregiver::Base
   protect_from_forgery :except => [:destroy]
 
   def index
-    #@caregiver = Caregiver.find(params[:staff_member_id])
+    @caregivers = Caregiver.find(params[:staff_member_id])
     @care_recipitents = @caregiver.care_recipitents
   end
 

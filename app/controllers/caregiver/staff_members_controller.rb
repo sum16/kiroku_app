@@ -5,6 +5,7 @@ class Caregiver::StaffMembersController < Caregiver::Base
   def index
     @caregivers = Caregiver.order(created_at: :desc)
     @caregivers_paginate = @caregivers.page(params[:page])
+    
   end
 
   def new
@@ -15,7 +16,7 @@ class Caregiver::StaffMembersController < Caregiver::Base
     caregiver = Caregiver.new(caregiver_params)
     if caregiver.save!
     session[:caregiver_id] = caregiver.id 
-    redirect_to caregiver_top_path(caregiver.id), notce: "登録が完了しました。"
+    redirect_to caregiver_staff_members_path, notice: "登録が完了しました。"
     else
       render :new
     end

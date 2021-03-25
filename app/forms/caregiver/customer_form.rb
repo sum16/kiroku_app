@@ -12,13 +12,13 @@ class Caregiver::CustomerForm
 
   def assign_attributes(params= {})
     @params = params
-
     customer.assign_attributes(customer_params)
     customer.home_address.assign_attributes(home_address_params)
     customer.work_address.assign_attributes(work_address_params)
   end
 
   def save
+    #トランザクション処理
     ActiveRecord::Base.transaction do
       customer.save!
       customer.home_address.save!
@@ -26,18 +26,5 @@ class Caregiver::CustomerForm
     end
   end
 
-  private
-
-  def customer_params
-    @params.require(:customer).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :gender)
-  end
-
-  def home_address_params
-    @params.require(:home_address).permit(:postal_code, :prefecture, :city, :address1, :address2)
-  end
-
-  def work_address_params
-    @params.require(:work_address).permit(:postal_code, :prefecture, :city, :address1, :address2, :company_name)
-  end
-
+  
 end

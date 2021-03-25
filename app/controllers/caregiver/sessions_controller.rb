@@ -19,7 +19,7 @@ class Caregiver::SessionsController < Caregiver::Base
 
   def destroy
     session[:caregiver_id] = nil
-    redirect_to caregiver_root_path, notice: "ログアウトしました。"
+    redirect_to caregiver_staff_members_path, notice: "ログアウトしました。"
   end
   
   

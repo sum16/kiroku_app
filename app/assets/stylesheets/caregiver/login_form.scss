@@ -1,11 +1,12 @@
-
-  div#container {
-
+ @import "_dimensions";
+ 
+ div#container {
+    
     .form-container {
       text-align: center;
 
       a.new-session-button {
-        padding-top: 10px;
+        padding-top: 25px;
       }
     }
 
@@ -19,8 +20,11 @@
       font-size: 16px;
       border-radius: 3px;
       border: 2px solid #ddd;
-      margin-bottom: 10px;
-      
+      margin-bottom: 10px; 
+    }
+
+    h2 {
+      padding-left: 110px;
     }
 
     

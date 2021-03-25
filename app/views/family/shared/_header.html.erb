@@ -1,5 +1,7 @@
 <header>
+ <link rel="icon" type="image/png" href="#">
   <span class="logo-mark">kiroku</span>
+  <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
+   <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
   
-  </div>
 </header>

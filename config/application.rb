@@ -17,5 +17,7 @@ module Kiroku
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja 
     config.time_zone = "Tokyo"
+    #ストロングパラメーターの指定漏れを教えてくれる
+    config.action_controller.action_on_unpermitted_parameters = :raise
   end
 end
