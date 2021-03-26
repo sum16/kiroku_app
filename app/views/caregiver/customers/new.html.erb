@@ -1,7 +1,12 @@
-<% @title = "利用者情報の登録" %>
+<% @title = "家族情報の登録" %>
 <h2><%= @title %></h2>
 
 <div id="generic-form">
+
+<div class="link-list ">
+  <%= link_to "利用者画面に戻る", caregiver_staff_member_customers_path, class: "btn btn--yellow btn--cubic"  %>
+  <%= link_to "スタッフ一覧画面に戻る", caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %>
+</div>
   <%= form_with model: @customer_form, scope: "form", url: :caregiver_staff_member_customers, local: true do |f| %>
 
     <fieldset>
@@ -93,4 +98,5 @@
       <%= link_to "キャンセル"%>
     </div>
   <% end %>
+
 </div>

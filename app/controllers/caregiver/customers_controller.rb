@@ -19,7 +19,7 @@ def create
   @customer.home_address.assign_attributes(home_address_params)
   @customer.work_address.assign_attributes(work_address_params)
   if @customer_form.save
-    flash.notice = "顧客を追加しました"
+    flash.notice = "利用者を追加しました"
     redirect_to action: "index"
   else
     render action: "new"
@@ -30,7 +30,7 @@ def update
   @customer_form = Caregiver::CustomerForm.new(Customer.find(params[:id]))
   @customer_form.assign_attributes(params[:form])
   if @customer_form.save
-    flash.notice = "顧客を更新しました"
+    flash.notice = "利用者を更新しました"
     redirect_to action: "index"
   else
     flash.now.alert = "入力に誤りがあります。"

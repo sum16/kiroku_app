@@ -1,4 +1,4 @@
-class Caregiver::CustomerForm
+class CustomerForm 
 
   attr_accessor :customer
   delegate :persisted?, to: :customer

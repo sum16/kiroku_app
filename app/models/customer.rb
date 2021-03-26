@@ -11,5 +11,13 @@ class Customer < ApplicationRecord
     end
   end
 
+  def together_save
+    #トランザクション処理
+    ActiveRecord::Base.transaction do
+      customer.save!
+      customer.home_address.save!
+      customer.work_address.save!
+    end
+  end
 
 end

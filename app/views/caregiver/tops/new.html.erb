@@ -1,6 +1,6 @@
-<h1>利用者情報の登録</h1>
+<h2>利用者情報の登録</h2>
 
-<%= form_with model: @caregiver, url: :new_caregiver_top do |form| %>
+<%= form_with model: @care_recipitent, url: :caregiver_tops do |form| %>
 
   <div class="cp_iptxt">
     <div>
@@ -14,8 +14,8 @@
     </div>
 
     <div>
-      <%= form.label :given_name_kana, "名字(カナ)", class: "ef"  %>
-      <%= form.text_field :given_name_kana %>
+      <%= form.label :family_name_kana, "名字(カナ)", class: "ef"  %>
+      <%= form.text_field :family_name_kana %>
     </div>
 
     <div>

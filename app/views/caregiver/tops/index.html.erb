@@ -17,8 +17,8 @@
       <th>退所フラグ</th>
       <th>備考欄</th>
       <th>担当スタッフ</th>
-      <th><%= link_to "詳細",caregiver_staff_member_top_path(f.id, f.caregiver_id) %></th>
-      <th><%= button_to "削除",caregiver_staff_member_top_path(f.id, f.caregiver_id), method: :delete, data: { confirm: "本当に削除しますか？"} %></th>
+      <th><%= link_to "詳細",caregiver_top_path(f.id) %></th>
+      <th><%= button_to "削除",caregiver_top_path(f.id), method: :delete %></th>
       
     </tr>
     <tr>
@@ -42,4 +42,4 @@
 <% end %>
 
 
-<%= link_to "利用者情報の登録", new_caregiver_staff_member_top_path %>
+<%#= link_to "利用者情報の登録", new_caregiver_staff_member_top_path %>
