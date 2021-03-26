@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_065225) do
+ActiveRecord::Schema.define(version: 2021_03_26_123755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,14 @@ ActiveRecord::Schema.define(version: 2021_03_25_065225) do
     t.string "hashed_password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_name", "given_name"], name: "index_customers_on_family_name_and_given_name"
+    t.index ["family_name"], name: "index_customers_on_family_name"
     t.index ["family_name_kana", "given_name_kana"], name: "index_customers_on_family_name_kana_and_given_name_kana"
+    t.index ["family_name_kana", "given_name_kana"], name: "index_customers_on_furigana"
+    t.index ["family_name_kana"], name: "index_customers_on_family_name_kana"
+    t.index ["gender", "family_name_kana", "given_name_kana"], name: "index_customers_on_gender_and_furigana"
+    t.index ["given_name"], name: "index_customers_on_given_name"
+    t.index ["given_name_kana"], name: "index_customers_on_given_name_kana"
   end
 
   create_table "excreta", force: :cascade do |t|

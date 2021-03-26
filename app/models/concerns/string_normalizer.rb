@@ -1,7 +1,7 @@
 require "nkf"
 
 module StringNormalizer
-  extend ActiveSupport::Concern 
+  extend ActiveSupport::Concern
 
   #名前とカナを正規化
   def normalize_as_name(text)

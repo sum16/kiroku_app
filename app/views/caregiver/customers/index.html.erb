@@ -1,6 +1,9 @@
 <% @title = "利用者管理画面" %>
 <h2><%= @title %></h2>
 
+<p>検索フォーム</p>
+  <%= render "search_form" %>
+  
 <div class="table-wrapper">
   <div class="links">
     <%#= link_to "新規登録", :new_staff_customer %>
@@ -29,6 +32,7 @@
       </tr>
     <% end %>
   </table>
+
 
   <%= paginate @customers %>
 </div>

@@ -2,7 +2,13 @@ class Caregiver::CustomersController < Caregiver::Base
   protect_from_forgery :except => [:destroy]
 
 def index 
-  @customers = Customer.order(:family_name_kana, :given_name_kana).page(params[:page])
+  @search_form = Caregiver::CustomerSearchForm.new(search_params)
+  #@customers = Customer.order(:family_name_kana, :given_name_kana).page(params[:page])
+  @customers = @search_form.search.page(params[:page])
+end
+
+private def search_params
+  params[:search]&.permit([:family_name, :given_name, :family_name_kana, :given_name_kana, :gender])
 end
 
 def new
@@ -71,6 +77,7 @@ private
   def work_address_params
     params.require(:work_address).permit(:postal_code, :prefecture, :city, :address1, :address2, :company_name)
   end
+
 
 
 end
