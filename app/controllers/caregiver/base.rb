@@ -13,10 +13,13 @@ class Caregiver::Base < ApplicationController
   end
 
   def current_caregiver_member
-    if session[:caregiver_id]
-      @current_caregiver_member ||= Caregiver.find_by(id: session[:caregiver_id])
+    #if session[:caregiver_id]
+     # @current_caregiver_member ||= Caregiver.find_by(id: session[:caregiver_id])
+    #end
+    if caregiver_id = cookies.signed[:caregiver_id] || session[:caregiver_id]
+      @current_caregiver_member ||= Caregiver.find_by(id: caregiver_id)
     end
   end
-
+  
 helper_method :current_caregiver_member 
 end

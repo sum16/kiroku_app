@@ -1,8 +1,8 @@
 <% @title = "ダッシュボード" %>
 <h2><%= @title %></h2>
 
-<ul class="menu">
+<ul class="link-list">
   <li>
-  <%= link_to "利用者管理", caregiver_staff_member_customers_path(@caregiver.id) %>
+  <%= link_to "利用者管理", caregiver_staff_member_customers_path(@caregiver.id), class: "btn btn--yellow btn--cubic" %>
   </li>
 </ul>

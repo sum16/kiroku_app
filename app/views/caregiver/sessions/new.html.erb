@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2>login</h2>
+  <h2>ログイン</h2>
 
   <%= form_with(url: :caregiver_session, local: true)  do |f| %>
     <div class="field">
@@ -14,6 +14,11 @@
 
     <div>
       <%= f.submit "ログイン" %>
+    </div>
+
+    <div>
+      <%= f.check_box :remember_me %>
+      <%= f.label "次回から自動でログインする" %>
     </div>
 
     <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "new-session-button" %>
