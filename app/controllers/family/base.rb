@@ -14,11 +14,9 @@ class Family::Base < ApplicationController
 
   def already_login?
     unless current_family.nil? 
-      redirect_to family_top_path(current_family.id)
+      redirect_to family_families_path, notice: "すでにログインしています"
     end
   end
-
- 
 
 helper_method :current_family
 end

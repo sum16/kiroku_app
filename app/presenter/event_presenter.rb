@@ -1,6 +1,6 @@
 class EventPresenter < ModelPresenter
   delegate :title, :description, to: :object
-  delegate :number_with_delimiter, to: :view_context
+  delegate :number_with_delimiter, :button_to, to: :view_context
 
   def application_start_time
     object.application_start_time.strftime("%Y-%m-%d %H:%M")
@@ -30,5 +30,36 @@ class EventPresenter < ModelPresenter
     object.registrant.name
   end
 
+  def apply_or_cancel_button
+    if false 
+      # TODO: キャンセルボタンの表示
+    else
+      status = event_status
+      button_to button_label_text(status), [ :family, object, :entry ],
+      disabled: status != :available, method: :post, data: { confirm: "本当に申し込みますか？"}
+
+    end
+  end
+
+  private def event_status
+    if object.application_end_time.try(:<, Time.current)
+      :closed
+    elsif object.max_number_of_participants.try(:<=, object.applicants.count)
+      :full
+    else
+      :available
+    end
+  end
+
+  private def button_label_text(status)
+    case status
+    when :closed
+       "募集終了"
+    when :full
+      "満員"
+    else
+      "申し込む"
+    end
+  end
 
 end

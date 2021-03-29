@@ -24,6 +24,16 @@
     </div>
 
     <div class="field">
+      <%= form.label :password, "パスワード" %><br>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation, "パスワードをもう１度入力してください。" %><br>
+      <%= form.password_field :password_confirmation %>
+    </div>
+
+    <div class="field">
       <%= form.label :relationship, "続柄" %><br>
       <%= form.text_field :relationship %>
     </div>

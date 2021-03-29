@@ -12,9 +12,7 @@ Rails.application.routes.draw do
       end
       resources :staff_members do 
         resources :customers
-      end
-     
-      
+      end 
       get "login", to: "sessions#new", as: :login
       post "login", to: "sessions#create", as: :session
       delete "logout", to: "sessions#destroy"
@@ -24,16 +22,21 @@ Rails.application.routes.draw do
 
   constraints host: config[:family][:host] do
     namespace :family, path: config[:family][:path] do
-      root "families#top"
+      get "login", to: "sessions#new", as: :login
+      post "login", to: "sessions#create", as: :session
+      delete "logout", to: "sessions#destroy"
       get 'youtubes/index', to: "youtubes#index"
+      root "families#top"
       resources  :families do
         get :main, on: :collection
-      resources :tops do
-      end
+      resources :tops 
     end
       resources :behavior_histories, only:[:index, :new, :create, :show]
-      resources :events, only: [:index, :show ]
-      
+      resources :events, only: [:index, :show ] do
+        resource :entry, only: [ :create ] do
+          patch :cancel
+        end
+      end
     end
   end
 

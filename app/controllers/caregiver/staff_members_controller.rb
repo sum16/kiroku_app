@@ -19,6 +19,7 @@ class Caregiver::StaffMembersController < Caregiver::Base
     session[:caregiver_id] = caregiver.id 
     redirect_to caregiver_staff_members_path, notice: "登録が完了しました。"
     else
+      flash.now.alert = "入力に誤りがあります。"
       render :new
     end
   end

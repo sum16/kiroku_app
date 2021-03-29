@@ -1,0 +1,19 @@
+<% @title = "イベント一覧" %>
+<h2><%= @title %></h2>
+
+<div class="table-wrapper">
+  
+
+  <table class="listing">
+    <tr>
+      <th>タイトル</th>
+      <th>申し込み開始日時</th>
+      <th>申し込み秋終了日時</th>
+      <th>最小参加者数</th>
+      <th>最大参加者数</th>
+      <th>アクション</th>
+    </tr>
+    <%= render partial: "event", collection: @events %>
+  </table>
+  <%= paginate @events %>
+</div>

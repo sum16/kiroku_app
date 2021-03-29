@@ -72,4 +72,9 @@ class Event < ApplicationRecord
     end
   end
   
+    #family/eventsコントローラー
+    scope :published, -> {
+      where("application_start_time <= ?", Time.current).order(application_start_time: :desc)
+    }
+  
 end

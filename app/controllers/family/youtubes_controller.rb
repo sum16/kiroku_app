@@ -1,4 +1,4 @@
-class Family::YoutubesController < ApplicationController
+class Family::YoutubesController < Family::Base
 
 GOOGLE_API_KEY = ENV['GOOGLE_API_KEY']
 #GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]

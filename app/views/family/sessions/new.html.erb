@@ -1,0 +1,32 @@
+<div class="form-container">
+  <h2>ログイン</h2>
+
+  <%= form_with(url: :family_session, local: true)  do |f| %>
+    <div class="field">
+      <%= f.label :family_name, "名字" %><br>
+      <%= f.text_field :family_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :given_name, "名前" %><br>
+      <%= f.text_field :given_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "パスワード" %><br>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.submit "ログイン" %>
+    </div>
+
+    <div>
+      <%= f.check_box :remember_me %>
+      <%= f.label "次回から自動でログインする" %>
+    </div>
+
+    <%= link_to "家族登録はこちらから", new_family_family_path %>
+ <% end %>
+</div>
+

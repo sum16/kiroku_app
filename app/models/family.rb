@@ -1,4 +1,5 @@
 class Family < ApplicationRecord
+  has_secure_password
   #belongs_to :care_recipitent
   has_many :vitals
   has_many :bathing_days
@@ -19,4 +20,8 @@ class Family < ApplicationRecord
 
 
   enum gender: { 男性: 0, 女性: 1 }
+
+  def remember_me?
+    remember_me == "1"
+  end
 end

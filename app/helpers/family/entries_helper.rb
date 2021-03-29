@@ -1,0 +1,2 @@
+module Family::EntriesHelper
+end

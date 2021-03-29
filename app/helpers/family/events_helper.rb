@@ -1,0 +1,2 @@
+module Family::EventsHelper
+end
