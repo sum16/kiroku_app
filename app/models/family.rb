@@ -7,6 +7,8 @@ class Family < ApplicationRecord
   has_many :excretas
   has_many :meals
   has_many :behavior_histories
+  has_many :entries, dependent: :destroy
+  has_many :events, through: :entries
   accepts_nested_attributes_for :vitals
   accepts_nested_attributes_for :bathing_days
   accepts_nested_attributes_for :intake_waters

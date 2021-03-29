@@ -1,0 +1,2 @@
+module Caregiver::EventsHelper
+end

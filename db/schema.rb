@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_123755) do
+ActiveRecord::Schema.define(version: 2021_03_27_151612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,28 @@ ActiveRecord::Schema.define(version: 2021_03_26_123755) do
     t.index ["gender", "family_name_kana", "given_name_kana"], name: "index_customers_on_gender_and_furigana"
     t.index ["given_name"], name: "index_customers_on_given_name"
     t.index ["given_name_kana"], name: "index_customers_on_given_name_kana"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "family_id", null: false
+    t.boolean "approved", default: false, null: false
+    t.boolean "canceled", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_id"], name: "index_entries_on_family_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "registrant_id", null: false
+    t.string "title", null: false
+    t.string "description"
+    t.datetime "application_start_time", null: false
+    t.datetime "application_end_time", null: false
+    t.integer "min_number_of_participants"
+    t.integer "max_number_of_participants"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "excreta", force: :cascade do |t|
@@ -193,6 +215,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_123755) do
   add_foreign_key "bathing_days", "families"
   add_foreign_key "behavior_histories", "families"
   add_foreign_key "care_recipitents", "caregivers"
+  add_foreign_key "events", "caregivers", column: "registrant_id"
   add_foreign_key "excreta", "families"
   add_foreign_key "intake_waters", "families"
   add_foreign_key "meals", "families"

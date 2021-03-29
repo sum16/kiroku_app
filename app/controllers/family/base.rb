@@ -1,5 +1,11 @@
 class Family::Base < ApplicationController
  
+  def current_family
+    if family_id = cookies.signed[:family_id] || session[:family_id]
+      @current_family ||= Family.find_by(id: family_id)
+    end
+  end
+
   def login?
     if current_family.nil? 
       redirect_to caregiver_login_path, alert: "ログインをしてください。"
@@ -12,11 +18,7 @@ class Family::Base < ApplicationController
     end
   end
 
-  def current_family
-    if session[:caregiver_id]
-      @current_family ||= Family.find_by(id: session[:family_id])
-    end
-  end
+ 
 
-helper_method :current_caregiver_member 
+helper_method :current_family
 end

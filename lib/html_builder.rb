@@ -1,7 +1,4 @@
-module ApplicationHelper
-  
-  
-
+module HtmlBuilder 
   def markup(tag_name = nil, options = {})
     root = Nokogiri::HTML::DocumentFragment.parse("")
     Nokogiri::HTML::Builder.with(root) do |doc|
@@ -15,16 +12,5 @@ module ApplicationHelper
     end
     root.to_html.html_safe
   end
-   
-  
-
-  
-  def document_title
-    if @title.present?
-      "#{@title} - KIROKU"
-    else
-      "KIROKU"
-    end
-  end
-  
 end
+  

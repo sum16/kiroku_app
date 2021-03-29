@@ -2,7 +2,9 @@ class Family::FamiliesController < Family::Base
 #家族登録用のコントローラー
 
   def index
+    render :dashboard
   end
+
 
   def new
     @family = Family.new
@@ -11,9 +13,8 @@ class Family::FamiliesController < Family::Base
   def create
     @family = Family.new(family_params)  
     session[:family_id] = @family.id 
-    @family.care_recipitent_id = 1
    if @family.save!
-    redirect_to family_family_path(params[:family_id], params[:id])
+    redirect_to family_families_path(params[:family_id], params[:id])
    # redirect_to caregiver_staff_member_tops_path(params[:staff_member_id], @care_recipitent.id)
    else
     render :new
@@ -29,6 +30,10 @@ class Family::FamiliesController < Family::Base
   end
 
   def destroy
+  end
+
+  def how_to_assist
+    
   end
 
   private

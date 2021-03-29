@@ -14,6 +14,7 @@ gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "bullet"
 gem "nokogiri"
+gem "date_validator"
 # gem 'redis', '~> 4.0'
 
 
