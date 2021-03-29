@@ -1,8 +1,9 @@
 class Family::FamiliesController < Family::Base
+
 #家族登録用のコントローラー
 
   def index
-    render :dashboard
+   # render "youtubes/index"
   end
 
 

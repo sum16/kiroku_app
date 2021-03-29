@@ -15,6 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "bullet"
 gem "nokogiri"
 gem "date_validator"
+gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 # gem 'redis', '~> 4.0'
 
 
@@ -24,6 +25,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails', groups: [:development, :test]
 end
 
 group :development do

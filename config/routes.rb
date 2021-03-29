@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   config = Rails.application.config.kiroku2
   
   constraints host: config[:caregiver][:host] do
@@ -26,9 +25,9 @@ Rails.application.routes.draw do
   constraints host: config[:family][:host] do
     namespace :family, path: config[:family][:path] do
       root "families#top"
+      get 'youtubes/index', to: "youtubes#index"
       resources  :families do
         get :main, on: :collection
-        get :how_to_assist, on: :collection
       resources :tops do
       end
     end
