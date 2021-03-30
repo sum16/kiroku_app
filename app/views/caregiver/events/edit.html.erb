@@ -2,11 +2,11 @@
 <h2><%= @title %></h2>
 
 <div id="generic-form">
-  <%= form_with model: @event, url: :caregiver_staff_member_events do |f| %>
+  <%= form_with model: @event, url: update_all_caregiver_event_entries_path(@event) do |f| %>
     <%= render "form", f: f %>
     <div class="buttons">
       <%= f.submit "登録" %> <br>
-      <%= link_to "キャンセル", caregiver_staff_member_events_path %>
+      <%= link_to "キャンセル", caregiver_events_path %>
     </div>
   <% end %>
 </div>

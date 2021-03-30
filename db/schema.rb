@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_165701) do
+ActiveRecord::Schema.define(version: 2021_03_30_063523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_165701) do
     t.string "company_name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "family_id"
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
+    t.index ["family_id"], name: "index_addresses_on_family_id"
     t.index ["type", "customer_id"], name: "index_addresses_on_type_and_customer_id", unique: true
   end
 
@@ -74,6 +76,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_165701) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "suspended", default: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -213,6 +218,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_165701) do
   end
 
   add_foreign_key "addresses", "customers"
+  add_foreign_key "addresses", "families"
   add_foreign_key "bathing_days", "families"
   add_foreign_key "behavior_histories", "families"
   add_foreign_key "care_recipitents", "caregivers"

@@ -1,6 +1,8 @@
 class Family < ApplicationRecord
   has_secure_password
-  #belongs_to :care_recipitent
+  has_one :home_address, dependent: :destroy
+  has_one :work_address, dependent: :destroy
+  
   has_many :vitals
   has_many :bathing_days
   has_many :intake_waters

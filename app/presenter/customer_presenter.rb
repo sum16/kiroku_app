@@ -8,7 +8,7 @@ class CustomerPresenter < ModelPresenter
   def full_name_kana
     object.family_name_kana + "" + object.given_name_kana
   end
-  
+
   
   def gender
     case object.gender
@@ -19,6 +19,11 @@ class CustomerPresenter < ModelPresenter
     else
       ""
     end
+  end
+
+  def birthday
+    return "" if object.birthday.blank?
+    object.birthday.strftime("%Y/%m/%d")
   end
 
 end

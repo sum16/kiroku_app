@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       delete "logout", to: "sessions#destroy"
       get 'youtubes/index', to: "youtubes#index"
       root "families#top"
+      resource :account, expect: [ :new, :create, :destroy ]
       resources  :families do
         get :main, on: :collection
       resources :tops 
