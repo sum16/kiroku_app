@@ -1,4 +1,4 @@
-class CustomerForm 
+class Caregiver::CustomerForm 
   include ActiveModel::Model 
   
   attr_accessor :customer
@@ -25,6 +25,19 @@ class CustomerForm
       customer.home_address.save!
       customer.work_address.save!
     end
+  end
+
+
+  private def customer_params
+    @params.require(:customer).permit(:password, :family_name, :given_name, :family_name_kana, :given_name_kana, :gender)
+  end
+
+  private def home_address_params
+    @params.require(:home_address).permit(:postal_code, :prefecture, :city, :address1, :address2)
+  end
+
+  private def work_address_params
+    @params.require(:work_address).permit(:postal_code, :prefecture, :city, :address1, :address2,　:company_name)
   end
 
   

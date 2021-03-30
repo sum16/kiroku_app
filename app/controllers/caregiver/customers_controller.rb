@@ -1,4 +1,5 @@
 class Caregiver::CustomersController < Caregiver::Base
+
   protect_from_forgery :except => [:destroy]
 
 def index 
@@ -17,17 +18,12 @@ end
 
 def create 
   @customer_form = Caregiver::CustomerForm.new
-  @customer_form = params[:customer],params[:home_address], params[:work_address]
-  @customer ||= Customer.new(gender: "male")
-  @customer.build_home_address unless @customer.home_address
-  @customer.build_work_address unless @customer.work_address
-  @customer.assign_attributes(customer_params)
-  @customer.home_address.assign_attributes(home_address_params)
-  @customer.work_address.assign_attributes(work_address_params)
+  @customer_form.assign_attributes(params[:form])
   if @customer_form.save
     flash.notice = "利用者を追加しました"
     redirect_to action: "index"
   else
+    flash.now.alert = "入力に誤りがあります。"
     render action: "new"
   end
 end
@@ -56,13 +52,16 @@ def show
   @customer = Customer.find(params[:id])
 end
 
-def edit 
-  @customer_form = Caregiver::CustomerForm.new
-  @customer = Customer.find(params[:id])
+def edit
+  @customer_form = Caregiver::CustomerForm.new(Customer.find(params[:id]))
 end
 
-
-
+#  @customer.build_home_address unless @customer.home_address
+#@customer.build_work_address unless @customer.work_address
+#@customer.assign_attributes(customer_params)
+#@customer.home_address.assign_attributes(home_address_params)
+#@customer.work_address.assign_attributes(work_address_params)
+# @customer ||= Customer.new(gender: "male")
 
 private
 

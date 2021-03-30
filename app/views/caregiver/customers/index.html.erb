@@ -26,7 +26,8 @@
         <td><%= c.given_name_kana %></td>
         <td><%= p.gender %></td>
         <td class="actions">
-          <%= link_to "詳細", caregiver_staff_member_customer_path(:staff_member_id, c.id) %>
+          <%= link_to "詳細", caregiver_staff_member_customer_path(:staff_member_id, c.id) %> |
+          <%= link_to "編集", edit_caregiver_staff_member_customer_path(:staff_member_id, c.id) %>
           <%= button_to "削除", caregiver_staff_member_customer_path(:staff_member_id, c.id), method: :delete %>
         </td>
       </tr>
