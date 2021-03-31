@@ -36,7 +36,7 @@ class Family::FamiliesController < Family::Base
 
   private
   def family_params
-    params.require(:family).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :relationship, :address, :gender, :password, :password_confirmation )
+    params.require(:family).permit(:care_recipitent_name, :family_name, :given_name, :family_name_kana, :given_name_kana, :relationship, :address, :gender, :password, :password_confirmation )
   end
 end
 

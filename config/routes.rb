@@ -28,9 +28,11 @@ Rails.application.routes.draw do
       get 'youtubes/index', to: "youtubes#index"
       root "families#top"
       resource :account, expect: [ :new, :create, :destroy ]
+      resources :tops 
       resources  :families do
         get :main, on: :collection
-      resources :tops 
+        get :dashboard, on: :collection
+      
     end
       resources :behavior_histories, only:[:index, :new, :create, :show]
       resources :events, only: [:index, :show ] do

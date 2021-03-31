@@ -1,60 +1,7 @@
 <div class="form-container">
-<h1>家族登録フォーム</h1>
+<h1>登録フォーム</h1>
 
   <%= form_with model: @family, url: :family_families, local: true do |form| %>
-
-    <div class="field">
-      <%= form.label :family_name, "名字" %><br>
-      <%= form.text_field :family_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :given_name, "名前" %><br>
-      <%= form.text_field :given_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :family_name_kana, "名字(カナ)" %><br>
-      <%= form.text_field :family_name_kana %>
-    </div>
-
-    <div class="field">
-      <%= form.label :given_name_kana, "名前(カナ)" %><br>
-      <%= form.text_field :given_name_kana %>
-    </div>
-
-    <div class="field">
-      <%= form.label :password, "パスワード" %><br>
-      <%= form.password_field :password %>
-    </div>
-
-    <div class="field">
-      <%= form.label :password_confirmation, "パスワードをもう１度入力してください。" %><br>
-      <%= form.password_field :password_confirmation %>
-    </div>
-
-    <div class="field">
-      <%= form.label :relationship, "続柄" %><br>
-      <%= form.text_field :relationship %>
-    </div>
-
-    <div class="field">
-      <%= form.label :address, "住所" %><br>
-      <%= form.text_field :address %>
-    </div>
-
-<br>
-<br>
-    <div class="field">
-      <%= form.label :gender, "性別" %><br>
-      <%= form.select :gender, Family.genders.keys   %>
-    </div>
-
-    
-
-
-   <div class="field">
-      <%= form.submit "登録する" %>
-   </div>
+    <%= render "form", form: form %>
   <% end %>
 </div>

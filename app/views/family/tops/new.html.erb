@@ -1,53 +1,56 @@
 <div class="form-container">
 <h1>一括登録フォーム</h1>
 
-  <%= form_with model: @family, url: :family_family_tops, local: true do |form| %>
+  <%= form_with model: @family, url: :family_tops, local: true do |form| %>
   
+<%= form.label :care_recipitent_name, "記録をしたい人の名前" %>
+<%= form.text_field :care_recipitent_name %>
 
 <p>バイタル</p>
-<%= form.fields_for :vitals, @family.vitals do |a| %>
 
-<div>
-<%= a.label :measuring_date, "日付" %>
-<%= a.date_field :measuring_date, required: true %>
-</div>
+<%= form.fields_for :vitals, @family.vitals.build do |a| %>
+  <div>
+  <%= a.label :measuring_date, "日付" %>
+  <%= a.date_field :measuring_date, required: true %>
+  </div>
 
-<div>
-<%= a.label :temperature, "体温" %>
-<%= a.number_field  :temperature, required: true %>
-</div>
+  <div>
+  <%= a.label :temperature, "体温" %>
+  <%= a.number_field  :temperature, required: true %>
+  </div>
 
-<div>
-<%= a.label :hign_blood_pressure, "血圧(上)" %>
-<%= a.number_field :hign_blood_pressure, placeholder: "血圧を入力", required: true %>
-</div>
+  <div>
+  <%= a.label :hign_blood_pressure, "血圧(上)" %>
+  <%= a.number_field :hign_blood_pressure, placeholder: "血圧を入力", required: true %>
+  </div>
 
-<div>
-<%= a.label :low_blood_pressure, "血圧(下)" %>
-<%= a.number_field :low_blood_pressure, placeholder: "血圧を入力", required: true %>
-</div>
+  <div>
+  <%= a.label :low_blood_pressure, "血圧(下)" %>
+  <%= a.number_field :low_blood_pressure, placeholder: "血圧を入力", required: true %>
+  </div>
 
-<div>
-<%= a.label :pulse, "脈拍" %>
-<%= a.number_field :pulse, placeholder: "脈拍を入力", required: true %>回
-</div>
+  <div>
+  <%= a.label :pulse, "脈拍" %>
+  <%= a.number_field :pulse, placeholder: "脈拍を入力", required: true %>回
+  </div>
 
-<div>
-<%= a.label :breathing, "呼吸回数/1分" %>
-<%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>
-</div>
+  <div>
+  <%= a.label :breathing, "呼吸回数/1分" %>
+  <%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>
+  </div>
 
-<div>
-<%= a.label :spo2, "spo2" %>
-<%= a.number_field :spo2, placeholder: "spo2を入力", required: true %>%%
-</div>
- <% end %>
+  <div>
+  <%= a.label :spo2, "spo2" %>
+  <%= a.number_field :spo2, placeholder: "spo2を入力", required: true %>%%
+  </div>
+<% end %>
+
 
 
 ---------------------------
 
 <p>入浴日</p>
-<%= form.fields_for :bathing_days, @family.bathing_days do |b| %>
+<%= form.fields_for :bathing_days, @family.bathing_days.build  do |b| %>
 
   <div>
     <%= b.label :bathing_date, "入浴日" %>
@@ -63,7 +66,7 @@
 ---------------------------
 
 <p>水分量</p>
-<%= form.fields_for :intake_waters, @family.intake_waters do |c| %>
+<%= form.fields_for :intake_waters, @family.intake_waters.build  do |c| %>
 
   <div>
     <%= c.label :drink_date, "日付" %>
@@ -79,7 +82,7 @@
  ---------------------------
 
 <p>服薬チェック</p>
-<%= form.fields_for :medicines, @family.medicines do |d| %>
+<%= form.fields_for :medicines, @family.medicines.build  do |d| %>
 
   <div>
     <%= d.label :medicine_date, "日付" %>
@@ -131,7 +134,7 @@
  ---------------------------
 
 <p>排泄記録</p>
-<%= form.fields_for :excretas, @family.excretas do |e| %>
+<%= form.fields_for :excretas, @family.excretas.build  do |e| %>
 
   <div>
     <%= e.label :excreta_date, "日付" %>
@@ -152,7 +155,11 @@
  ---------------------------
 
 <p>食事量</p>
-<%= form.fields_for :meals, @family.meals do |e| %>
+<%= form.fields_for :meals, @family.meals.build  do |e| %>
+<div>
+    <%= e.label :meal_date, "日付" %>
+    <%= e.date_field :meal_date, required: true %>
+  </div>
 
     <div>
     <%= e.label :breakfast, "朝食" %>
@@ -179,7 +186,7 @@
 
 
 <p>活動記録</p>
-<%= form.fields_for :behavior_histories, @family.behavior_histories do |e| %>
+<%= form.fields_for :behavior_histories, @family.behavior_histories.build  do |e| %>
 
   <div>
     <%= e.label :behavior_history_date, "日付" %>
