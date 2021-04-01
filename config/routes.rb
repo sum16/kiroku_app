@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       resources  :families do
         get :main, on: :collection
         get :dashboard, on: :collection
+        get :search, on: :collection
+        
       
     end
       resources :behavior_histories, only:[:index, :new, :create, :show]

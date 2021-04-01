@@ -3,9 +3,6 @@
 
   <%= form_with model: @family, url: :family_tops, local: true do |form| %>
   
-<%= form.label :care_recipitent_name, "記録をしたい人の名前" %>
-<%= form.text_field :care_recipitent_name %>
-
 <p>バイタル</p>
 
 <%= form.fields_for :vitals, @family.vitals.build do |a| %>

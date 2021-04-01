@@ -5,3 +5,13 @@
  <li><%= link_to "イベント一覧", class: "btn btn--yellow btn--cubic" %></li>
  <%= link_to "介助の仕方を動画で学ぶ", family_youtubes_index_path, class: "btn btn--yellow btn--cubic"  %>
 </ul>
+
+<h1>記録検索</h1>
+<%= search_form_for @q, url: :search_family_families do |f| %>
+  <%= f.label :measuring_date, "日付を指定して検索" %>
+  <%= f.date_field :measuring_date_gteq %>〜
+  <%= f.date_field :measuring_date_lt %>までの間
+
+  <%= f.submit '検索' %>
+<% end %>
+

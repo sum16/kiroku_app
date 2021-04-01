@@ -5,7 +5,7 @@ class Family::SessionsController < Family::Base
   end
 
   def create 
-    family = Family.find_by_name(params[:family_name], params[:given_name])
+    family = Family.find_by(params[:family_name], params[:given_name])
     if family && family.authenticate(params[:password])
       if family.remember_me?
         #クッキーの有効期限を１週間に設定

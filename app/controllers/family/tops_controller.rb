@@ -5,7 +5,7 @@ class Family::TopsController < Family::Base
   end
 
   def index
-     @family = Family.find_by(id: current_family.id)
+    @family = Family.find_by(id: current_family.id)
   end
 
   def show
