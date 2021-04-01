@@ -32,13 +32,13 @@
   </div>
 
   <div>
-  <%= a.label :breathing, "呼吸回数/1分" %>
-  <%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>
+  <%= a.label :breathing, "呼吸回数" %>
+  <%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>/分
   </div>
 
   <div>
   <%= a.label :spo2, "spo2" %>
-  <%= a.number_field :spo2, placeholder: "spo2を入力", required: true %>%%
+  <%= a.number_field :spo2, placeholder: "spo2を入力", required: true %>%
   </div>
 <% end %>
 
@@ -46,7 +46,7 @@
 
 ---------------------------
 
-<p>入浴日</p>
+<p>入浴チェック</p>
 <%= form.fields_for :bathing_days, @family.bathing_days.build  do |b| %>
 
   <div>
@@ -56,7 +56,7 @@
 
   <div>
     <%= b.label :judge_bath, "入浴したらチェック" %>
-    <%= b.check_box  :judge_bath, required: true %>
+    <%= b.check_box :judge_bath %>
   </div>
  <% end %>
 
@@ -72,7 +72,7 @@
 
   <div>
     <%= c.label :amount_of_water, "水分量" %>
-    <%= c.number_field :amount_of_water, required: true %>ml
+    <%= c.number_field :amount_of_water, required: true %>cc
   </div>
  <% end %>
 
@@ -88,49 +88,49 @@
 
   <div>
     <%= d.label :check_before_breakfast, "朝食前" %>
-    <%= d.check_box :check_before_breakfast, required: true %>
+    <%= d.check_box :check_before_breakfast %>
   </div>
 
   <div>
     <%= d.label :check_after_breakfast, "朝食後" %>
-    <%= d.check_box :check_after_breakfast, required: true %>
+    <%= d.check_box :check_after_breakfast %>
   </div>
 
   <div>
     <%= d.label :check_after_lunch, "昼食前" %>
-    <%= d.check_box :check_after_lunch, required: true %>
+    <%= d.check_box :check_after_lunch %>
   </div>
 
   <div>
     <%= d.label :check_after_lunch, "昼食後" %>
-    <%= d.check_box :check_after_lunch, required: true %>
+    <%= d.check_box :check_after_lunch %>
   </div>
 
   <div>
     <%= d.label :check_before_breakfast, "夕食前" %>
-    <%= d.check_box :check_before_breakfast, required: true %>
+    <%= d.check_box :check_before_breakfast %>
   </div>
 
   <div>
     <%= d.label :check_after_dinner, "夕食後" %>
-    <%= d.check_box :check_after_dinner, required: true %>
+    <%= d.check_box :check_after_dinner %>
   </div>
 
   <div>
     <%= d.label :check_eye_drops, "目薬" %>
-    <%= d.check_box :check_eye_drops, required: true %>
+    <%= d.check_box :check_eye_drops %>
   </div>
 
    <div>
     <%= d.label :check_ointment, "軟膏" %>
-    <%= d.check_box :check_ointment, required: true %>
+    <%= d.check_box :check_ointment %>
   </div>
  <% end %>
 
 
  ---------------------------
 
-<p>排泄記録</p>
+<p>排泄チェック</p>
 <%= form.fields_for :excretas, @family.excretas.build  do |e| %>
 
   <div>
@@ -140,42 +140,42 @@
 
   <div>
     <%= e.label :judge_pee, "排尿" %>
-    <%= e.check_box :judge_pee, required: true %>
+    <%= e.check_box :judge_pee %>
   </div>
 
   <div>
     <%= e.label :judge_shit, "排便" %>
-    <%= e.check_box :judge_shit, required: true %>
+    <%= e.check_box :judge_shit %>
   </div>
 <% end %>
 
  ---------------------------
 
-<p>食事量</p>
+<p>食事チェック</p>
 <%= form.fields_for :meals, @family.meals.build  do |e| %>
 <div>
     <%= e.label :meal_date, "日付" %>
-    <%= e.date_field :meal_date, required: true %>
+    <%= e.date_field :meal_date %>
   </div>
 
     <div>
     <%= e.label :breakfast, "朝食" %>
-    <%= e.check_box :breakfast, required: true %>
+    <%= e.check_box :breakfast %>
   </div>
 
   <div>
     <%= e.label :lunch, "昼食" %>
-    <%= e.check_box :lunch, required: true %>
+    <%= e.check_box :lunch %>
   </div>
 
   <div>
     <%= e.label :snack, "おやつ" %>
-    <%= e.check_box :snack, required: true %>
+    <%= e.check_box :snack %>
   </div>
 
    <div>
     <%= e.label :dinner, "夕食" %>
-    <%= e.check_box :dinner, required: true %>
+    <%= e.check_box :dinner %>
   </div> 
 <% end %>
 
@@ -192,12 +192,12 @@
 
     <div>
     <%= e.label :behavior_time, "時間" %>
-    <%= e.time_field :behavior_time, required: true %>
+    <%= e.time_field :behavior_time, required: true  %>
   </div>
 
   <div>
     <%= e.label :action_record, "活動記録" %>
-    <%= e.text_area :action_record, required: true %>
+    <%= e.text_area :action_record %>
   </div>
 <% end %>
 

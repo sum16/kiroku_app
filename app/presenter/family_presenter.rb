@@ -8,7 +8,7 @@ class FamilyPresenter < ModelPresenter
     object.family_name_kana + "" + object.given_name_kana
   end
 
-  
+
   def gender
     case object.gender
     when "male"
@@ -19,6 +19,7 @@ class FamilyPresenter < ModelPresenter
       ""
     end
   end
+
 
 
 end

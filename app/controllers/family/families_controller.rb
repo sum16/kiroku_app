@@ -18,14 +18,13 @@ class Family::FamiliesController < Family::Base
   end
 
   def create
-    @family = Family.new(family_params)  
-   if @family.save!
-    session[:family_id] = @family.id
-    redirect_to family_families_path(params[:family_id], params[:id]), notice: "登録が完了しました。"
-   # redirect_to caregiver_staff_member_tops_path(params[:staff_member_id], @care_recipitent.id)
-   else
-    flash.now.alert = "入力に誤りがあります。"
-    render :new
+     @family = Family.new(family_params)  
+    if @family.save
+       session[:family_id] = @family.id
+       redirect_to family_families_path(params[:family_id], params[:id]), notice: "登録が完了しました。"
+    else
+      flash.now.alert = "入力に誤りがあります。"
+      render :new
    end
   end
 

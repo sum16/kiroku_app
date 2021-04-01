@@ -1,4 +1,19 @@
 class Family < ApplicationRecord
+
+  with_options presence: true do
+    validates :family_name
+    validates :given_name
+    validates :family_name_kana
+    validates :given_name_kana
+    validates :gender
+    validates :relationship
+    validates :address
+  end
+  #全角カタカナ
+  validates :family_name_kana, :given_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  #８文字〜１２文字制限
+  validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
+
   has_secure_password
   has_one :home_address, dependent: :destroy
   has_one :work_address, dependent: :destroy
@@ -20,9 +35,8 @@ class Family < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :events, through: :entries
 
-  #enum gender: { 男性: 0, 女性: 1 }
-
   def remember_me?
     remember_me == "1"
   end
+
 end

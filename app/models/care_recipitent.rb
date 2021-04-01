@@ -11,6 +11,12 @@ class CareRecipitent < ApplicationRecord
     self.family_name_kana = normalize_as_furigana(family_name_kana)
     self.given_name_kana =  normalize_as_furigana(given_name_kana)
   end
+
+  with_options presence: true do
+    validates :age
+    validates :gender
+    validates :birthday
+  end
   
 
   enum gender: %i( 男性 女性 )

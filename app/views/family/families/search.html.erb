@@ -15,7 +15,7 @@
   <tbody>
     <% @results.each do |vital| %>
       <tr>
-        <td><%= vital.measuring_date %></td>
+        <td><%= vital.measuring_date.strftime("%Y年%m月%d日") %></td>
         <td><%= vital.temperature %>℃</td> 
         <td><%= vital.low_blood_pressure %>/<%= vital.hign_blood_pressure %></td>
         <td><%= vital.pulse %>回/分</td> 
@@ -37,9 +37,9 @@
 <tbody>
     <% @excretas_results.each do |excreta| %>
       <tr>
-        <td><%= excreta.excreta_date%></td>
-        <td><%= excreta.judge_pee %></td>
-        <td><%= excreta.judge_shit %></td>
+        <td><%= excreta.excreta_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= excreta.judge_pee ? "○": "×" %></td>
+        <td><%= excreta.judge_shit ? "○": "×" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -60,11 +60,11 @@
 <tbody>
     <% @meals_results.each do |meal| %>
       <tr>
-        <td><%= meal.meal_date %></td>
-        <td><%= meal.breakfast %></td>
-        <td><%= meal.lunch %></td>
-        <td><%= meal.snack %></td>
-        <td><%= meal.dinner %></td>
+        <td><%= meal.meal_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= meal.breakfast ? "○": "×" %></td>
+        <td><%= meal.lunch ? "○": "×" %></td>
+        <td><%= meal.snack ? "○": "×" %></td>
+        <td><%= meal.dinner ? "○": "×" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -80,7 +80,7 @@
 <tbody>
     <% @intake_waters_results.each do |intake_water| %>
       <tr>
-        <td><%= intake_water.drink_date %></td>
+        <td><%= intake_water.drink_date.strftime("%Y年%m月%d日") %></td>
         <td><%= intake_water.amount_of_water %></td>
       </tr>
     <% end %>
@@ -97,8 +97,8 @@
 <tbody>
     <% @bathing_days_results.each do |bathing_day| %>
       <tr>
-        <td><%= bathing_day.bathing_date%></td>
-        <td><%= bathing_day.judge_bath %></td>
+        <td><%= bathing_day.bathing_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= bathing_day.judge_bath ? "○": "×" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -121,15 +121,15 @@
 <tbody>
     <% @medicines_results.each do |medicine| %>
       <tr>
-        <td><%= medicine.medicine_date %></td>
-        <td><%= medicine.check_before_breakfast %></td>
-        <td><%= medicine.check_after_breakfast %></td>
-        <td><%= medicine.check_before_lunch %></td>
-        <td><%= medicine.check_after_lunch %></td>
-        <td><%= medicine.check_before_dinner %></td>
-         <td><%= medicine.check_after_dinner %></td>
-        <td><%= medicine.check_eye_drops %></td>
-        <td><%= medicine.check_ointment %></td>
+        <td><%= medicine.medicine_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= medicine.check_before_breakfast ? "○": "×" %></td>
+        <td><%= medicine.check_after_breakfast ? "○": "×" %></td>
+        <td><%= medicine.check_before_lunch ? "○": "×" %></td>
+        <td><%= medicine.check_after_lunch ? "○": "×" %></td>
+        <td><%= medicine.check_before_dinner ? "○": "×" %></td>
+         <td><%= medicine.check_after_dinner ? "○": "×" %></td>
+        <td><%= medicine.check_eye_drops ? "○": "×" %></td>
+        <td><%= medicine.check_ointment ? "○": "×" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -146,7 +146,7 @@
 <tbody>
     <% @behavior_histories_results.each do |behavior_history| %>
       <tr>
-        <td><%= behavior_history.behavior_history_date %></td>
+        <td><%= behavior_history.behavior_history_date.strftime("%Y年%m月%d日") %></td>
         <td><%= behavior_history.behavior_time %></td>
         <td><%= behavior_history.action_record %></td>
       </tr>
@@ -158,6 +158,6 @@
 
  
 
-<%= link_to "戻る", dashboard_family_families_path %>
+<%= link_to "戻る", dashboard_family_families_path, class: "btn btn--yellow btn--cubic" %>
 
 

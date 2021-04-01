@@ -16,9 +16,6 @@ module ApplicationHelper
     root.to_html.html_safe
   end
    
-  
-
-  
   def document_title
     if @title.present?
       "#{@title} - KIROKU"
