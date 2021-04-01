@@ -4,7 +4,7 @@
 <div class="table-wrapper">
   <table class="attributes">
     <tr><th colspan="2">基本情報</th></tr>
-    <% p1 = CustomerPresenter.new(@family, self) %>
+    <% p1 = FamilyPresenter.new(@family, self) %>
     <tr><th>氏名</th><td><%= p1.full_name %></td></tr>
     <tr><th>フリガナ</th><td><%= p1.full_name_kana %></td></tr>
     <tr><th>性別</th><td><%= p1.gender %></td></tr>

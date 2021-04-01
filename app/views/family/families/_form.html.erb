@@ -44,12 +44,11 @@
       <%= form.text_field :address %>
     </div>
 
-<br>
-<br>
-    <div class="field">
-      <%= form.label :gender, "性別" %><br>
-      <%= form.select :gender, Family.genders.keys   %>
-    </div>
+
+    <%= markup do |m| 
+    p = FamilyFormPresenter.new(form, self)
+    m << p.gender_field_block
+    end %>
 
     
 
@@ -57,3 +56,6 @@
    <div class="field">
       <%= form.submit "登録する" %>
    </div>
+
+
+   

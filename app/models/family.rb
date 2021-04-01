@@ -19,16 +19,8 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :behavior_histories
   has_many :entries, dependent: :destroy
   has_many :events, through: :entries
-  
-  
-  
-  
-  
-  
-  
 
-
-  enum gender: { 男性: 0, 女性: 1 }
+  #enum gender: { 男性: 0, 女性: 1 }
 
   def remember_me?
     remember_me == "1"
