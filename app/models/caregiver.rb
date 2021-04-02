@@ -4,6 +4,8 @@ class Caregiver < ApplicationRecord
 
   has_secure_password
   has_many :care_recipitents
+  #eventsモデルで設定した任意の外部キーを指定している
+  #:restrict_with_exceptionオプションは職員を削除してもイベントが削除されないようにする
   has_many :events, foreign_key: "registrant_id", dependent: :restrict_with_exception
 
   attr_accessor :remember_me 

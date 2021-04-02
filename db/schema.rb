@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "registrant_id", null: false
+    t.integer "registrant_id", null: false #carevier_idをregistrant_idとしている
     t.string "title", null: false
     t.string "description"
     t.datetime "application_start_time", null: false
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
   end
 
   create_table "medical_histories", force: :cascade do |t|
-    t.bigint "care_recipitent_id", null: false
+    t.bigint "care_recipitent_id", null: false 
     t.string "past_disease"
     t.string "current_disease"
     t.datetime "created_at", precision: 6, null: false

@@ -1,8 +1,12 @@
 class Event < ApplicationRecord
   has_many :entries, dependent: :restrict_with_exception
+  #任意の名前を使用したい時に使用
   has_many :applicants, through: :entries, source: :family
+  #belong_toの引数に任意の名前をしている
   belongs_to :registrant, class_name: "Caregiver"
 
+
+  #クラスメソッドattributeは、モデルクラスにインスタンス変数を読み書きできる属性を定義(DBには保存されない) = 仮装フィールドを生成
   attribute :application_start_date, :date, default: Date.today
   attribute :application_start_hour, :integer, default: 9
   attribute :application_start_minute, :integer, default: 0
@@ -10,6 +14,7 @@ class Event < ApplicationRecord
   attribute :application_end_hour, :integer, default: 17
   attribute :application_end_minute, :integer, default: 0
 
+  #仮装フィールド群を初期化するメソッド
   def init_visual_attributes
     if application_start_time
       self.application_start_date = application_start_time.to_date

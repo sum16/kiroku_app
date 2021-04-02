@@ -13,8 +13,8 @@ class Caregiver::EventsController < Caregiver::Base
   def create 
     @event = Event.new
     @event.assign_attributes(event_params)
-    @event.registrant = current_caregiver_member
-    if @event.save
+    @event.registrant_id = current_caregiver_member.id
+    if @event.save!
       flash.notice = "イベントを登録しました。"
       redirect_to action: :index
     else
@@ -25,7 +25,7 @@ class Caregiver::EventsController < Caregiver::Base
 
   def update 
     @event = Event.find(params[:id])
-    @event.assign_aatibutes(event_params)
+    @event.assign_attributes(event_params)
     if @event.save
       flash.notice = "イベントを更新しました。"
       redirect_to action: :index

@@ -1,5 +1,6 @@
 class Family < ApplicationRecord
-
+  has_secure_password
+  
   HUMAN_NAME_REGEXP = /\A[\p{han}\p{hiragana}\p{katakana}\u{30fc}A-Za-z]+\z/
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
@@ -19,10 +20,6 @@ class Family < ApplicationRecord
   validates :family_name_kana, :given_name_kana, format: { with: KATAKANA_REGEXP }
   #８文字〜１5文字制限
   #validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
-
-  has_secure_password
-  has_one :home_address, dependent: :destroy
-  has_one :work_address, dependent: :destroy
   
   has_many :vitals
   accepts_nested_attributes_for :vitals
