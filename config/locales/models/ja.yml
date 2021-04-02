@@ -39,7 +39,7 @@ ja:
         given_name_kana: 名前(カナ)
         relationship: 続柄
         gender: 性別
-        password_digest: パスワード
+        Password digest: パスワード
      models:
       intake_waters: 排泄、排尿
     attributes:

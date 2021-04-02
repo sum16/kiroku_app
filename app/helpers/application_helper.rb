@@ -23,5 +23,17 @@ module ApplicationHelper
       "KIROKU"
     end
   end
+
+  #男性か女性を返すメソッド
+  def judge_gender(gender)
+    case gender
+    when "male"
+      "男性"
+    when "female"
+      "女性"
+    else
+      ""
+    end
+  end
   
 end

@@ -9,17 +9,4 @@ class FamilyPresenter < ModelPresenter
   end
 
 
-  def gender
-    case object.gender
-    when "male"
-      "男性"
-    when "female"
-      "女性"
-    else
-      ""
-    end
-  end
-
-
-
 end

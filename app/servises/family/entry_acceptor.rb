@@ -25,6 +25,7 @@ class Family::EntryAcceptor
       end
     end
   end
+end
 
 end
 

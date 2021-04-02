@@ -1,4 +1,7 @@
 class Caregiver < ApplicationRecord
+
+  HUMAN_NAME_REGEXP = /\A[\p{han}\p{hiragana}\p{katakana}\u{30fc}A-Za-z]+\z/
+
   has_secure_password
   has_many :care_recipitents
   has_many :events, foreign_key: "registrant_id", dependent: :restrict_with_exception
@@ -13,6 +16,8 @@ class Caregiver < ApplicationRecord
   
   #８文字〜１２文字制限
   validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
+
+  validates :name, format: { with: HUMAN_NAME_REGEXP }
  
   #自動ログイン
   def remember_me?

@@ -12,3 +12,4 @@ class Medicine < ApplicationRecord
     validates :check_ointment
     validates :check_eye_drops
   end
+end

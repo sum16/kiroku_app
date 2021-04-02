@@ -7,7 +7,7 @@ class Family::SessionsController < Family::Base
   def create 
     family = Family.find_by(params[:family_name], params[:given_name])
     if family && family.authenticate(params[:password])
-      if family.remember_me?
+      if family.remember_me? #自動ログイン
         #クッキーの有効期限を１週間に設定
         cockies.signed[:family_id] = {
         value: family.id, expires: 1.week.from_now

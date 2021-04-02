@@ -4,13 +4,16 @@
 <div class="table-wrapper">
   <table class="attributes">
     <tr><th colspan="2">基本情報</th></tr>
-    <% p1 = FamilyPresenter.new(@family, self) %>
-    <tr><th>氏名</th><td><%= p1.full_name %></td></tr>
-    <tr><th>フリガナ</th><td><%= p1.full_name_kana %></td></tr>
-    <tr><th>性別</th><td><%= p1.gender %></td></tr>
-    <tr><th>登録日時</th><td class="date"><%= p1.created_at %></td></tr>
-    <tr><th>更新日時</th><td class="date"><%= p1.updated_at %></td></tr>
+
+    <tr><th>氏名</th><td><%= @family.family_name %><%= @family.given_name %></td></tr>
+    <tr><th>フリガナ</th><td><%= @family.family_name_kana %><%= @family.given_name_kana %></td></tr>
+    <tr><th>性別</th><td><%= judge_gender(@family.gender)%></td></tr>
+    <tr><th>記録者名</th><td class="date"><%= @family.care_recipitent_name %></td></tr>
+    <tr><th>関係性</th><td class="date"><%= @family.relationship %></td></tr>
+    <tr><th>住所</th><td class="date"><%= @family.address %></td></tr>
+    <tr><th>登録日時</th><td class="date"><%= @family.created_at.strftime("%Y年%m月%d日") %></td></tr>
+    <tr><th>更新日時</th><td class="date"><%= @family.updated_at.strftime("%Y年%m月%d日") %></td></tr>
   </table>
 
-  <%#= link_to "編集", edit_caregiver_staff_member_customer_path %>
+  <%= link_to "編集", edit_family_account_path, class: "btn btn--yellow btn--cubic"  %>
 </div>
