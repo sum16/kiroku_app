@@ -2,7 +2,7 @@
 <h2><%= @title %></h2>
 
 <div id="generic-form">
-  <%= form_with model: @family, scope: "form", url: :family_account, local: true do |f| %>
+  <%= form_with model: @family, scope: "form", url: :confirm_family_account, local: true do |f| %>
 
     <fieldset>
     <legend>基本情報</legend>
@@ -12,7 +12,7 @@
     </fieldset>
     
     <div class="buttotns">
-      <%= f.submit "更新" %>
+      <%= f.submit "確認画面へ進む" %>
       <%= link_to "キャンセル", family_account_path(current_family) %>
     </div>
   <% end %>

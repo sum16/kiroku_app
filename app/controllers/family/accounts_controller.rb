@@ -9,12 +9,24 @@ class Family::AccountsController < Family::Base
 
   def update
     @family = Family.find_by(id: current_family.id)
-    if  @family.update!(family_params) 
+    if  @family.update(family_params) 
       flash.notice = "アカウント情報を更新しました"
       redirect_to family_account_path(current_family)
     else
       flash.now.alert = "入力に誤りがあります"
       render :edit 
+    end
+  end
+
+  def confirm
+    @family = Family.find_by(id: current_family.id)
+    @family.update!(family_params) 
+    #バリデーションを通す
+    if @family.valid?
+      render "confirm"
+    else
+      flash.now.alert = "入力に誤りがあります。"
+      render :edit
     end
   end
 

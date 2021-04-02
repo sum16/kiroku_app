@@ -1,0 +1,22 @@
+<% @title = "アカウントの更新(確認)" %>
+<h2><%= @title %></h2>
+
+<div id="generic-form">
+  <%= form_with model: @family, scope: "form", url: :family_account, local: true do |f| %>
+  <p>以下の内容でアカウントを更新します。よろしいですか？</p>
+
+    <fieldset>
+    <legend>基本情報</legend>
+      <div class="input-block">
+        <%= render "form", f: f %>
+     </div>   
+    </fieldset>
+    
+    <div class="buttotns">
+      <%= link_to "訂正", :back %>
+      <%= f.submit "更新" %>
+    </div>
+  <% end %>
+</div>
+
+
