@@ -3,16 +3,14 @@
   <span class="logo-mark">kiroku</span>
   <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
    <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
- 
- <%= 
-   if current_family
-    button_to "ログアウト",:family_logout, method: :delete
-   else 
-    link_to "ログイン", :family_login
-   end
-   %>
-  </div>
-<%= link_to "アカウント", :family_account if current_family %>
-<%= link_to "お問い合わせ", :new_family_message if current_family %>
 
+
+   <% if current_family %>
+     <%= button_to "ログアウト", family_logout_path, method: :delete %> 
+     <%= link_to "アカウント", family_account_path %> 
+     <%= link_to "お問い合わせ", new_family_message_path  %> 
+
+   <% else %>
+     <%= link_to "ログイン", family_login_path %>
+   <% end %>
 </header>

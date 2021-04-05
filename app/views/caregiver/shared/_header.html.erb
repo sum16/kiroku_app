@@ -4,13 +4,11 @@
   <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
   <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
    
-   <%= 
-   if current_caregiver_member
-    link_to "ログアウト", :caregiver_session, method: :delete
-   else 
-    link_to "ログイン", caregiver_login_path
-   end
-   %>
+   <% if current_caregiver_member %>
+     <%= button_to "ログアウト", caregiver_logout_path, method: :delete %> 
+   <% else %>
+    <%= link_to "ログイン", caregiver_login_path %>
+   <% end %>
   </div>
 
   <%= number_of_unprocessed_message if current_caregiver_member %>

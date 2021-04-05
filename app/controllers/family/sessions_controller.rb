@@ -5,18 +5,10 @@ class Family::SessionsController < Family::Base
   end
 
   def create 
-    family = Family.find_by(params[:family_name], params[:given_name])
+    family = Family.find_by(given_name: params[:given_name])
     if family && family.authenticate(params[:password])
-      if family.remember_me? #自動ログイン
-        #クッキーの有効期限を１週間に設定
-        cockies.signed[:family_id] = {
-        value: family.id, expires: 1.week.from_now
-        }
-      else
-        cookies.delete(:family_id)
-        session[:family_id] = family.id
-      end
-      redirect_to family_staff_member_path(family.id), notce: "ログインしました。"
+      session[:family_id] = family.id
+      redirect_to family_families_path, notice: "ログインしました。"
     else
       flash.now[:alert] = "名前またはパスワードが間違っています。"
       render :new

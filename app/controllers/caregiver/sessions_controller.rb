@@ -26,7 +26,6 @@ class Caregiver::SessionsController < Caregiver::Base
   end
 
   def destroy
-    forget(current_caregiver_member)
     cookies.delete(:caregiver_id)
     session.delete(:caregiver_id)
     @current_caregiver_member = nil

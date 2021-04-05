@@ -5,8 +5,6 @@ class Caregiver::StaffMembersController < Caregiver::Base
   def index
     @caregivers = Caregiver.order(created_at: :desc)
     @caregivers_paginate = @caregivers.page(params[:page])
-    @caregiver = Caregiver.find_by(id: current_caregiver_member.id)
-    
   end
 
   def new
