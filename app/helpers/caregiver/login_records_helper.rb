@@ -1,0 +1,2 @@
+module Caregiver::LoginRecordsHelper
+end

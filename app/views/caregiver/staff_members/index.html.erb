@@ -22,6 +22,7 @@
             <div class="original-profile-right">
                   <% if current_caregiver_member %>
                   <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(current_caregiver_member.id) %></span></p>
+                  <div class="actions"><%= button_to "削除", caregiver_staff_member_path(current_caregiver_member), method: :delete, data: { confirm: "本当に削除しますか？"} %></div>
                   <% end %> 
                
                    

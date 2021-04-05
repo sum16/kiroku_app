@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :caregiver do
+    get 'login_records/index'
+  end
   namespace :family do
     get 'replies/new'
   end
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
         end
       end
       resources :staff_members do 
+        resources :login_records, only: [ :index ]
         resources :customers
       end 
       get "login", to: "sessions#new", as: :login

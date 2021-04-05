@@ -9,16 +9,10 @@ class Caregiver::SessionsController < Caregiver::Base
   def create 
     caregiver = Caregiver.find_by_name(params[:name])
     if caregiver && caregiver.authenticate(params[:password])
-      if caregiver.remember_me?
-        #クッキーの有効期限を１週間に設定
-        cockies.signed[:caregiver_id] = {
-        value: caregiver.id, expires: 1.week.from_now
-        }
-      else
-        cookies.delete(:caregiver_id)
-        session[:caregiver_id] = caregiver.id
-      end
-      redirect_to caregiver_staff_member_path(caregiver.id), notce: "ログインしました。"
+       session[:caregiver_id] = caregiver.id
+       session[:last_access_time] = Time.current
+       caregiver.login_records.create!(type: "logged_in")
+      redirect_to caregiver_staff_member_path(caregiver.id), notice: "ログインしました。"
     else
       flash.now[:alert] = "名前またはパスワードが間違っています。"
       render :new
@@ -26,10 +20,9 @@ class Caregiver::SessionsController < Caregiver::Base
   end
 
   def destroy
-    cookies.delete(:caregiver_id)
-    session.delete(:caregiver_id)
-    @current_caregiver_member = nil
-    redirect_to caregiver_staff_members_path, notice: "ログアウトしました。"
+       current_caregiver_member.login_records.create!(type: "logged_out")
+       session.delete(:caregiver_id)
+       redirect_to caregiver_staff_members_path, notice: "ログアウトしました。"
   end
   
   

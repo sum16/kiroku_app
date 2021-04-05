@@ -1,9 +1,9 @@
 class Caregiver < ApplicationRecord
-
+  has_secure_password
   HUMAN_NAME_REGEXP = /\A[\p{han}\p{hiragana}\p{katakana}\u{30fc}A-Za-z]+\z/
 
-  has_secure_password
   has_many :care_recipitents
+  has_many :login_records, dependent: :destroy
   #eventsモデルで設定した任意の外部キーを指定している
   #:restrict_with_exceptionオプションは職員を削除してもイベントが削除されないようにする
   has_many :events, foreign_key: "registrant_id", dependent: :restrict_with_exception

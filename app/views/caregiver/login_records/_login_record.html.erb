@@ -1,0 +1,11 @@
+<tr>
+ <% unless @caregiver %>
+ <td>
+  <%= link_to login_record.caregiver.name, caregiver_login_records_index_path %>
+ </td>
+ <% end %>
+ <td><%= login_record.description %></td>
+ <td class="date">
+  <%= login_record.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+ </td>
+</tr>

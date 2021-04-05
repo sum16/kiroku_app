@@ -16,9 +16,7 @@ class Family::SessionsController < Family::Base
   end
 
   def destroy
-    cookies.delete(:family_id)
-    session.delete(:family_id)
-    @current_family = nil
+    current_family = nil
     redirect_to main_family_families_path notice: "ログアウトしました。"
   end
   

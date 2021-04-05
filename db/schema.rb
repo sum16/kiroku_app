@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_182230) do
+ActiveRecord::Schema.define(version: 2021_04_05_141554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,14 @@ ActiveRecord::Schema.define(version: 2021_04_02_182230) do
     t.index ["family_id"], name: "index_intake_waters_on_family_id"
   end
 
+  create_table "login_records", force: :cascade do |t|
+    t.bigint "caregiver_id", null: false
+    t.string "type", null: false
+    t.datetime "created_at", null: false
+    t.index ["caregiver_id", "created_at"], name: "index_login_records_on_caregiver_id_and_created_at"
+    t.index ["created_at"], name: "index_login_records_on_created_at"
+  end
+
   create_table "meals", force: :cascade do |t|
     t.boolean "breakfast", default: false, null: false
     t.boolean "lunch", default: false, null: false
@@ -195,15 +203,15 @@ ActiveRecord::Schema.define(version: 2021_04_02_182230) do
   create_table "messages", force: :cascade do |t|
     t.bigint "family_id", null: false
     t.bigint "caregiver_id", null: false
-    t.integer "root_id" #Messageの外部キー
-    t.integer "parent_id" #Messageの外部キー
-    t.string "type", null: false #単一テーブル継承
-    t.string "status", default: "new", null: false #状態(職員向け)
-    t.string "subject", null: false #件名
+    t.integer "root_id"
+    t.integer "parent_id"
+    t.string "type", null: false
+    t.string "status", default: "new", null: false
+    t.string "subject", null: false
     t.text "body"
     t.text "remarks"
-    t.boolean "discarded", default: false, null: false #ユーザー(家族)側の削除フラグ
-    t.boolean "deleted", default: false, null: false  #職員側の削除フラグ
+    t.boolean "discarded", default: false, null: false
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["caregiver_id"], name: "index_messages_on_caregiver_id"
@@ -250,6 +258,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_182230) do
   add_foreign_key "events", "caregivers", column: "registrant_id"
   add_foreign_key "excreta", "families"
   add_foreign_key "intake_waters", "families"
+  add_foreign_key "login_records", "caregivers"
   add_foreign_key "meals", "families"
   add_foreign_key "medical_histories", "care_recipitents"
   add_foreign_key "medicines", "families"
