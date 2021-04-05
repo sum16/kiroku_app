@@ -5,6 +5,8 @@
 <ul class="link-list">
     <li>
       <%= link_to "新規登録", new_caregiver_event_path, class: "btn btn--yellow btn--cubic"  %>
+      <%= link_to "利用者の家族情報管理", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic"  %>
+      <%= link_to "トップページ", caregiver_staff_members_path, class: "btn btn--yellow btn--cubic"  %>
     </li>
   </ul>
   
@@ -14,11 +16,11 @@
     <tr>
       <th>タイトル</th>
       <th>申し込み開始日時</th>
-       <th>申し込み終了日時</th>
+      <th>申し込み終了日時</th>
       <th>最小参加者数</th>
-       <th>最大参加者数</th>
+      <th>最大参加者数</th>
       <th>申し込み件数</th>
-       <th>登録職員</th>
+      <th>登録職員</th>
       <th>アクション</th>
     </tr>
 

@@ -35,3 +35,10 @@ input:valid{
 input:focus{
   background: #DCEDC8;
 }
+
+div.field_with_errors {
+  display: inline;
+  padding: 0;
+  label { color: #FF0000 }
+  input, textarea { background: #FFCCFF; }
+}

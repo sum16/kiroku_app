@@ -4,6 +4,15 @@ class Family::FamiliesController < Family::Base
   before_action :already_login?, only: [:create]
   before_action :login?, only: [:show]
 
+
+  def main
+   if current_family.present?
+      redirect_to family_families_path 
+   else
+     render :main
+   end
+  end
+
   def index
   
   end

@@ -3,11 +3,11 @@ class EventPresenter < ModelPresenter
   delegate :number_with_delimiter, :button_to, :current_family, to: :view_context
 
   def application_start_time
-    object.application_start_time.strftime("%Y-%m-%d %H:%M")
+    object.application_start_time.strftime("%Y年%m月%d日 %H時%M分")
   end
 
   def application_end_time
-    object.application_end_time.strftime("%Y-%m-%d %H:%M")
+    object.application_end_time.strftime("%Y年%m月%d日 %H時%M分")
   end
 
   def max_number_of_participants

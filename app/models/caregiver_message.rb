@@ -1,0 +1,3 @@
+class CaregiverMessage < Message
+  
+end

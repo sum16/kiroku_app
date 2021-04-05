@@ -4,6 +4,7 @@ Family.create!(
   family_name_kana: "サトウ",
   given_name_kana: "ケイコ",
   address: "○○県××市△△町",
-  gender: 1,
-  relationship: "娘"
+  gender: "male",
+  relationship: "娘",
+  password: "password"
 )

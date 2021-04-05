@@ -1,0 +1,17 @@
+<% @title = "新規問い合わせ(確認)" %>
+<h2><%= @title %></h2>
+
+<div id="generic-form">
+  <%= form_with model: @family, scope: "family_message", url: :family_messages, local: true do |f| %>
+  <p>以下の内容でメッセージを送信します。よろしいですか？</p>
+
+  <%= render "confirming_form", f: f %>    
+    <div class="buttotns">
+      <%= link_to "訂正", :back %>
+      <%= link_to "キャンセル", family_families_path %>
+      <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>
+
+

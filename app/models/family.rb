@@ -20,6 +20,7 @@ class Family < ApplicationRecord
   validates :family_name_kana, :given_name_kana, format: { with: KATAKANA_REGEXP }
   #８文字〜１5文字制限
   #validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
+  validates :gender, inclusion: { in: %w(male female), allow_blank: true }
   
   has_many :vitals
   accepts_nested_attributes_for :vitals
@@ -35,8 +36,16 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :meals
   has_many :behavior_histories
   accepts_nested_attributes_for :behavior_histories
+
   has_many :entries, dependent: :destroy
   has_many :events, through: :entries
+  has_many :messages
+  #顧客が送信したメッセージのリストを取得
+  has_many :outbound_messages, class_name: "FamilyMessage", foreign_key: "family_id"
+  #職員から受け取ったメッセージのリストを取得
+  has_many :inbound_messages, class_name: "CaregiverMessage", foreign_key: "family_id"
+
+
 
   #自動ログイン
   def remember_me?

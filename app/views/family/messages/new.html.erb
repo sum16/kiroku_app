@@ -1,0 +1,13 @@
+<% @title = "お問い合わせ" %>
+<h2><%= @title %></h2>
+
+
+<div id="generic-form">
+ <%= form_with model: @customer_form, scope: "form", url: :family_messages, local: true do |f| %>
+ <%= render "form", f: f %>
+  <div class="buttons">
+      <%= f.submit "送信" %>
+      <%= link_to "キャンセル"%>
+    </div>
+  <% end %>
+</div>

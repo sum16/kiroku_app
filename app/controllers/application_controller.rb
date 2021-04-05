@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
 
-
   class Forbidden < ActionController::ActionControllerError
   end
 
@@ -30,6 +29,11 @@ class ApplicationController < ActionController::Base
 
   def rescue500(e)
     render "errors/internal_server_error", status: 500
+  end
+
+  #xhrメソッド = ajaxによるリクエストかどうかを判別
+  def  reject_non_xhr
+    raise ActionController::BadRequest unless request.xhr?
   end
 
   

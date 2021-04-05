@@ -1,7 +1,5 @@
 module ApplicationHelper
   
-  
-
   def markup(tag_name = nil, options = {})
     root = Nokogiri::HTML::DocumentFragment.parse("")
     Nokogiri::HTML::Builder.with(root) do |doc|

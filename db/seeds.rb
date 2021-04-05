@@ -1,4 +1,4 @@
-table_names = %w(caregivers care_recipitents families customers events entries)
+table_names = %w(caregivers care_recipitents families events entries messages)
 
 table_names.each do |table_name|
   path = Rails.root.join("db", "seeds", Rails.env, "#{table_name}.rb")

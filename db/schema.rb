@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_042905) do
+ActiveRecord::Schema.define(version: 2021_04_02_182230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "registrant_id", null: false #carevier_idをregistrant_idとしている
+    t.integer "registrant_id", null: false
     t.string "title", null: false
     t.string "description"
     t.datetime "application_start_time", null: false
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
   end
 
   create_table "medical_histories", force: :cascade do |t|
-    t.bigint "care_recipitent_id", null: false 
+    t.bigint "care_recipitent_id", null: false
     t.string "past_disease"
     t.string "current_disease"
     t.datetime "created_at", precision: 6, null: false
@@ -190,6 +190,30 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
     t.boolean "check_after_breakfast", default: false, null: false
     t.bigint "family_id"
     t.index ["family_id"], name: "index_medicines_on_family_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "family_id", null: false
+    t.bigint "caregiver_id", null: false
+    t.integer "root_id" #Messageの外部キー
+    t.integer "parent_id" #Messageの外部キー
+    t.string "type", null: false #単一テーブル継承
+    t.string "status", default: "new", null: false #状態(職員向け)
+    t.string "subject", null: false #件名
+    t.text "body"
+    t.text "remarks"
+    t.boolean "discarded", default: false, null: false #ユーザー(家族)側の削除フラグ
+    t.boolean "deleted", default: false, null: false  #職員側の削除フラグ
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["caregiver_id"], name: "index_messages_on_caregiver_id"
+    t.index ["family_id", "deleted", "created_at"], name: "index_messages_on_family_id_and_deleted_and_created_at"
+    t.index ["family_id", "deleted", "status", "created_at"], name: "index_messages_on_c_d_s_c"
+    t.index ["family_id", "discarded", "created_at"], name: "index_messages_on_family_id_and_discarded_and_created_at"
+    t.index ["family_id"], name: "index_messages_on_family_id"
+    t.index ["root_id", "deleted", "created_at"], name: "index_messages_on_root_id_and_deleted_and_created_at"
+    t.index ["type", "caregiver_id"], name: "index_messages_on_type_and_caregiver_id"
+    t.index ["type", "family_id"], name: "index_messages_on_type_and_family_id"
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -229,5 +253,9 @@ ActiveRecord::Schema.define(version: 2021_04_01_042905) do
   add_foreign_key "meals", "families"
   add_foreign_key "medical_histories", "care_recipitents"
   add_foreign_key "medicines", "families"
+  add_foreign_key "messages", "caregivers"
+  add_foreign_key "messages", "families"
+  add_foreign_key "messages", "messages", column: "parent_id"
+  add_foreign_key "messages", "messages", column: "root_id"
   add_foreign_key "vitals", "families"
 end

@@ -1,0 +1,2 @@
+module Caregiver::RepliesHelper
+end

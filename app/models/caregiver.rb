@@ -17,7 +17,7 @@ class Caregiver < ApplicationRecord
   end
   
   #８文字〜１２文字制限
-  validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
+  #validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
 
   validates :name, format: { with: HUMAN_NAME_REGEXP }
  
