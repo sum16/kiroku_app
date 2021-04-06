@@ -8,7 +8,7 @@
 
  
  <div id="generic-form">
- <%= form_with model: @customer_form, scope: "form", url: :caregiver_staff_member_customer, local: true do |f| %>
+ <%= form_with model: @customer, url: :caregiver_staff_member_customer, local: true do |f| %>
  <%= render "form", f: f %>
   <div class="buttons">
       <%= f.submit "更新" %>

@@ -1,9 +1,0 @@
-<div class="input-block">
- <%= fields_for :work_address, f.object.customer.work_address do |ff| %>
-
-<%= markup do |m| 
-    p = AddressFormPresenter.new(ff, self)
-    m << p.text_field_block(:company_name, "会社名", size: 40, required: true)
-    end %>
-<% end %>
-</div>

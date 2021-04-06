@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  namespace :caregiver do
-    get 'login_records/index'
-  end
-  namespace :family do
-    get 'replies/new'
-  end
-  namespace :caregiver do
-    get 'replies/new'
-  end
   config = Rails.application.config.kiroku2
   
   constraints host: config[:caregiver][:host] do

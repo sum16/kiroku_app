@@ -1,29 +1,74 @@
-<% FormPresenter.new(f,self).notes %>
-    <fieldset>
-    <legend>基本情報</legend>
-      <%= render "customer_fields", f: f %>
-    </fieldset>
 
-    <div class="check-boxes">
-      <%#= f.check_box :inputs_home_address %>
-      <%#= f.label :inputs_home_address, "自宅の住所を入力する" %>
-    </div>
+<fieldset>
+<legend>基本情報</legend>
+      
+<div class="field">
+<%= f.label :family_name, "名字" %>
 
-    <fieldset>
-      <legend>自宅住所</legend>
-        <%= render "home_address_fields", f: f %>
-      </fieldset>
+<%= f.text_field :family_name %>
+</div>
 
-     <div class="check-boxes">
-      <%#= f.check_box :inputs_work_address %>
-      <%#= f.label :inputs_work_address, "勤務先の情報を入力する" %>
-     </div>
+<div class="field">
+<%= f.label :given_name, "名前" %>
 
-    <fieldset>
-    <legend>勤務先</legend>
-      <%= render "work_address_fields", f: f %>
-   </fieldset>
+<%= f.text_field :given_name %>
+</div>
 
+<div class="field">
+<%= f.label :family_name_kana, "名字(カナ)" %>
+
+<%= f.text_field :family_name_kana %>
+</div>
+
+<div class="field">
+<%= f.label :given_name_kana, "名前(カナ)" %>
+
+<%= f.text_field :given_name_kana %>
+</div>
+
+  <%= markup do |m| 
+    p = FamilyFormPresenter.new(f, self)
+    m << p.gender_field_block
+    end %>
+
+</fieldset>
 
    
+<fieldset>
+<legend>住所等</legend>
+<%= f.fields_for :customer_address do |a| %>
 
+
+<div class="field">
+<%= a.label :postal_code, "郵便番号" %>
+<%= a.text_field :postal_code %>
+</div>
+
+<div class="field">
+<%= a.label :prefecture, "都道府県" %>
+<%= a.text_field :prefecture %>
+</div>
+
+<div class="field">
+<%= a.label :city, "市区町村" %>
+<%= a.text_field :city %>
+</div>
+
+<div class="field">
+<%= a.label :address1, "番地等" %>
+<%= a.text_field :address1 %>
+</div>
+
+<div class="field">
+<%= a.label :address2, "建物名等" %>
+<%= a.text_field :address2 %>
+</div>
+
+<div class="field">
+<%= a.label :company_name, "会社名" %>
+<%= a.text_field :company_name %>
+</div>
+
+
+<% end %>
+</fieldset>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_141554) do
+ActiveRecord::Schema.define(version: 2021_04_06_043056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,19 @@ ActiveRecord::Schema.define(version: 2021_04_05_141554) do
     t.date "start_date"
     t.date "end_date"
     t.boolean "suspended", default: false
+  end
+
+  create_table "customer_addresses", force: :cascade do |t|
+    t.string "address1"
+    t.string "address2"
+    t.integer "postal_code"
+    t.string "company_name"
+    t.string "prefecture"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -255,6 +268,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_141554) do
   add_foreign_key "bathing_days", "families"
   add_foreign_key "behavior_histories", "families"
   add_foreign_key "care_recipitents", "caregivers"
+  add_foreign_key "customer_addresses", "customers"
   add_foreign_key "events", "caregivers", column: "registrant_id"
   add_foreign_key "excreta", "families"
   add_foreign_key "intake_waters", "families"

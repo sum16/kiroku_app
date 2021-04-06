@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
-  has_one :home_address, dependent: :destroy
-  has_one :work_address, dependent: :destroy
+  has_one :customer_address, dependent: :destroy
+  accepts_nested_attributes_for :customer_address
+
 
   validates :gender, inclusion: { in: %w(male female), allow_blunk: true}
   def password=(raw_password)
