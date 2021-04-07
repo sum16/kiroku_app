@@ -1,0 +1,10 @@
+<% @posts.each do |post| %>
+<%= link_to post.title, caregiver_post_path(post) %>
+
+<div id="share-button">
+   確認人数 <%= render "share_button", post: post %>
+</div>
+
+<% end %>
+<%= link_to "申し送りを書く", new_caregiver_post_path, class: "submit-button" %>
+

@@ -4,6 +4,9 @@ class Caregiver < ApplicationRecord
 
   has_many :care_recipitents
   has_many :login_records, dependent: :destroy
+  has_many :posts
+  has_many :share_buttons
+  has_many :favorites, through: :share_buttons, source: :post
   #eventsモデルで設定した任意の外部キーを指定している
   #:restrict_with_exceptionオプションは職員を削除してもイベントが削除されないようにする
   has_many :events, foreign_key: "registrant_id", dependent: :restrict_with_exception
@@ -24,5 +27,10 @@ class Caregiver < ApplicationRecord
   #自動ログイン
   def remember_me?
     remember_me == "1"
+  end
+
+  
+  def press_button?(post)
+    self.share_buttons.exists?(post_id: post.id)
   end
 end

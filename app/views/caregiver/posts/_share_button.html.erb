@@ -1,0 +1,13 @@
+<% if current_caregiver_member.press_button?(post) %>
+    <td><%= button_to  caregiver_post_share_buttons_path(post), method: :delete, remote: true do %></td>
+    <i class="fas fa-thumbs-up fa-2x"></i>
+   <% end %>
+<% else %>
+    <td><%= button_to caregiver_post_share_buttons_path(post), method: :post, remote: true do  %></td>
+    <i class="far fa-thumbs-up fa-2x"></i>
+    <% end %>
+<% end %>
+
+  <br>
+<%= post.share_buttons.count %>
+

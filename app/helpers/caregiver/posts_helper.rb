@@ -1,0 +1,2 @@
+module Caregiver::PostsHelper
+end

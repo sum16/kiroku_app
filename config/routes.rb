@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   config = Rails.application.config.kiroku2
   
   constraints host: config[:caregiver][:host] do
@@ -12,8 +13,11 @@ Rails.application.routes.draw do
       end
       resources :staff_members do 
         resources :login_records, only: [ :index ]
-        resources :customers
+        resources :customers   
       end 
+      resources :posts do
+        resource :share_buttons, only: [ :create, :destroy ]
+      end
       get "login", to: "sessions#new", as: :login
       post "login", to: "sessions#create", as: :session
       delete "logout", to: "sessions#destroy"

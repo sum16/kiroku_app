@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_043056) do
+ActiveRecord::Schema.define(version: 2021_04_07_075407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -237,6 +237,24 @@ ActiveRecord::Schema.define(version: 2021_04_06_043056) do
     t.index ["type", "family_id"], name: "index_messages_on_type_and_family_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "caregiver_id"
+    t.index ["caregiver_id"], name: "index_posts_on_caregiver_id"
+  end
+
+  create_table "share_buttons", force: :cascade do |t|
+    t.bigint "caregiver_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["caregiver_id"], name: "index_share_buttons_on_caregiver_id"
+    t.index ["post_id"], name: "index_share_buttons_on_post_id"
+  end
+
   create_table "staffs", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "age", null: false
@@ -280,5 +298,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_043056) do
   add_foreign_key "messages", "families"
   add_foreign_key "messages", "messages", column: "parent_id"
   add_foreign_key "messages", "messages", column: "root_id"
+  add_foreign_key "posts", "caregivers"
+  add_foreign_key "share_buttons", "caregivers"
+  add_foreign_key "share_buttons", "posts"
   add_foreign_key "vitals", "families"
 end
