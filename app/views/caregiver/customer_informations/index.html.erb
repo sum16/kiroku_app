@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customer Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_informations.each do |customer_information| %>
+      <tr>
+        <td><%= customer_information.title %></td>
+        <td><%= customer_information.body %></td>
+        <td><%= link_to 'Show', caregiver_customer_information_path(customer_information) %></td>
+        <td><%= link_to 'Edit', edit_caregiver_customer_information_path(customer_information) %></td>
+        <td><%= button_to 'Destroy', caregiver_customer_information_path(customer_information), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer Information', new_caregiver_customer_information_path %>

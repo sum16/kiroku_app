@@ -74,6 +74,21 @@ ja:
         hign_blood_pressure: 血圧(上)
         temperature: 体温
         measuring_date: バイタルを測定した日付
+     models:
+      care_recipitents: 利用者情報
+    attributes:
+        family_name: 名字
+        given_name: 名前
+        family_name_kana: 名前(カナ)
+        given_name_kana: 名字(カナ)
+        age: 年齢
+        gender: 性別
+        remarks: 備考欄
+        birthday: 誕生日
+        degree_of_support_required: 要支援度
+        degree_of_care_required: 介護度
+        current_disease: 現在の疾患があれば
+        past_disease: 過去の疾患があれば
        
         
 

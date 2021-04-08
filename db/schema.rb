@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_075407) do
+ActiveRecord::Schema.define(version: 2021_04_08_065459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_04_07_075407) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "caregiver_id"
+    t.text "past_disease"
+    t.text "current_disease"
     t.index ["caregiver_id"], name: "index_care_recipitents_on_caregiver_id"
     t.index ["family_name_kana", "given_name_kana"], name: "index_care_recipitents_on_family_name_kana_and_given_name_kana"
   end
@@ -92,6 +94,13 @@ ActiveRecord::Schema.define(version: 2021_04_07_075407) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "customer_id"
     t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
+  end
+
+  create_table "customer_informations", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -157,6 +166,13 @@ ActiveRecord::Schema.define(version: 2021_04_07_075407) do
     t.string "password_digest"
     t.string "care_recipitent_name"
     t.string "gender"
+  end
+
+  create_table "information", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "intake_waters", force: :cascade do |t|
@@ -237,6 +253,13 @@ ActiveRecord::Schema.define(version: 2021_04_07_075407) do
     t.index ["type", "family_id"], name: "index_messages_on_type_and_family_id"
   end
 
+  create_table "notices", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -253,6 +276,18 @@ ActiveRecord::Schema.define(version: 2021_04_07_075407) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["caregiver_id"], name: "index_share_buttons_on_caregiver_id"
     t.index ["post_id"], name: "index_share_buttons_on_post_id"
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "age", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
   create_table "vitals", force: :cascade do |t|

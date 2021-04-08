@@ -1,37 +1,39 @@
+<%= render 'error', care_recipitent: @care_recipitent %>
+
 <h2>利用者情報の登録</h2>
 
 <%= form_with model: @care_recipitent, url: :caregiver_tops do |form| %>
-
-  <div class="cp_iptxt">
+ 
+  <div>
     <div>
       <%= form.label :family_name, "名字", class: "ef" %>
-      <%= form.text_field :family_name %>
+      <%= form.text_field :family_name, required: true %>
     </div>
 
     <div>
       <%= form.label :given_name, "名前", class: "ef"  %>
-      <%= form.text_field :given_name %>
+      <%= form.text_field :given_name, required: true %>
     </div>
 
     <div>
       <%= form.label :family_name_kana, "名字(カナ)", class: "ef"  %>
-      <%= form.text_field :family_name_kana %>
+      <%= form.text_field :family_name_kana, required: true %>
     </div>
 
     <div>
       <%= form.label :given_name_kana, "名前(カナ)", class: "ef" %>
-      <%= form.text_field :given_name_kana %>
+      <%= form.text_field :given_name_kana, required: true %>
     </div>
 
     <div>
       <%= form.label :age, "年齢", class: "ef"  %>
-      <%= form.number_field :age %>
+      <%= form.number_field :age, required: true %>
     </div>
 
-    <div>
-      <%= form.label :gender, "性別", class: "ef"  %>
-      <%= form.select :gender, CareRecipitent.genders.keys %>
-    </div>
+     <%= markup do |m| 
+    p = FamilyFormPresenter.new(form, self)
+    m << p.gender_field_block
+    end %>
 
     <div>
       <%= form.label :degree_of_care_required, "要介護度" %>
@@ -45,7 +47,7 @@
 
     <div>
       <%= form.label :birthday, "誕生日" %>
-      <%= form.date_field :birthday %>
+      <%= form.date_field :birthday, required: true %>
     </div>
 
     <div>
@@ -53,9 +55,20 @@
       <%= form.text_area :remarks, row: 4 %>
     </div>
 
-    <div>
-    <%= form.submit "登録" %>
-    </div>
+      <div>
+      <%= form.label :current_disease, "現在の疾患" %>
+      <%= form.text_field :current_disease %>
+      </div>
+
+      <div>
+      <%= form.label :tpast_disease, "過去の疾患" %>
+      <%= form.text_field  :past_disease %>
+      </div>
+ 
+      <div>
+      <%= form.submit "登録" %>
+      </div>
+
   <% end %>
 </div>
 

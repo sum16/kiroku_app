@@ -1,3 +1,3 @@
 class MedicalHistory < ApplicationRecord
-  belongs_to :family
+  belongs_to :care_recipitent
 end

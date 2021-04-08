@@ -1,7 +1,7 @@
 <tr>
  <% unless @caregiver %>
  <td>
-  <%= link_to login_record.caregiver.name, caregiver_login_records_index_path %>
+  <%= login_record.caregiver.name %>
  </td>
  <% end %>
  <td><%= login_record.description %></td>

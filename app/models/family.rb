@@ -44,15 +44,5 @@ class Family < ApplicationRecord
   has_many :outbound_messages, class_name: "FamilyMessage", foreign_key: "family_id"
   #職員から受け取ったメッセージのリストを取得
   has_many :inbound_messages, class_name: "CaregiverMessage", foreign_key: "family_id"
-
-
-
-  #自動ログイン
-  def remember_me?
-    remember_me == "1"
-  end
-
-
-
 end
 

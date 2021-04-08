@@ -1,0 +1,21 @@
+<h1>Editing Customer Information</h1>
+
+<%= form_with model: @customer_information, url: :caregiver_customer_information, local: true do |form| %>
+ 
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', caregiver_customer_information_path %> |
+<%= link_to 'Back', caregiver_customer_informations_path %>

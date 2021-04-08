@@ -46,6 +46,13 @@ RSpec.describe CareRecipitent, type: :model do
          expect(care_recipitent.errors[:birthday]).to include(I18n.t('errors.messages.blank'))
        end
 
+       it "要支援度は２までであること" do
+        care_recipitent= CareRecipitent.new
+        care_recipitent.degree_of_support_required = 3
+        expect(care_recipitent).not_to be_valid
+        expect(care_recipitent.errors[:degree_of_support_required]).to include(I18n.t('errors.messages.blank'))
+      end
+
         it "登録できないこと" do
          #空の登録だと保存に失敗
          new_care_recipitent= CareRecipitent.new

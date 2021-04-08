@@ -1,6 +1,8 @@
 class CareRecipitent < ApplicationRecord
+  has_many :medical_histories
+  accepts_nested_attributes_for :medical_histories
   belongs_to :caregiver
-  has_one :family
+
 
   include PersonalNameHolder
 
@@ -17,4 +19,8 @@ class CareRecipitent < ApplicationRecord
     validates :gender
     validates :birthday
   end  
+
+  #要支援度は１まで、要介護度は５まで
+  validates :degree_of_support_required, inclusion: { in: 1..2 }
+  validates :degree_of_care_required, inclusion: { in: 1..5 }
 end

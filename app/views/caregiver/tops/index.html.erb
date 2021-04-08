@@ -1,3 +1,5 @@
+
+
 <% @care_recipitents.each do |f| %>
 
   <p>作成日：<%= f.created_at.to_s(:jp_time)%></p>
@@ -14,7 +16,8 @@
       <th>誕生日</th>
       <th>要介護度</th>
       <th>要支援度</th>
-      <th>退所フラグ</th>
+      <th>過去疾患</th>
+      <th>現在疾患</th>
       <th>備考欄</th>
       <th>担当スタッフ</th>
       <th><%= link_to "詳細",caregiver_top_path(f.id) %></th>
@@ -32,7 +35,8 @@
       <td><%= f.birthday %></td>
       <td><%= f.degree_of_care_required %></td>
       <td><%= f.degree_of_support_required %></td>
-      <td><%= f.suspend%></td>
+      <td><%= f.past_disease%></td>
+      <td><%= f.current_disease %></td>
       <td><%= f.remarks %></td>
       <td><%= f.caregiver.name %></td>
       
@@ -42,4 +46,4 @@
 <% end %>
 
 
-<%#= link_to "利用者情報の登録", new_caregiver_staff_member_top_path %>
+<%= link_to "利用者情報の登録", new_caregiver_top_path %>

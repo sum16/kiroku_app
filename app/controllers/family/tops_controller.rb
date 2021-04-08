@@ -25,13 +25,13 @@ class Family::TopsController < Family::Base
   end
 
   def create 
-    if @family = current_family.vitals.create!(family_params[:vitals_attributes]["0"])
-      @family = current_family.bathing_days.create!(family_params[:bathing_days_attributes]["0"])
-      @family = current_family.intake_waters.create!(family_params[:intake_waters_attributes]["0"])
-      @family = current_family.medicines.create!(family_params[:medicines_attributes]["0"])
-      @family = current_family.excretas.create!(family_params[:excretas_attributes]["0"])
-      @family = current_family.meals.create!(family_params[:meals_attributes]["0"])
-      @family = current_family.behavior_histories.create!(family_params[:behavior_histories_attributes]["0"])
+    if @family = current_family.vitals.create(family_params[:vitals_attributes]["0"])
+      @family = current_family.bathing_days.create(family_params[:bathing_days_attributes]["0"])
+      @family = current_family.intake_waters.create(family_params[:intake_waters_attributes]["0"])
+      @family = current_family.medicines.create(family_params[:medicines_attributes]["0"])
+      @family = current_family.excretas.create(family_params[:excretas_attributes]["0"])
+      @family = current_family.meals.create(family_params[:meals_attributes]["0"])
+      @family = current_family.behavior_histories.create(family_params[:behavior_histories_attributes]["0"])
        redirect_to family_tops_path, notice: "記録を登録しました"
     else
       flash.now.alert = "入力に誤りがあります。"

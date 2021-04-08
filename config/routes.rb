@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-
+  
   config = Rails.application.config.kiroku2
   
   constraints host: config[:caregiver][:host] do
     namespace :caregiver do
       root "staff_members#index"
       resources :tops
+      resources :customer_informations
       resources :events do
         resources :entries, only: [] do
           patch :update_all, on: :collection

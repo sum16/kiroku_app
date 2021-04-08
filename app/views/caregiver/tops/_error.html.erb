@@ -1,0 +1,9 @@
+<% if care_recipitent.errors.any? %>
+  <div class = "alert">
+    <ul>
+      <% care_recipitent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
