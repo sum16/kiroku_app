@@ -10,8 +10,8 @@ class Family < ApplicationRecord
     validates :family_name_kana
     validates :given_name_kana
     validates :gender
-    validates :relationship
     validates :address
+    validates :relationship
   end
 
   #カタカナ、漢字、ひらがな,アルファベット

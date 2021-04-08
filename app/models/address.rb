@@ -1,9 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :customer
   belongs_to :family
-
-
-  
   
   PREFECTURE_NAMES = %w(
     北海道

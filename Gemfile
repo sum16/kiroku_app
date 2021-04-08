@@ -10,18 +10,14 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem "kaminari"
-gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "bullet"
 gem "nokogiri"
 gem "date_validator"
 gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 gem 'ransack'
-gem 'lazy_high_charts'
+
 # gem 'redis', '~> 4.0'
-
-
-
 # gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -43,6 +39,10 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

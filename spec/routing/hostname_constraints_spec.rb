@@ -2,10 +2,10 @@ require "rails_helper"
 describe "ルーティング" do 
    example "職員ページ" do
     config = Rails.application.config.kiroku2
-    url = "https://#{config[:caregiver][:host]}/#{config[:caregiver][:path]}"
+    url = "https://#{config[:caregiver][:host]}/#{config[:caregiver][:path]}caregiver"
     expect(get: url).to route_to(
       host: config[:caregiver][:host],
-      controller: "care_recipitent/top",
+      controller: "caregiver/staff_members",
       action: "index"
     )
    end

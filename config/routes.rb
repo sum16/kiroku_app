@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   constraints host: config[:caregiver][:host] do
     namespace :caregiver do
-      root "tops#index"
+      root "staff_members#index"
       resources :tops
       resources :events do
         resources :entries, only: [] do

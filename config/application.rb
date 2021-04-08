@@ -21,5 +21,6 @@ module Kiroku
     config.time_zone = "Tokyo"
     #ストロングパラメーターの指定漏れを教えてくれる
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.hosts << '.example.com'
   end
 end

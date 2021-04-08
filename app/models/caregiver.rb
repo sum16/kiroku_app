@@ -24,11 +24,6 @@ class Caregiver < ApplicationRecord
 
   validates :name, format: { with: HUMAN_NAME_REGEXP }
  
-  #自動ログイン
-  def remember_me?
-    remember_me == "1"
-  end
-
   
   def press_button?(post)
     self.share_buttons.exists?(post_id: post.id)

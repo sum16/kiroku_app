@@ -16,9 +16,5 @@ class CareRecipitent < ApplicationRecord
     validates :age
     validates :gender
     validates :birthday
-  end
-  
-
-  enum gender: %i( 男性 女性 )
-  
+  end  
 end
