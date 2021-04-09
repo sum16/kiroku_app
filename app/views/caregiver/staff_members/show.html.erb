@@ -1,8 +1,13 @@
 <p><strong><%= current_caregiver_member.name %></strong>としてログインしています。</p>
-<%= button_to "ログアウト", caregiver_logout_path, method: :delete %>
+
 
 <br>
 
-<%= link_to "利用者情報の登録", new_caregiver_top_path %>
+<div>
+  <%= @caregiver.name %>
+  <%= @caregiver.age %>
+</div>
+
+<%= link_to "アカウント情報の編集", edit_caregiver_staff_member_path(current_caregiver_member) %>
 
 

@@ -2,7 +2,7 @@ class Caregiver::Base < ApplicationController
  
   def login?
     if current_caregiver_member.nil? 
-      redirect_to caregiver_login_path, alert: "ログインをしてください。"
+       redirect_to caregiver_login_path, alert: "ログインをしてください。"
     end
   end
 

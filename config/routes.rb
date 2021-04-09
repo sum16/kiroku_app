@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :staff_members do 
         resources :login_records, only: [ :index ]
         resources :customers   
+        get :dashboard, on: :collection
       end 
       resources :posts do
         resource :share_buttons, only: [ :create, :destroy ]

@@ -1,2 +1,6 @@
-<h1>Caregiver::StaffMembers#edit</h1>
-<p>Find me in app/views/caregiver/staff_members/edit.html.erb</p>
+ <%= form_with model: @caregiver, url: :caregiver_staff_member, local: true do |f| %> 
+   <%= render "update_form", f: f %>
+   <div class="submit">
+      <%= f.submit "登録する" %>
+  </div>  
+  <% end %>

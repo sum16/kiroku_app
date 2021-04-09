@@ -1,6 +1,7 @@
 class Caregiver::StaffMembersController < Caregiver::Base
   before_action :already_login?, only: %i[ new create ]
   before_action :login?, only: %i[ index show edit ]
+  before_action :set_caregiver, only: %i[ show edit ]
 
   def index
     @caregivers = Caregiver.order(created_at: :desc)
@@ -21,21 +22,41 @@ class Caregiver::StaffMembersController < Caregiver::Base
       render :new
     end
   end
+
+  def dashboard
+  end
  
   def show
-    @caregiver = Caregiver.find(params[:id])
-    if current_caregiver_member
-      render :dashboard
-    else
-      render :show
-    end
   end
 
   def edit
   end
 
+  def update 
+    caregiver = Caregiver.find(params[:id])
+    if caregiver.update(caregiver_params)
+       redirect_to caregiver_staff_member_path(current_caregiver_member), notice: "アカウント情報を変更しました。"
+    else 
+       flash.now.alert = "入力に誤りがあります。"
+       render :new
+    end
+  end
+
+  def destroy
+    caregiver = Caregiver.find(params[:id])
+    if caregiver.destroy
+       redirect_to caregiver_staff_members_path, notice: "アカウント情報を削除しました。"
+    end
+  end
+
+  private
+
   def caregiver_params
     params.require(:caregiver).permit(:name, :age, :password, :password_confirmation)
+  end
+
+  def set_caregiver
+    @caregiver = Caregiver.find(params[:id])
   end
 
 end

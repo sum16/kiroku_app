@@ -3,7 +3,7 @@
 
 <ul class="link-list">
   <li>
-  <%= link_to "利用者管理", caregiver_staff_member_customers_path(@caregiver.id), class: "btn btn--yellow btn--cubic" %>
+  <%= link_to "利用者管理", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
   </li>
    <li>
   <%= link_to "家族情報の登録", new_caregiver_staff_member_customer_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
