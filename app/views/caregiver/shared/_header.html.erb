@@ -6,15 +6,17 @@
    
    <% if current_caregiver_member %>
      <%= button_to "ログアウト", caregiver_logout_path, method: :delete %> 
-     <%= link_to "トップページへ", caregiver_root_path %>
-     <%= number_of_unprocessed_message if current_caregiver_member %>
    <% else %>
     <%= link_to "ログイン", caregiver_login_path %>
+    <%= link_to "職員登録", new_caregiver_staff_member_path %>
    <% end %>
   </div>
 
   
- <%= link_to "アカウント", caregiver_staff_member_path(current_caregiver_member) %> 
+  <% current_caregiver_member.present? %>
+   <%= link_to "トップページへ", caregiver_root_path %>
+   <%= number_of_unprocessed_message if current_caregiver_member %>
+   <%#= link_to "アカウント", caregiver_staff_member_path(current_caregiver_member) %> 
 
 
 

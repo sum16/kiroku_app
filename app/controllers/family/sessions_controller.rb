@@ -1,5 +1,5 @@
 class Family::SessionsController < Family::Base
-  before_action :already_login?, except: [:destroy]
+  before_action :already_login?, except: %i[ destroy ]
   
   def new 
   end
@@ -17,6 +17,7 @@ class Family::SessionsController < Family::Base
 
   def destroy
     current_family = nil
+    session.delete(:family_id)
     redirect_to main_family_families_path notice: "ログアウトしました。"
   end
   

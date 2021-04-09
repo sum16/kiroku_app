@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      medicine: 服薬
+    attributes:
+      medicine:
+        check_before_breakfast: 朝食前の服薬
+        check_after_breakfast: 朝食後の服薬
+        check_before_lunch: 昼食前の服薬
+        check_after_lunch: 昼食後の服薬
+        check_before_dinner: 夕食前の服薬
+        check_after_dinner: 夕食後の服薬
+        check_eye_drops: 目薬
+        check_ointment: 塗り薬
+
+
+

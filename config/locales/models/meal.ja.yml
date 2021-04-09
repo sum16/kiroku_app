@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      meal: 食事
+    attributes:
+      meal:
+        meal_date: 食事の日付
+        breakfast: 朝食
+        lunch: 昼食
+        snack: おやつ
+        dinner: 夕食
+
+
+

@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      family: ご家族様
+    attributes:
+      family:
+        family_name: 名字
+        given_name: 名前
+        family_name_kana: 名字(カナ)
+        given_name_kana: 名前(カナ)
+        relationship: 続柄
+        gender: 性別
+        password: パスワード
+        address: 住所
+        relationship: 関係性
+        care_recipitent_name: 記録したい人の名前

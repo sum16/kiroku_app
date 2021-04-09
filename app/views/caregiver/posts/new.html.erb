@@ -2,7 +2,7 @@
 <div class="form-container">
 
   <%= form_with model: @post, url: :caregiver_posts, local: true do |f| %>
-   
+   <%= render "error", post: @post %>
    <%= render "form", f: f %>
 
     <div class="submit">

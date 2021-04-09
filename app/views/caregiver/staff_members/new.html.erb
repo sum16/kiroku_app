@@ -1,8 +1,8 @@
-
 <h2 class="page-title">職員登録フォーム</h2>
 <div class="form-container">
 
   <%= form_with model: @caregiver, url: :caregiver_staff_members, local: true do |f| %> 
+   <%= render "error", caregiver: @caregiver %>
    <%= render "form", f: f %>
    <div class="submit">
       <%= f.submit "登録する" %>

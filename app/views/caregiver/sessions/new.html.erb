@@ -2,20 +2,7 @@
   <h2>ログイン</h2>
 
   <%= form_with(url: :caregiver_session, local: true)  do |f| %>
-    <div class="field">
-      <%= f.label :name, "名前" %><br>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password, "パスワード" %><br>
-      <%= f.password_field :password %>
-    </div>
-
-    <div>
-      <%= f.submit "ログイン" %>
-    </div>
-
+    <%= render "form", f: f %>
     <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "new-session-button" %>
  <% end %>
 </div>

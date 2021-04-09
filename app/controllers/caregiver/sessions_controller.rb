@@ -10,7 +10,7 @@ class Caregiver::SessionsController < Caregiver::Base
        session[:caregiver_id] = caregiver.id
        session[:last_access_time] = Time.current
        caregiver.login_records.create!(type: "logged_in")
-      redirect_to caregiver_staff_member_path(caregiver.id), notice: "ログインしました。"
+      redirect_to dashboard_caregiver_staff_members_path, notice: "ログインしました。"
     else
       flash.now[:alert] = "名前またはパスワードが間違っています。"
       render :new

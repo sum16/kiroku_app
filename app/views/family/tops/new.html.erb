@@ -2,7 +2,7 @@
 <h1>一括登録フォーム</h1>
 
   <%= form_with model: @family, url: :family_tops, local: true do |form| %>
-  
+  <%= render "error", family: @family %>
 <p>バイタル</p>
 
 <%= form.fields_for :vitals, @family.vitals.build do |a| %>

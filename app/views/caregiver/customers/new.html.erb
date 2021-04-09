@@ -9,6 +9,9 @@
  
  <div id="generic-form">
  <%= form_with model: @customer, url: :caregiver_staff_member_customers, local: true do |f| %>
+
+  <%= render "error", customer: @customer %>
+
  <%= render "form", f: f %>
   <div class="buttons">
       <%= f.submit "登録" %>

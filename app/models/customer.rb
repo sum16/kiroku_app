@@ -5,12 +5,21 @@ class Customer < ApplicationRecord
   HUMAN_NAME_REGEXP = /\A[\p{han}\p{hiragana}\p{katakana}\u{30fc}A-Za-z]+\z/
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
+
+  with_options presence: true do
+    validates :family_name
+    validates :given_name
+    validates :family_name_kana
+    validates :given_name_kana
+    validates :gender
+  end
+
   #カタカナ、漢字、ひらがな,アルファベット
   validates :family_name, :given_name, format: { with: HUMAN_NAME_REGEXP }
   #全角カタカナ
   validates :family_name_kana, :given_name_kana, format: { with: KATAKANA_REGEXP }
 
-  validates :gender, inclusion: { in: %w(male female), allow_blunk: true}
+  
   def password=(raw_password)
     if raw_password.kind_of?(String)
       self.hashed_password = BCrypt::Password.create(raw_password)

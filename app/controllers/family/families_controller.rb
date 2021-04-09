@@ -24,8 +24,8 @@ class Family::FamiliesController < Family::Base
   end
 
   def create
-    family = Family.new(family_params)  
-    if family.save
+    @family = Family.new(family_params)  
+    if @family.save
        session[:family_id] = @family.id
        redirect_to family_families_path(params[:family_id], params[:id]), notice: "登録が完了しました。"
     else

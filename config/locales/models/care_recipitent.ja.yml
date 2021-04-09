@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      care_recipitent: 利用者情報
+    attributes:
+      care_recipitent:
+        family_name: 名字
+        given_name: 名前
+        family_name_kana: 名前(カナ)
+        given_name_kana: 名字(カナ)
+        age: 年齢
+        gender: 性別
+        remarks: 備考欄
+        birthday: 誕生日
+        degree_of_support_required: 要支援度
+        degree_of_care_required: 介護度
+        current_disease: 現在の疾患があれば
+        past_disease: 過去の疾患があれば
+
+
+

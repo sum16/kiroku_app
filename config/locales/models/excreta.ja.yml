@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      excreta: 排泄、排尿
+    attributes:
+      excreta:
+        judge_pee: 排尿
+        judge_shit: 排泄
+
+
+

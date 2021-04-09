@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      address: 住所
+    attributes:
+      address:
+        postal_code: 郵便番号
+        prefecture: 県
+        city: 市区町村
+        address1: 番地等
+        address2: 建物名等
+        company_name: 会社名

@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      customer: 利用者
+    attributes:
+      customer:
+        family_name: 名字
+        given_name: 名前
+        family_name_kana: 名字(カナ)
+        given_name_kana: 名前(カナ)
+        gender: 性別

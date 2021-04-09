@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       post "login", to: "sessions#create", as: :session
       delete "logout", to: "sessions#destroy"
       get 'youtubes/index', to: "youtubes#index"
-      root "families#top"
+      root "families#main"
       resource :account, expect: [ :new, :create, :destroy ] do
         patch :confirm
       end

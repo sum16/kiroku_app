@@ -6,18 +6,14 @@ class Caregiver::CustomersController < Caregiver::Base
     @customers = @search_form.search.page(params[:page])
   end
 
-  private def search_params
-    params[:search]&.permit([:family_name, :given_name, :family_name_kana, :given_name_kana, :gender])
-  end
-
   def new
     @customer = Customer.new
     @customer.build_customer_address
   end
 
   def create 
-    customer = Customer.new(customer_params)
-      if customer.save!
+    @customer = Customer.new(customer_params)
+      if @customer.save
         flash.notice = "利用情報を追加しました"
         redirect_to caregiver_staff_member_customer_path(current_caregiver_member.id, @customer.id)
       else
@@ -61,6 +57,10 @@ class Caregiver::CustomersController < Caregiver::Base
 
   def set_customer
     @customer = Customer.find(params[:id])
+  end
+
+  def search_params
+    params[:search]&.permit([:family_name, :given_name, :family_name_kana, :given_name_kana, :gender])
   end
 
 end

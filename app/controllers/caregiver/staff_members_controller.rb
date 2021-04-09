@@ -13,9 +13,9 @@ class Caregiver::StaffMembersController < Caregiver::Base
   end
 
   def create
-    caregiver = Caregiver.new(caregiver_params)
-    if caregiver.save!
-    session[:caregiver_id] = caregiver.id 
+    @caregiver = Caregiver.new(caregiver_params)
+    if @caregiver.save
+    session[:caregiver_id] = @caregiver.id 
     redirect_to caregiver_staff_members_path, notice: "登録が完了しました。"
     else
       flash.now.alert = "入力に誤りがあります。"

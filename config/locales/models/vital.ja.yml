@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      vital: バイタル
+    attributes:
+      vital:
+        pulse: 脈拍
+        spo2: 酸素濃度
+        breathing: 呼吸回数
+        low_blood_pressure: 血圧(下)
+        hign_blood_pressure: 血圧(上)
+        temperature: 体温
+        measuring_date: バイタルを測定した日付
+
+
+
