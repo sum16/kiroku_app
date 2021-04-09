@@ -1,34 +1,31 @@
 class Family::FamiliesController < Family::Base
   before_action :set_q, only: [:dashboard, :search]
 #家族登録用のコントローラー 
-  before_action :already_login?, only: [:create]
-  before_action :login?, only: [:show]
+  before_action :already_login?, only: %i[ new create ]
+  before_action :login?, only: %i[ index show edit ]
 
 
   def main
-   if current_family.present?
-      redirect_to family_families_path 
-   else
-     render :main
-   end
+    if current_family.present?
+       redirect_to family_families_path 
+    else
+      render :main
+    end
   end
 
   def index
-  
   end
 
   def dashboard
-  
   end
-
 
   def new
     @family = Family.new
   end
 
   def create
-     @family = Family.new(family_params)  
-    if @family.save
+    family = Family.new(family_params)  
+    if family.save
        session[:family_id] = @family.id
        redirect_to family_families_path(params[:family_id], params[:id]), notice: "登録が完了しました。"
     else
@@ -57,6 +54,7 @@ class Family::FamiliesController < Family::Base
 
 
   private
+  
   def family_params
     params.require(:family).permit(:care_recipitent_name, :family_name, :given_name, :family_name_kana, :given_name_kana, :relationship, :address, :gender, :password, :password_confirmation )
   end

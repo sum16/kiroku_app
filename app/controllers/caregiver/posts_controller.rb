@@ -1,5 +1,6 @@
 class Caregiver::PostsController < Caregiver::Base
-  
+  before_action :set_post, only: %i[ show edit ]
+
   def index
     @posts = Post.order(created_at: :desc).page(params[:page])
   end
@@ -21,19 +22,17 @@ class Caregiver::PostsController < Caregiver::Base
   end
 
   def show
-    @post = Post.find(params[:id])
     @share_button = current_caregiver_member.share_buttons.find_or_initialize_by(post: @post)
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update 
-      @post = Post.find(params[:id])
-    if @post.update!(post_params)
-      flash.notice = "申し送りを追加しました"
-      redirect_to caregiver_staff_member_posts_path(current_caregiver_member, @post.id)
+       post = Post.find(params[:id])
+    if post.update!(post_params)
+       flash.notice = "申し送りを追加しました"
+       redirect_to caregiver_staff_member_posts_path(current_caregiver_member, post.id)
     else
       render :new
       flash.now.alert = "入力に誤りがあります。"
@@ -41,8 +40,8 @@ class Caregiver::PostsController < Caregiver::Base
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+     post = Post.find(params[:id])
+     post.destroy
   end
 
 
@@ -52,4 +51,9 @@ class Caregiver::PostsController < Caregiver::Base
   def post_params
       params.require(:post).permit(:title, :body)
   end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end

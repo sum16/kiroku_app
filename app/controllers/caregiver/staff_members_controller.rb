@@ -1,6 +1,6 @@
 class Caregiver::StaffMembersController < Caregiver::Base
-  before_action :already_login?, only: [:create]
-  before_action :login?, only: [:show]
+  before_action :already_login?, only: %i[ new create ]
+  before_action :login?, only: %i[ index show edit ]
 
   def index
     @caregivers = Caregiver.order(created_at: :desc)
@@ -24,13 +24,11 @@ class Caregiver::StaffMembersController < Caregiver::Base
  
   def show
     @caregiver = Caregiver.find(params[:id])
-
     if current_caregiver_member
       render :dashboard
     else
       render :show
     end
-
   end
 
   def edit

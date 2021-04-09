@@ -1,9 +1,7 @@
 class Caregiver::SessionsController < Caregiver::Base 
-  #before_action :already_login?, except: [:destroy]
-  protect_from_forgery :except => [:destroy]
+  before_action :already_login?, except: %i[ destroy ]
   
   def new 
-    
   end
 
   def create 

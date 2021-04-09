@@ -1,4 +1,5 @@
 class Caregiver::MessagesController < Caregiver::Base
+  before_action :set_message, only: %i[ show ]
 
   def index
     @messages = Message.not_deleted.includes([:family]).sorted.page(params[:page])
@@ -22,7 +23,7 @@ class Caregiver::MessagesController < Caregiver::Base
   end
 
   def show
-    @message = Message.find(params[:id])
+    
   end
 
   #ゴミ箱へ移動
@@ -31,6 +32,12 @@ class Caregiver::MessagesController < Caregiver::Base
     message.update_column(:deleted, true)
     flash.notice = "お問い合わせを削除しました。"
     redirect_back(fallback_location: :caregiver_staff_members)
+  end
+
+  private
+
+  def set_message 
+    @message = Message.find(params[:id])
   end
 
 end

@@ -7,4 +7,5 @@ class Family::EventsController < Family::Base
   def show
     @event = Event.published.find(params[:id])
   end
+  
 end

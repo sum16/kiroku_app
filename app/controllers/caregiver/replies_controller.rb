@@ -1,5 +1,5 @@
 class Caregiver::RepliesController < Caregiver::Base
-before_action :prepare_message
+   before_action :prepare_message
 
   def new
     @reply = CaregiverMessage.new
