@@ -19,10 +19,10 @@ class Family::AccountsController < Family::Base
   end
 
   def confirm
-    family = Family.find_by(id: current_family.id)
-    family.update!(family_params) 
+    @family = Family.find_by(id: current_family.id)
+    @family.update!(family_params) 
     #バリデーションを通す
-    if family.valid?
+    if @family.valid?
        render "confirm"
     else
        flash.now.alert = "入力に誤りがあります。"

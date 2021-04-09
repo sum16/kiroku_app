@@ -13,7 +13,7 @@ class Caregiver::EntriesForm
   end
 
   private def assign_attributes(params)
-    fp = params.require(:form).permit([ :approved, :not_approved, :canceled, :not_canceled])
+    fp = params.require(:event).permit([ :approved, :not_approved, :canceled, :not_canceled])
 
     @approved = fp[:approved]
     @not_approved = fp[:not_approved]

@@ -1,6 +1,6 @@
 <div class="form-container">
 <h1>一括登録フォーム</h1>
-
+<%= Date.today %>日
   <%= form_with model: @family, url: :family_tops, local: true do |form| %>
   <%= render "error", family: @family %>
 <p>バイタル</p>
@@ -28,12 +28,12 @@
 
   <div>
   <%= a.label :pulse, "脈拍" %>
-  <%= a.number_field :pulse, placeholder: "脈拍を入力", required: true %>回
+  <%= a.number_field :pulse, placeholder: "脈拍を入力", required: true %>回/分
   </div>
 
   <div>
   <%= a.label :breathing, "呼吸回数" %>
-  <%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>/分
+  <%= a.number_field :breathing, placeholder: "呼吸回数を入力", required: true %>回/分
   </div>
 
   <div>

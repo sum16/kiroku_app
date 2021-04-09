@@ -21,6 +21,6 @@ class CareRecipitent < ApplicationRecord
   end  
 
   #要支援度は１まで、要介護度は５まで
-  validates :degree_of_support_required, inclusion: { in: 1..2 }
-  validates :degree_of_care_required, inclusion: { in: 1..5 }
+  #validates :degree_of_support_required, inclusion: { in: 1..2 }
+  #validates :degree_of_care_required, inclusion: { in: 1..5 }
 end

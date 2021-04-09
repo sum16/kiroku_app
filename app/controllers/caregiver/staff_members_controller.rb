@@ -44,8 +44,12 @@ class Caregiver::StaffMembersController < Caregiver::Base
 
   def destroy
     caregiver = Caregiver.find(params[:id])
-    if caregiver.destroy
+    if caregiver.destroy 
+       flash.now.alert = "イベントを運営中のため削除できません。"
        redirect_to caregiver_staff_members_path, notice: "アカウント情報を削除しました。"
+    else
+      flash.now.alert = "イベントを運営中のため削除できません。"
+      render :index
     end
   end
 

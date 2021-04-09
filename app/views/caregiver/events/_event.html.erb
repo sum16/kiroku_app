@@ -12,7 +12,6 @@
   <td class="numeric"><%= p.number_of_applicants %></td>
   <td class="numeric"><%#= p.name %></td>
   <td class="actions"><%= link_to "詳細", caregiver_event_path(event.id)  %> |
-                      <%= link_to "編集", edit_caregiver_event_path(event.id) %> |
                       <%= button_to "削除", caregiver_event_path(event.id), method: :delete %> 
   </td> 
 </tr>

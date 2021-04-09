@@ -10,8 +10,8 @@ class Caregiver::TopsController  < Caregiver::Base
   end
 
   def create
-     care_recipitent = current_caregiver_member.care_recipitents.new(care_recipitent_params)
-     if  care_recipitent.save
+     @care_recipitent = current_caregiver_member.care_recipitents.new(care_recipitent_params)
+     if  @care_recipitent.save
          redirect_to caregiver_top_path(@care_recipitent.id), notice: "利用者情報を登録しました"
      else
          flash.now.alert = "入力に誤りがあります。"
