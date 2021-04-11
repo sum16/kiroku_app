@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_065459) do
+ActiveRecord::Schema.define(version: 2021_04_10_154754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.bigint "customer_id", null: false
@@ -32,8 +63,20 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
     t.index ["type", "customer_id"], name: "index_addresses_on_type_and_customer_id", unique: true
   end
 
+  create_table "allowed_sources", force: :cascade do |t|
+    t.string "namespace", null: false
+    t.integer "octet1", null: false
+    t.integer "octet2", null: false
+    t.integer "octet3", null: false
+    t.integer "octet4", null: false
+    t.boolean "wildcard", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["namespace", "octet1", "octet2", "octet3", "octet4"], name: "index_allowed_sources_on_namespace_and_octets", unique: true
+  end
+
   create_table "bathing_days", force: :cascade do |t|
-    t.date "bathing_date", null: false
+    t.date "bathing_date"
     t.boolean "judge_bath", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -42,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
   end
 
   create_table "behavior_histories", force: :cascade do |t|
-    t.date "behavior_history_date", null: false
+    t.date "behavior_history_date"
     t.text "action_record", null: false
     t.time "behavior_time", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -145,7 +188,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
   end
 
   create_table "excreta", force: :cascade do |t|
-    t.date "excreta_date", null: false
+    t.date "excreta_date"
     t.boolean "judge_shit", default: false, null: false
     t.boolean "judge_pee", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -176,7 +219,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
   end
 
   create_table "intake_waters", force: :cascade do |t|
-    t.date "drink_date", null: false
+    t.date "drink_date"
     t.integer "amount_of_water", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -199,7 +242,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
     t.boolean "snack", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "meal_date", null: false
+    t.date "meal_date"
     t.bigint "family_id"
     t.index ["family_id"], name: "index_meals_on_family_id"
   end
@@ -214,7 +257,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
   end
 
   create_table "medicines", force: :cascade do |t|
-    t.date "medicine_date", null: false
+    t.date "medicine_date"
     t.boolean "check_before_breakfast", default: false, null: false
     t.boolean "check_before_lunch", default: false, null: false
     t.boolean "check_after_lunch", default: false, null: false
@@ -291,7 +334,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
   end
 
   create_table "vitals", force: :cascade do |t|
-    t.date "measuring_date", null: false
+    t.date "measuring_date"
     t.float "temperature", null: false
     t.integer "hign_blood_pressure", null: false
     t.integer "low_blood_pressure", null: false
@@ -304,6 +347,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_065459) do
     t.index ["family_id"], name: "index_vitals_on_family_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "customers"
   add_foreign_key "addresses", "families"
   add_foreign_key "bathing_days", "families"

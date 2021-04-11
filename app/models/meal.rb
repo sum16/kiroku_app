@@ -6,6 +6,5 @@ class Meal < ApplicationRecord
     validates :lunch
     validates :snack
     validates :dinner
-    validates :meal_date
   end
 end

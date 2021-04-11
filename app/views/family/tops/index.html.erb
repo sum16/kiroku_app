@@ -1,4 +1,3 @@
-<%#= @family.care_recipitent_name %>
 利用者 <%= @family.care_recipitent_name %>さんの記録
 
 <table border="5">
@@ -14,7 +13,7 @@
 <th>酸素濃度</th>
 </tr>
 <tr>
-<td><%= vital.measuring_date.strftime("%Y年%m月%d日") %></td>
+<td><%= vital.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= vital.temperature %>℃</td>
 <td><%= vital.low_blood_pressure %>/<%= vital.hign_blood_pressure %></td>
 <td><%= vital.pulse %>回/分</td>
@@ -35,7 +34,7 @@
 
 </tr>
 <tr>
-<td><%= excreta.excreta_date.strftime("%Y年%m月%d日") %></td>
+<td><%= excreta.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= excreta.judge_pee ? "○": "×" %></td>
 <td><%= excreta.judge_shit ? "○": "×" %></td>
 </tr>
@@ -55,7 +54,7 @@
 
 </tr>
 <tr>
-<td><%= meal.meal_date.strftime("%Y年%m月%d日") %></td>
+<td><%= meal.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= meal.breakfast ? "○": "×" %></td>
 <td><%= meal.lunch ? "○": "×" %></td>
 <td><%= meal.snack ? "○": "×" %></td>
@@ -75,7 +74,7 @@
 
 </tr>
 <tr>
-<td><%= intake_water.drink_date.strftime("%Y年%m月%d日") %></td>
+<td><%= intake_water.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= intake_water.amount_of_water %>cc</td>
 </tr>
 <% end %>
@@ -91,7 +90,7 @@
 
 </tr>
 <tr>
-<td><%= bathing_day.bathing_date.strftime("%Y年%m月%d日") %></td>
+<td><%= bathing_day.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= bathing_day.judge_bath ? "○": "×" %></td>
 </tr>
 <% end %>
@@ -114,7 +113,7 @@
 
 </tr>
 <tr>
-<td><%= medicine.medicine_date.strftime("%Y年%m月%d日") %></td>
+<td><%= medicine.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= medicine.check_before_breakfast ? "○": "×" %></td>
 <td><%= medicine.check_after_breakfast ? "○": "×" %></td>
 <td><%= medicine.check_before_lunch ? "○": "×" %></td>
@@ -137,7 +136,7 @@
 
 </tr>
 <tr>
-<td><%= behavior_history.behavior_history_date.strftime("%Y年%m月%d日") %></td>
+<td><%= behavior_history.created_at.strftime("%Y年%m月%d日") %></td>
 <td><%= behavior_history.action_record %></td>
 
 </tr>

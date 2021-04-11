@@ -2,7 +2,6 @@ class Medicine < ApplicationRecord
   belongs_to :family
 
   with_options presence: true do
-    validates :medicine_date
     validates :check_before_breakfast
     validates :check_after_breakfast
     validates :check_before_lunch

@@ -16,6 +16,7 @@
   <% current_caregiver_member.present? %>
    <%= link_to "トップページへ", caregiver_root_path %>
    <%= number_of_unprocessed_message if current_caregiver_member %>
+    <%= button_to "ゲストユーザーはこちらこら", caregiver_guest_path, method: :post %>
    <%#= link_to "アカウント", caregiver_staff_member_path(current_caregiver_member) %> 
 
 

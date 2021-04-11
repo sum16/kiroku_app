@@ -20,6 +20,11 @@ class Caregiver::Base < ApplicationController
       @current_caregiver_member ||= Caregiver.find_by(id: caregiver_id)
     end
   end
+
+  #ゲストユーザーログイン
+  def guest_login(caregiver)
+    session[:caregiver_id] = caregiver.id
+  end
   
 helper_method :current_caregiver_member 
 end

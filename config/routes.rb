@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   constraints host: config[:caregiver][:host] do
     namespace :caregiver do
       root "staff_members#index"
+      post '/guest', to: 'guest_sessions#create'
       resources :tops
       resources :customer_informations
       resources :events do
