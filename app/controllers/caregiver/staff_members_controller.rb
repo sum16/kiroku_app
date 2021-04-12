@@ -1,3 +1,5 @@
+require "csv"
+
 class Caregiver::StaffMembersController < Caregiver::Base
   before_action :already_login?, only: %i[ new create ]
   before_action :login?, only: %i[ index show edit ]
@@ -52,6 +54,30 @@ class Caregiver::StaffMembersController < Caregiver::Base
       render :index
     end
   end
+
+  #CSV出力 
+  def vital 
+    @vitals = Vital.all
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        csv_download(@vitals)
+      end
+    end
+  end
+
+  def csv_download(vitals)
+      csv_data = CSV.generate(row_sep: "\r\n", encoding:Encoding::CP932)  do |csv|
+        header = %w(日付 体温　血圧(下) 血圧(上) 脈拍 呼吸回数 sp02)
+        csv << header
+        vitals.each do |vital|
+          values = [vital.measuring_date, vital.temperature, vital.low_blood_pressure, vital.hign_blood_pressure, vital.pulse, vital.breathing, vital.spo2]
+          csv << values
+        end
+      end
+      send_data(csv_data, filename: "vital.csv")
+  end
+    #CSV出力終わり
 
   private
 

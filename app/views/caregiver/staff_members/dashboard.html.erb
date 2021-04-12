@@ -20,6 +20,9 @@
   <li>
   <%= link_to "申し送り一覧", caregiver_posts_path, class: "btn btn--yellow btn--cubic" %>
   </li>
+  <li>
+  <%= link_to "バイタル記録をcsv出力", vital_caregiver_staff_members_path(format: :csv), class: "btn btn--yellow btn--cubic" %>
+  </li>
 </ul>
 
 <li>メッセージ管理

@@ -1,14 +1,14 @@
 <div class="form-container">
 <h1>一括登録フォーム</h1>
-<%= Date.today %>
+<%= Date.today %>日
   <%= form_with model: @family, url: :family_tops, local: true do |form| %>
   <%= render "error", family: @family %>
 <p>バイタル</p>
 
 <%= form.fields_for :vitals, @family.vitals.build do |a| %>
   <div>
-  <%#= a.label :measuring_date, Date.today %>
-  <%#= a.date_field :measuring_date, required: true %>
+  <%#チェック外してここから= a.label :measuring_date, Date.today %> 
+  <%= a.date_field :measuring_date, required: true %>
   </div>
 
   <div>
@@ -50,8 +50,8 @@
 <%= form.fields_for :bathing_days, @family.bathing_days.build  do |b| %>
 
   <div>
-    <%#= b.label :bathing_date, "入浴日" %>
-    <%#= b.date_field :bathing_date, required: true %>
+    <%= b.label :bathing_date, "入浴日" %>
+    <%= b.date_field :bathing_date, required: true %>
   </div>
 
   <div>
@@ -66,8 +66,8 @@
 <%= form.fields_for :intake_waters, @family.intake_waters.build  do |c| %>
 
   <div>
-    <%#= c.label :drink_date, "日付" %>
-    <%#= c.date_field :drink_date, required: true %>
+    <%= c.label :drink_date, "日付" %>
+    <%= c.date_field :drink_date, required: true %>
   </div>
 
   <div>
@@ -82,8 +82,8 @@
 <%= form.fields_for :medicines, @family.medicines.build  do |d| %>
 
   <div>
-    <%#= d.label :medicine_date, "日付" %>
-    <%#= d.date_field :medicine_date, required: true %>
+    <%= d.label :medicine_date, "日付" %>
+    <%= d.date_field :medicine_date, required: true %>
   </div>
 
   <div>
@@ -134,8 +134,8 @@
 <%= form.fields_for :excretas, @family.excretas.build  do |e| %>
 
   <div>
-    <%#= e.label :excreta_date, "日付" %>
-    <%#= e.date_field :excreta_date, required: true %>
+    <%= e.label :excreta_date, "日付" %>
+    <%= e.date_field :excreta_date, required: true %>
   </div>
 
   <div>
@@ -154,8 +154,8 @@
 <p>食事チェック</p>
 <%= form.fields_for :meals, @family.meals.build  do |e| %>
 <div>
-    <%#= e.label :meal_date, "日付" %>
-    <%#= e.date_field :meal_date %>
+    <%= e.label :meal_date, "日付" %>
+    <%= e.date_field :meal_date %>
   </div>
 
     <div>
@@ -186,8 +186,8 @@
 <%= form.fields_for :behavior_histories, @family.behavior_histories.build  do |e| %>
 
   <div>
-    <%#= e.label :behavior_history_date, "日付" %>
-    <%#= e.date_field :behavior_history_date, required: true %>
+    <%= e.label :behavior_history_date, "日付" %>
+    <%= e.date_field :behavior_history_date, required: true %>
   </div>
 
     <div>

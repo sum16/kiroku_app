@@ -17,6 +17,9 @@ Rails.application.routes.draw do
         resources :login_records, only: [ :index ]
         resources :customers   
         get :dashboard, on: :collection
+        get :csv_download, defaults: { format: 'csv' }, on: :collection
+        get :vital, on: :collection
+
       end 
       resources :posts do
         resource :share_buttons, only: [ :create, :destroy ]
