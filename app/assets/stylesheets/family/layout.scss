@@ -47,9 +47,9 @@ div#container-field {
 
    }
    .btn {
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 0.8;
     position: relative;
     display: inline-block;
     padding: 1rem 4rem;
@@ -79,6 +79,7 @@ div#container-field {
     color: #000;
     background: #fff20a;
     border-bottom: 2px solid #ccc100;
+    opacity: 1;
   }
 
   .link-list {
