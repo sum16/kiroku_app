@@ -8,16 +8,13 @@ header {
     margin: 0 $wide;
     font-size: $tiny;
     color: $very_light_gray;
-    float: left;
   }
 
   span.notice {
     background-color: $green;
-    float: left;
   }
 
   span.alert {
     background-color: $red;
-    float: left;
   }
 }

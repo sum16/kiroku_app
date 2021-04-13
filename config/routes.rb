@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   constraints host: config[:family][:host] do
     namespace :family, path: config[:family][:path] do
-  
+      post '/guest', to: 'guest_sessions#create'
       get "login", to: "sessions#new", as: :login
       post "login", to: "sessions#create", as: :session
       delete "logout", to: "sessions#destroy"

@@ -18,5 +18,10 @@ class Family::Base < ApplicationController
     end
   end
 
+   #ゲストユーザー様ログイン
+  def guest_login(family)
+    session[:family_id] = family.id
+  end
+
 helper_method :current_family
 end

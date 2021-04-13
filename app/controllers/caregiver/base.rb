@@ -21,9 +21,10 @@ class Caregiver::Base < ApplicationController
     end
   end
 
-  #ゲストユーザーログイン
-  def guest_login(family)
-    session[:family_id] = family.id
+
+  #ゲストユーザー様ログイン
+  def guest_login(caregiver)
+    session[:caregiver_id] = caregiver.id
   end
   
 helper_method :current_caregiver_member 

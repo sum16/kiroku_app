@@ -1,0 +1,2 @@
+module Family::GuestSessionsHelper
+end
