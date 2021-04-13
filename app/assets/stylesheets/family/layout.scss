@@ -113,7 +113,7 @@ html {
 }
 
 input.button_to {
-    width: 100px;
+    width: 150px;
     border: 2px solid #000;
     border-radius: 0;
     background: #fff;
@@ -172,7 +172,8 @@ footer {
   height: 50px;
   background-color: $right_gray;
   color: $white;
-  position: absolute; bottom: 0; 
+  padding-top: 100px;
+  position: bottom 0; 
   p {
     text-align: center;
     padding: 5px;

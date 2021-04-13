@@ -118,6 +118,26 @@ html {
   text-align: center;
 }
 
+/*ゲストユーザー様用ボタン*/
+input.button_to2{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #f7f7f7;
+  border-left: solid 6px #ff7c5c;/*左線*/
+  color: #ff7c5c;/*文字色*/
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  margin-top: 25px;
+}
+.btn-wrapper {
+  text-align: center;
+}
+
+input.button_to2:hover{
+  background-color: #f9c500;
+}
+
 
 /*ヘッダー*/
 header {
@@ -167,7 +187,6 @@ footer {
   height: 50px;
   background-color: $right_gray;
   color: $white;
-  position: absolute; bottom: 0; 
   p {
     text-align: center;
     padding: 5px;
