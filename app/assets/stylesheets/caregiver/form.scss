@@ -6,7 +6,7 @@
     div#container {
     div#generic-form {
       width: 480px;
-      margin: $wide * 2 auto;
+      margin: 60px auto;
       padding: $wide * 2;
       border-radius: $wide;
       border: solid 4px $dark_cyan;
@@ -51,7 +51,7 @@
           display: inline;
           padding: 0;
           label { color: $red; }
-          input { background: $pink; }
+          input, textarea { background: $pink; }
         }
         div.with-errors {
           label { color: $red; }

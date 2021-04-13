@@ -1,13 +1,23 @@
-<p><strong><%= current_caregiver_member.name %></strong>としてログインしています。</p>
-
-
-<br>
-
-<div>
-  <%= @caregiver.name %>
-  <%= @caregiver.age %>
+<% @title="職員詳細" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
 </div>
 
-<%= link_to "アカウント情報の編集", edit_caregiver_staff_member_path(current_caregiver_member) %>
+<div class="caregiver-page">
+  <div class="l-wrapper_06">
+    <div class="card_06">
+      <div class="card-content_06">
+        <p class="card-title_06">Member</p>
+        <p class="card-text_06">名前: <%= @caregiver.name %></p>
+        <p class="card-text_06">年齢: <%= @caregiver.age %></p>
+      </div>
+      <div class="card-link_06">
+        <%= link_to "アカウント情報の編集", edit_caregiver_staff_member_path(current_caregiver_member) %>
+      </div>
+    </div>
+  </div>
+
+
+
 
 

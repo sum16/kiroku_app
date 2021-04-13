@@ -1,27 +1,41 @@
 <header>
-<link rel="icon" type="image/png" href="#">
-  <span class="logo-mark">kiroku</span>
+  <div class="header-left">
+      <%= image_tag 'logo.png', class: 'logo', size: '60x65'%>
+  </div>
+  <span class="logo-mark">Care Farm</span>
   <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
   <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
+
+<div class="header-list">
+  <ul>
+    <% if current_caregiver_member %>
+      <li>
+        <%= link_to "HOME", caregiver_root_path %>
+      </li>
+      <li>
+         <%= link_to "アカウント情報", caregiver_staff_member_path(current_caregiver_member) %>
+      </li>
+      <li>
+        <%= number_of_unprocessed_message if current_caregiver_member %>
+      </li>
+      <li>
+        <%= button_to "ログアウト", caregiver_logout_path, method: :delete, class: "header-button" %> 
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "ログイン", caregiver_login_path %>
+      </li>
+      <li>
+        <%= link_to "職員登録", new_caregiver_staff_member_path %>
+      </li>
+    <% end %>
+  </ul>
+</div>
    
-   <% if current_caregiver_member %>
-     <%= button_to "ログアウト", caregiver_logout_path, method: :delete %> 
-   <% else %>
-    <%= link_to "ログイン", caregiver_login_path %>
-    <%= link_to "職員登録", new_caregiver_staff_member_path %>
-   <% end %>
-  </div>
-
-  
-  <% current_caregiver_member.present? %>
-   <%= link_to "トップページへ", caregiver_root_path %>
-   <%= number_of_unprocessed_message if current_caregiver_member %>
-    <%= button_to "ゲストユーザーはこちらこら", caregiver_guest_path, method: :post %>
-   <%#= link_to "アカウント", caregiver_staff_member_path(current_caregiver_member) %> 
-
-
-
 </header>
+
+
+
 
 
 

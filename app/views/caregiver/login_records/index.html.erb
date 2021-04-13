@@ -8,9 +8,6 @@
 <h2><%= @title %></h2>
 
 <div class="table-wrapper">
-<div class="links">
-  <%= link_to "スタッフ一覧",caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %>
-</div>
   <table class="listing">
     <tr>
     <% unless @caregiver%><th>氏名</th><% end %>
@@ -25,5 +22,7 @@
     <% end %>
   </table>
 
- <%= paginate @login_records %>
+  <div class="pagination">
+    <%= paginate @login_records %>
+  </div>
 </div>

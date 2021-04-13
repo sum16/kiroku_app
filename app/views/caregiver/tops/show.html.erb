@@ -1,48 +1,52 @@
- <p>作成日：<%= @care_recipitent.created_at.to_s(:jp_time)%></p>
+ <% @title="利用者情報の詳細" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
+</div>
 
- <table border="5">
-    <tr bgcolor="pink">
-      <th bgcolor="	#E0FFFF">利用者情報</th>
-      <th>名字</th>
-      <th>名前</th>
-      <th>名字(カナ)</th>
-      <th>名前(カナ)</th>
-      <th>年齢</th>
-      <th>性別</th>
-      <th>誕生日</th>
-      <th>要介護度</th>
-      <th>要支援度</th>
-      <th>過去疾患</th>
-      <th>現在疾患</th>
-      <th>備考欄</th>
-      <th>担当スタッフ</th>
+ 
+ <div class="caregiver-page"> 
+  <p>作成日：<%= @care_recipitent.created_at.to_s(:jp_time)%></p>
 
-      
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= @care_recipitent.family_name %></td>
-      <td><%= @care_recipitent.given_name %></td>
-      <td><%= @care_recipitent.family_name_kana %></td>
-      <td><%= @care_recipitent.given_name_kana %></td>
-      <td><%= @care_recipitent.age %></td>
-      <td> <%= @care_recipitent.gender %></td>
-      <td><%= @care_recipitent.birthday %></td>
-      <td><%= @care_recipitent.degree_of_care_required %></td>
-      <td><%= @care_recipitent.degree_of_support_required %></td>
-      <td><%= @care_recipitent.past_disease%></td>
-      <td><%= @care_recipitent.current_disease %></td>
-      <td><%= @care_recipitent.remarks %></td>
-      <td><%= @care_recipitent.caregiver.name %></td>
-    
-      
-    </tr> 
-  </table>
+  <table border="5", class="table-page">
+      <tr bgcolor="pink">
+        <th bgcolor="	#E0FFFF">利用者情報</th>
+        <th>姓</th>
+        <th>名前</th>
+        <th>姓(カナ)</th>
+        <th>名前(カナ)</th>
+        <th>年齢</th>
+        <th>性別</th>
+        <th>誕生日</th>
+        <th>要介護度</th>
+        <th>要支援度</th>
+        <th>過去疾患</th>
+        <th>現在疾患</th>
+        <th>備考欄</th>
+        <th>担当スタッフ</th>  
+      </tr>
 
-<div>
-  <%= link_to "利用者情報一覧画面へ", caregiver_tops_path %>
-  <%= link_to "編集する", edit_caregiver_top_path(@care_recipitent.id) %>
+      <tr>
+        <td></td>
+        <td><%= @care_recipitent.family_name %></td>
+        <td><%= @care_recipitent.given_name %></td>
+        <td><%= @care_recipitent.family_name_kana %></td>
+        <td><%= @care_recipitent.given_name_kana %></td>
+        <td><%= @care_recipitent.age %></td>
+        <td> <%= @care_recipitent.gender %></td>
+        <td><%= @care_recipitent.birthday %></td>
+        <td><%= @care_recipitent.degree_of_care_required %></td>
+        <td><%= @care_recipitent.degree_of_support_required %></td>
+        <td><%= @care_recipitent.past_disease%></td>
+        <td><%= @care_recipitent.current_disease %></td>
+        <td><%= @care_recipitent.remarks %></td>
+        <td><%= @care_recipitent.caregiver.name %></td>
+      </tr> 
+    </table>
 
+  <div>
+    <%= link_to "利用者情報一覧画面へ", caregiver_tops_path, class: "btn btn--yellow btn--cubic" %>
+    <%= link_to "編集する", edit_caregiver_top_path(@care_recipitent.id), class: "btn btn--yellow btn--cubic" %>
+  </div>
 </div>
 
 

@@ -1,8 +1,13 @@
 @import "colors";
 @import "dimensions";
 
-div.description, div.body {
+ div.body {
   margin: $wide;
   padding: $wide;
   background-color: $very_light_gray;
+}
+
+div.desctiption {
+  text-align: center;
+  display: inline-block;
 }

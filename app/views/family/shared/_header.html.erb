@@ -1,16 +1,31 @@
 <header>
- <link rel="icon" type="image/png" href="#">
-  <span class="logo-mark">kiroku</span>
+  <div class="header-left">
+      <%= image_tag 'logo.png', class: 'logo', size: '60x65'%>
+  </div>
+  <span class="logo-mark">Care Farm</span>
   <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
-   <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
+  <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
 
-
-   <% if current_family %>
-     <%= button_to "ログアウト", family_logout_path, method: :delete %> 
-     <%= link_to "アカウント", family_account_path %> 
-     <%= link_to "お問い合わせ", new_family_message_path  %> 
-
-   <% else %>
-     <%= link_to "ログイン", family_login_path %>
-   <% end %>
-</header>
+<div class="header-list">
+  <ul>
+    <% if current_family %>
+      <li>
+        <%= link_to "HOME", family_families_path %>
+      </li>
+      <li>
+         <%= link_to "アカウント情報", family_account_path %>
+      </li>
+      <li>
+        <%= button_to "ログアウト", family_logout_path, method: :delete, class: "header-button" %> 
+      </li>
+    <% else %>
+      <li>
+         <%= link_to "ログイン", family_login_path %>
+      </li>
+      <li>
+        <%= link_to "ユーザー登録", new_family_family_path %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+   

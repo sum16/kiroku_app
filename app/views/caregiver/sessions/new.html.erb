@@ -1,9 +1,17 @@
-<div class="form-container">
-  <h2>ログイン</h2>
+<% @title="ログイン" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
+</div>
 
+<div class="form-container">
   <%= form_with(url: :caregiver_session, local: true)  do |f| %>
     <%= render "form", f: f %>
-    <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "new-session-button" %>
+    <ul class="link-list">
+      <li>
+          <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %>
+      </li>
+    </ul>
+   
  <% end %>
 </div>
 

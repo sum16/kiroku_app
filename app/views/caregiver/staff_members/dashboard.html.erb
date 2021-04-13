@@ -1,32 +1,50 @@
 <% @title = "ダッシュボード" %>
-<h2><%= @title %></h2>
+<div class="page-title">
+  <h2><%= @title %></h2>
+</div>
+
+<div class="center-p">
+  <p>よく利用されるサービス</p>
+</div>
+
 
 <ul class="link-list">
   <li>
-  <%= link_to "利用者管理", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
+  <%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %>
   </li>
    <li>
   <%= link_to "家族情報の登録", new_caregiver_staff_member_customer_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
   </li>
   <li>
-  <%= link_to "家族情報の閲覧", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
+  <%= link_to "イベント管理", caregiver_events_path, class: "btn btn--yellow btn--cubic" %>
   </li>
   <li>
-  <%= link_to "イベント管理", caregiver_events_path, class: "btn btn--yellow btn--cubic" %>
+  <%= link_to "申し送り一覧", caregiver_posts_path, class: "btn btn--yellow btn--cubic" %>
+  </li>
+</ul>
+
+<div class="center-p">
+  <p>Care Farmのサービス</p>
+</div>
+
+<ul class="link-list">
+  <li>
+  <%= link_to "バイタル記録をcsv出力", vital_caregiver_staff_members_path(format: :csv), class: "btn btn--yellow btn--cubic" %>
   </li>
   <li>
   <%= link_to "職員のログイン、ログアウト記録", caregiver_staff_member_login_records_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
   </li>
   <li>
-  <%= link_to "申し送り一覧", caregiver_posts_path, class: "btn btn--yellow btn--cubic" %>
-  </li>
-  <li>
-  <%= link_to "バイタル記録をcsv出力", vital_caregiver_staff_members_path(format: :csv), class: "btn btn--yellow btn--cubic" %>
+  <%= link_to "家族情報の閲覧", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic" %>
   </li>
 </ul>
 
-<li>メッセージ管理
-  <ul>
+
+
+<div class="center-p">
+    <p>メッセージ管理</p>
+</div>
+  <ul class="link-list">
     <li>
      <%= link_to "問い合わせ一覧", inbound_caregiver_messages_path, class: "btn btn--yellow btn--cubic" %>
     </li>

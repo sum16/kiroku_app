@@ -1,60 +1,56 @@
-<div>
-    <div>
-      <%= form.label :family_name, "名字", class: "ef" %>
-      <%= form.text_field :family_name, required: true %>
+<div class="Form">
+    <div class="Form-Item">
+      <p class="Form-Item-Label">
+        <span class="Form-Item-Label-Required">必須</span>姓
+      </p>
+      <%= form.text_field :family_name, required: true, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :given_name, "名前", class: "ef"  %>
-      <%= form.text_field :given_name, required: true %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>名前</p>
+      <%= form.text_field :given_name, required: true, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :family_name_kana, "名字(カナ)", class: "ef"  %>
-      <%= form.text_field :family_name_kana, required: true %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>姓(カナ)</p>
+      <%= form.text_field :family_name_kana, required: true, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :given_name_kana, "名前(カナ)", class: "ef" %>
-      <%= form.text_field :given_name_kana, required: true %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>名前(カナ)</p>
+      <%= form.text_field :given_name_kana, required: true, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :age, "年齢", class: "ef"  %>
-      <%= form.number_field :age, required: true %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>年齢</p>
+      <%= form.number_field :age, required: true, class: "Form-Item-Input" %>
     </div>
-
-     <%= markup do |m| 
-    p = FamilyFormPresenter.new(form, self)
-    m << p.gender_field_block
-    end %>
-
-    <div>
-      <%= form.label :degree_of_care_required, "要介護度" %>
-      <%= form.number_field :degree_of_care_required %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>性別</p>
+       <%= markup do |m| 
+        p = FamilyFormPresenter.new(form, self)
+        m << p.gender_field_block
+        end %>
     </div>
-
-    <div>
-      <%= form.label :degree_of_support_required, "要支援度" %>
-      <%= form.number_field :degree_of_support_required %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">どちらか必須</span>要介護度</p>
+      <%= form.number_field :degree_of_care_required, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :birthday, "誕生日" %>
-      <%= form.date_field :birthday, required: true %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">どちらか必須</span>要支援度</p>
+      <%= form.number_field :degree_of_support_required, class: "Form-Item-Input" %>
     </div>
-
-    <div>
-      <%= form.label :remarks, "備考欄" %>
-      <%= form.text_area :remarks, row: 4 %>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>誕生日</p>
+      <%= form.date_field :birthday, required: true, class: "Form-Item-Input" %>
     </div>
-
-      <div>
-      <%= form.label :current_disease, "現在の疾患" %>
-      <%= form.text_field :current_disease %>
-      </div>
-
-      <div>
-      <%= form.label :tpast_disease, "過去の疾患" %>
-      <%= form.text_field  :past_disease %>
-      </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">任意</span>備考欄</p>
+      <%= form.text_area :remarks, class: "Form-Item-Textarea" %>
+    </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>現在お持ちの疾患</p>
+      <%= form.text_field :current_disease, class: "Form-Item-Input" %>
+    </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>過去に患った疾患</p>
+      <%= form.text_field  :past_disease, class: "Form-Item-Input" %>
+    </div>
+      <%= form.submit "登録", class: "Form-Btn" %>
+  </div>

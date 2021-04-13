@@ -7,7 +7,6 @@ class Vital < ApplicationRecord
   validates :breathing, inclusion: { in: 1..200 }
   validates :spo2, numericality: { only_integer: true }
   validates :pulse, numericality: { only_integer: true }
-  validates :temperature, numericality: { only_integer: true }
   validates :low_blood_pressure, numericality: { only_integer: true }
   validates :hign_blood_pressure, numericality: { only_integer: true }
 

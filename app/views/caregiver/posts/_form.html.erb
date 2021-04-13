@@ -1,9 +1,8 @@
- <div class="field">
-      <%= f.label :title, "タイトル" %><br>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :body, "内容" %><br>
-      <%= f.text_area :body %>
-    </div>
+<div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>タイトル</p>
+    <%= f.text_field :title, required: true, class: "Form-Item-Input" %>
+</div>
+ <div class="Form-Item">
+    <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>内容</p>
+    <%= f.text_area :body, class: "Form-Item-Textarea" %>
+</div>

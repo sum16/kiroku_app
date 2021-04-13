@@ -1,14 +1,7 @@
 <% @title = "イベント管理" %>
-<h2><%= @title %></h2>
-
-
-<ul class="link-list">
-    <li>
-      <%= link_to "新規登録", new_caregiver_event_path, class: "btn btn--yellow btn--cubic"  %>
-      <%= link_to "利用者の家族情報管理", caregiver_staff_member_customers_path(current_caregiver_member), class: "btn btn--yellow btn--cubic"  %>
-      <%= link_to "トップページ", caregiver_staff_members_path, class: "btn btn--yellow btn--cubic"  %>
-    </li>
-  </ul>
+<div class="page-title">
+  <h2><%= @title %></h2>
+</div>
   
 <div class="table-wrapper">
 
@@ -28,5 +21,7 @@
 
   </table>
 
-  <%= paginate @events %>
+  <div class="pagination">
+    <%= paginate @events %>
+  </div>
 </div>

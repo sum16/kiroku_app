@@ -15,5 +15,7 @@
     </tr>
     <%= render partial: "event", collection: @events %>
   </table>
-  <%= paginate @events %>
+  <div class="pagination">
+    <%= paginate @events %>
+  </div>
 </div>

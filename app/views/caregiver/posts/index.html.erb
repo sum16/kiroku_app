@@ -1,10 +1,32 @@
-<% @posts.each do |post| %>
-<%= link_to post.title, caregiver_post_path(post) %>
-
-<div id="share-button">
-   確認人数 <%= render "share_button", post: post %>
+<% @title="申し送り一覧" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
 </div>
 
-<% end %>
-<%= link_to "申し送りを書く", new_caregiver_post_path, class: "submit-button" %>
 
+<div id="share-button">
+</div>
+
+<% @posts.each do |post| %>
+<div class="caregiver-page">
+  <div class="l-wrapper_06">
+    <div class="card_06"> 
+      <div class="card-content_06">
+        <p class="card-title_06"><%= link_to post.title, caregiver_post_path(post.id) %></p>
+        <p class="card-text_06">内容: <%= post.body %></p>
+        <p class="card-text_06">投稿者: <%= post.caregiver.name %></p>
+      </div>
+      <div class="card-link_06">
+      <p>確認したらボタンを押してください</p>
+       <%= render "share_button", post: post %>
+      </div>  
+    </div>
+   </div>
+  </div>
+<% end %>
+
+<ul class="link-list">
+   <li>
+      <%= link_to "申し送りを書く", new_caregiver_post_path, class: "btn btn--yellow btn--cubic" %>
+   </li>
+</ul>

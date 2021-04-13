@@ -1,5 +1,6 @@
+<% @title="スタッフ一覧" %>
 <div class="page-title">
-  <h2>スタッフ 一覧</h2>
+   <h2><%= @title %></h2>
 </div>
 
 
@@ -7,7 +8,6 @@
       <div class="link-list clearfix">
             <ul>
               <% if current_caregiver_member %>
-                    <li><%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %></li>
                     <li><%= link_to "ダッシュボード", dashboard_caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %></li>
                   <% else %>
                     <li><%= link_to "ログインはこちらから", caregiver_login_path, class: "btn btn--yellow btn--cubic" %></li>

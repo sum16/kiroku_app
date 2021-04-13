@@ -1,8 +1,8 @@
 <% @title = "利用者詳細情報" %>
-<h1><%= @title %></h1>
+<h2><%= @title %></h2>
 
 <div class="table-wrapper">
-  <table class="attributes">
+  <table class="listing">
     <tr><th colspan="2">基本情報</th></tr>
 
     <tr><th>氏名</th><td><%= @family.family_name %><%= @family.given_name %></td></tr>
@@ -15,6 +15,10 @@
     <tr><th>更新日時</th><td class="date"><%= @family.updated_at.strftime("%Y年%m月%d日") %></td></tr>
   </table>
 
-  <%= link_to "編集", edit_family_account_path, class: "btn btn--yellow btn--cubic"  %>
-  <%= link_to "トップへ戻る", family_families_path, class: "btn btn--yellow btn--cubic"  %>
+<ul class="link-list">
+  <li>
+    <%= link_to "編集", edit_family_account_path, class: "btn btn--yellow btn--cubic"  %>
+  </li>
+</ul>
+  
 </div>

@@ -1,14 +1,15 @@
-<h2 class="page-title">申し送りの登録</h2>
-<div class="form-container">
-
-  <%= form_with model: @post, url: :caregiver_posts, local: true do |f| %>
-   <%= render "error", post: @post %>
-   <%= render "form", f: f %>
-
-    <div class="submit">
-      <%= f.submit "登録する" %>
-    </div>
-
-    
-  <% end %>
+<% @title="申し送りを書く" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
 </div>
+
+<div class="form-container">
+  <div class="Form">
+    <%= form_with model: @post, url: :caregiver_posts, local: true do |f| %>
+      <%= render "error", post: @post %>
+      <%= render "form", f: f %>
+      <%= f.submit "作成", class: "Form-Btn" %>
+    <% end %>
+  </div>
+</div>
+

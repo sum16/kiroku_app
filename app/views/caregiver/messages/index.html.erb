@@ -9,7 +9,10 @@ else; raise
 end
 %>
 
-<h2><%= @title %></h2>
+
+<div class="page-title">
+  <h2><%= @title %></h2>
+</div>
 
 <div class="table-wrapper">
 
@@ -39,5 +42,7 @@ end
     <% end %>
     </table>
 
+  <div class="pagination">
   <%= paginate @messages %>
+  </div>
 </div>

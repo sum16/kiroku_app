@@ -12,7 +12,8 @@ div.table-wrapper {
 
   table {
     margin: $moderate auto 0;
-    border: solid $moderate $very_dark_magenta;
+    border: solid 2px #F0F8FF;
+    margin: 30px 30px;
     tr {
       th {
         background-color: $dark_gray;
@@ -31,6 +32,7 @@ div.table-wrapper {
 
   table.listing {
     width: 100%;
+    margin-top: 80px;
     tr:nth-child(even) { background-color: $very_light_gray; }
     tr:nth-child(odd) { background-color: $light_gray; }
   }

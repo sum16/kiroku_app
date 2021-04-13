@@ -1,20 +1,47 @@
 <% @title = "ダッシュボード" %>
 <h2><%= @title %></h2>
 
+<div class="center-p">
+  <p>よく利用されるサービス</p>
+</div>
+
 <ul class="link-list">
- <li><%= link_to "イベント一覧", class: "btn btn--yellow btn--cubic" %></li>
- <li><%= link_to "受信メッセージ一覧", family_messages_path, class: "btn btn--yellow btn--cubic" %></li>
- <%= link_to "介助の仕方を動画で学ぶ", family_youtubes_index_path, class: "btn btn--yellow btn--cubic"  %>
+  <li><%= link_to "記録を登録する" ,new_family_top_path, class: "btn btn--yellow btn--cubic" %></li>
+  <li><%= link_to "イベントに参加する", family_events_path, class: "btn btn--yellow btn--cubic" %></li>
 </ul>
 
-<h1>記録検索</h1>
-<%= search_form_for @q, url: :search_family_families do |f| %>
-  <%= f.label :measuring_date, "日付を指定して検索" %>
-  <%= f.date_field :measuring_date_gteq %>〜
-  <%= f.date_field :measuring_date_lt %>までの間
+<div class="center-p">
+  <p>Care Farmのサービス</p>
+</div>
 
-  <%= f.submit '検索' %>
-<% end %>
+<ul class="link-list">
+ <li><%= link_to "介助の仕方を動画で学ぶ", family_youtubes_index_path, class: "btn btn--yellow btn--cubic" %></li>
+ <li><%= link_to "過去の記録をみる", family_tops_path, class: "btn btn--yellow btn--cubic" %></li>
+</ul>
 
-<%= link_to "戻る", family_families_path, class: "btn btn--yellow btn--cubic" %>
+<div class="center-p">
+  <p>メッセージ管理</p>
+</div>
+
+<ul class="link-list">
+  <li><%= link_to "お問い合わせをする", new_family_message_path, class: "btn btn--yellow btn--cubic" %></li>
+  <li><%= link_to "受信メッセージ一覧", family_messages_path, class: "btn btn--yellow btn--cubic" %></li>
+</ul>
+
+
+<h2>記録検索</h2>
+<div class="center-p">
+  <p>日付を指定指定検索</p>
+</div>
+<div class="search">
+  <%= search_form_for @q, url: :search_family_families do |f| %>
+    <div class="Form-Item">
+      <%= f.date_field :measuring_date_gteq, required: true, class: "Form-Item-Input" %>〜
+      <%= f.date_field :measuring_date_lt, required: true, class: "Form-Item-Input" %>まで
+    </div>
+    <%= f.submit '検索', class: "Form-Btn" %>
+  <% end %>
+</div>
+ 
+
 

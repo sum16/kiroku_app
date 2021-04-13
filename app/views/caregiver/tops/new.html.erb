@@ -1,13 +1,12 @@
-<h2>利用者情報の登録</h2>
+<% @title="利用者情報の登録" %>
+<div class="page-title">
+   <h2><%= @title %></h2>
+</div>
 
-<%= form_with model: @care_recipitent, url: :caregiver_tops do |form| %>
- <%= render "error", care_recipitent: @care_recipitent %>
-  <%= render "form", form: form %>
- 
-      <div>
-      <%= form.submit "登録" %>
-      </div>
-
+<div class="form-container">
+  <%= form_with model: @care_recipitent, url: :caregiver_tops do |form| %>
+    <%= render "error", care_recipitent: @care_recipitent %>
+    <%= render "form", form: form %>
   <% end %>
 </div>
 

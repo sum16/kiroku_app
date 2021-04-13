@@ -23,10 +23,16 @@
     </tr>
   </table>
 
-  <div class="description"><%= p.description %></div>
 
-  <div><%= p.apply_or_cancel_button %></div>
+  <p class="center-p">
+    <%= p.description %>
+  </p>
 
-<%= link_to "ユーザー登録はこちらから", new_family_family_path, class: "btn btn--yellow btn--cubic"  %>
+  <div class="center-div">
+  <%= p.apply_or_cancel_button %>
+  </div>
+    
+
+  
 </div>
 

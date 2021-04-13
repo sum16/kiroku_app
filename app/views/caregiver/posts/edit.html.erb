@@ -1,4 +1,8 @@
-<h2 class="page-title">申し送りの登録</h2>
+<% @title="申し送りの登録" %>
+<div class="page-title">
+  <h2><%= @title %></h2>
+</div>
+
 <div class="form-container">
 
   <%= form_with model: @post, url: caregiver_staff_member_post_path(current_caregiver_member), local: true do |f| %>

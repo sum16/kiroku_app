@@ -1,12 +1,27 @@
  <% current_family.present? %>
 
  
+<div class="center-p">
+  <p>Care Farmのサービス</p>
+</div>
+
+<ul class="link-list">
+  <li>
+    <%= link_to "ダッシュボード", dashboard_family_families_path, class: "btn btn--yellow btn--cubic"  %> 
+  </li>
+  <li>
+    <%= link_to "記録を登録する" ,new_family_top_path, class: "btn btn--yellow btn--cubic"  %>
+  </li>
+  <li>
+    <%= link_to "イベントへ参加する", family_events_path, class: "btn btn--yellow btn--cubic"  %>
+  </li>
+</ul>
 
 
- <%= link_to "管理画面へ", dashboard_family_families_path, class: "btn btn--yellow btn--cubic"  %> 
- <%= link_to "記録を登録する" ,new_family_top_path, class: "btn btn--yellow btn--cubic"  %>
-<%= link_to "イベントへ参加する", family_events_path, class: "btn btn--yellow btn--cubic"  %>
-<%= link_to "過去の記録をみる", family_tops_path, class: "btn btn--yellow btn--cubic" %>
+ 
+ 
+
+
 
 
 
