@@ -1,53 +1,71 @@
 version: 2
+general:
+  branches:
+    only:
+      - master
+      - develop
 jobs:
-   build:
-      docker:
-        #アプリのバージョンを指定
-        - image: circleci/ruby:2.6.6-node
-          environment:
-            #自身の登録しているユーザに変える。
-            POSTGRES_USER: yasuyuki
-            PGHOST: 127.0.0.1
-            RAILS_ENV: test
-        #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
-        - image: circleci/postgres:13.2
-          environment:
-            #それぞれ設定
-            POSTGRES_USER: yasuyuki
-            #下記を書けばパスワードなしでデータベースにログインしてくれる。 
-            POSTGRES_HOST_AUTH_METHOD: trust
-            POSTGRES_DB: kiroku_test
-      #自身のアプリ名にする
-      working_directory: ~/Kiroku
-      steps:
-        - checkout
-        #bundle キャッシュをリストアする。公式の設定通り。
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "Gemfile.lock" }}
-              - v1-dependencies-
-        # bundle install で依存関係をインストールする。公式の設定と多少異なってます。
-        - run:
-            name: install dependencies
-            command: |
-              gem install bundler -v 2.1.4
-              bundle install --jobs=4 --retry=3 --path vendor/bundle
+  build:
+    working_directory: ~/api
+    docker:
+      - image: circleci/ruby:2.6.6-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: circleci/postgres:13.2-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: kiroku_test
+          POSTGRES_PASSWORD: password
+    steps:
+      - checkout
 
-        # bundle キャッシュを保存する。公式の設定通り。
-        - save_cache:
-            key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-            paths:
-              - ./vendor/bundle
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y lsb-release
 
-        #↓追加する
-        - run:
-            name: DBの起動を待つ
-            command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run:
+          name: Install postgresql 13.2
+          command: |
+            wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+            cat /etc/apt/sources.list.d/pgdg.list
+            sudo apt-get update
+            sudo apt-get install postgresql postgresql-contrib
 
-        - run: bundle exec rake db:create
-        - run: bundle exec rake db:schema:load
+      - restore_cache:
+          name: Restore bundle cache
+          keys:
+            - api-bundle-{{ checksum "Gemfile.lock" }}
+            - api-bundle-
 
-        # rspecを実行する
-        - run:
-            name: rspecを実行
-            command: bundle exec rspec
+      - run:
+          name: Bundle Install
+          command: bin/bundle check --path vendor/bundle || bin/bundle install --path vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          name: Store bundle cache
+          key: api-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop --rails -f html -o doc/rubocop.html --fail-level F
+
+      - store_artifacts:
+          path: doc
+
+      - run:
+          name: DBの起動を待つ
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+
+      - run:
+          name: rspecを実行
+          command: bundle exec rspec
