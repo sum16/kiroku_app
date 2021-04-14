@@ -13,7 +13,7 @@ jobs:
         - image: circleci/postgres:13.2
           environment:
             #それぞれ設定
-            POSTGRES_USER: postgres
+            POSTGRES_USER: yasuyuki
             #下記を書けばパスワードなしでデータベースにログインしてくれる。 
             POSTGRES_HOST_AUTH_METHOD: trust
             POSTGRES_DB: portfolio_test
