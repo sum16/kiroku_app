@@ -3,14 +3,14 @@ jobs:
    build:
       docker:
         #アプリのバージョンを指定
-        - image: circleci/ruby:2.6.6-node
+        - image: ruby:2.6.6-node
           environment:
             #自身の登録しているユーザに変える。
             POSTGRES_USER: yasuyuki
             PGHOST: 127.0.0.1
             RAILS_ENV: test
         #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
-        - image: circleci/postgres:13.2
+        - image: postgres:13.2
           environment:
             #それぞれ設定
             POSTGRES_USER: yasuyuki
