@@ -1,15 +1,53 @@
-machine:
-  timezone:
-    Asia/Tokyo
-  ruby:
-    version:
-      2.6.6
-database:
-  pre:
-    - mv config/database.yml.ci config/database.yml
-  override:
-    - bundle exec rake db:create db:schema:load RAILS_ENV=test
-    - bundle exec rake db:migrate RAILS_ENV=test
-test:
-  override:
-    - bundle exec rspec spec/
+version: 2
+jobs:
+   build:
+      docker:
+        #アプリのバージョンを指定
+        - image: circleci/ruby:2.6.6-node
+          environment:
+            #自身の登録しているユーザに変える。
+            POSTGRES_USER: yasuyuki
+            PGHOST: 127.0.0.1
+            RAILS_ENV: test
+        #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
+        - image: circleci/postgres:13.2
+          environment:
+            #それぞれ設定
+            POSTGRES_USER: yasuyuki
+            #下記を書けばパスワードなしでデータベースにログインしてくれる。 
+            POSTGRES_HOST_AUTH_METHOD: trust
+            POSTGRES_DB: kiroku_test
+      #自身のアプリ名にする
+      working_directory: ~/Kiroku
+      steps:
+        - checkout
+        #bundle キャッシュをリストアする。公式の設定通り。
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "Gemfile.lock" }}
+              - v1-dependencies-
+        # bundle install で依存関係をインストールする。公式の設定と多少異なってます。
+        - run:
+            name: install dependencies
+            command: |
+              gem install bundler -v 2.1.4
+              bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+        # bundle キャッシュを保存する。公式の設定通り。
+        - save_cache:
+            key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            paths:
+              - ./vendor/bundle
+
+        #↓追加する
+        - run:
+            name: DBの起動を待つ
+            command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
+        - run: bundle exec rails db:create
+        - run: bundle exec rails db:schema:load
+
+        # rspecを実行する
+        - run:
+            name: rspecを実行
+            command: bundle exec rspec
