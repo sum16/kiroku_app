@@ -173,6 +173,8 @@ footer {
   background-color: $right_gray;
   color: $white;
   margin-top: 8px;
+  position: absolute;
+  bottom: 0; 
   p {
     text-align: center;
     padding: 5px;

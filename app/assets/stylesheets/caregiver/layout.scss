@@ -9,6 +9,7 @@ html, body {
 }
 
 div#container-field {
+  min-height: 100vh;
   position: relative;
   box-sizing: border-box;
   min-height: 100%;
@@ -187,6 +188,8 @@ footer {
   height: 50px;
   background-color: $right_gray;
   color: $white;
+  position: absolute;
+  bottom: 0; 
   p {
     text-align: center;
     padding: 5px;

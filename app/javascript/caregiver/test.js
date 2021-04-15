@@ -1,3 +1,4 @@
-$(document).on('turbolinks:load', function () {
-  alert("ok")
-});
+window.onload = function () {
+  console.log("なおっった")
+};
+
