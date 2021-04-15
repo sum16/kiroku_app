@@ -68,6 +68,10 @@ class Family::FamiliesController < Family::Base
     @medicine = Medicine.ransack(params[:q])
     @behavior_history = BehaviorHistory.ransack(params[:q])
   end
+
+  def memo 
+    
+  end
   
 end
 

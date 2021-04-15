@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   config = Rails.application.config.kiroku2
   
+#職員側
   constraints host: config[:caregiver][:host] do
     namespace :caregiver do
       root "staff_members#index"
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+#家族側
   constraints host: config[:family][:host] do
     namespace :family, path: config[:family][:path] do
       post '/guest', to: 'guest_sessions#create'
@@ -47,12 +48,16 @@ Rails.application.routes.draw do
       delete "logout", to: "sessions#destroy"
       get 'youtubes/index', to: "youtubes#index"
       root "families#main"
+      namespace :api, format: 'json' do
+        resources :memos, only: [:index, :create]
+      end
       resource :account, expect: [ :new, :create, :destroy ] do
         patch :confirm
       end
       resources :tops 
       resources  :families do
         get :main, on: :collection
+        get :memo, on: :collection
         get :dashboard, on: :collection
         get :search, on: :collection  
       end

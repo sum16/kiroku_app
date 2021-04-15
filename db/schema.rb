@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_154754) do
+ActiveRecord::Schema.define(version: 2021_04_15_055034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,13 @@ ActiveRecord::Schema.define(version: 2021_04_10_154754) do
     t.boolean "check_after_breakfast", default: false, null: false
     t.bigint "family_id"
     t.index ["family_id"], name: "index_medicines_on_family_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
