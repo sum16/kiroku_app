@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       end 
       resources :posts do
         resource :share_buttons, only: [ :create, :destroy ]
+        resources :searches, only: :index, defaults: { format: :json }
       end
       get "login", to: "sessions#new", as: :login
       post "login", to: "sessions#create", as: :session
