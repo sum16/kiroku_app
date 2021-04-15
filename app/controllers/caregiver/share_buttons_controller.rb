@@ -7,9 +7,7 @@ class Caregiver::ShareButtonsController < Caregiver::Base
     @share_button = current_caregiver_member.share_buttons.create(post_id: params[:post_id])
     if @share_button.save!
        redirect_to caregiver_posts_path
-    else
-       flash.now.alert = "確認済み"
-    end     
+    end
   end
 
   def destroy
