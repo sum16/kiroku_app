@@ -1,4 +1,4 @@
-class CaregiverPresenter > ModelPresenter
+class CaregiverPresenter < ModelPresenter
 
   #職員の停止フラグのon/offを表現
 
