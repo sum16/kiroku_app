@@ -9,7 +9,7 @@ class Caregiver::AjaxController < ApplicationController
     render plain: FamilyMessage.unprocessed.count
   end
 
-  ptrivate def check_source_ip_address
+  private def check_source_ip_address
     unless AllowedSource.include?("caregiver", request.ip)
       render plain: "Forbidden", status: 403
     end

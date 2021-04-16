@@ -32,5 +32,6 @@ test:
 production:
   <<: *default
   database: kiroku_production
-  username: yasuyuki
-  password: <%= ENV['KIROKU_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
