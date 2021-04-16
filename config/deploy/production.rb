@@ -1,7 +1,7 @@
-server "3.114.45.70", user: "yasuyuki", roles: %w{app db web}
+server "3.114.45.70", user: "ec2-user", roles: %w{app db web}
 
 set :ssh_options, {
-  keys: %w(~/.ssh/carefarm2.pem),
+  keys: %w(~/.ssh/care_farm2.pem),
   forward_agent: true,
   auth_methods: %w(publickey),
 }
