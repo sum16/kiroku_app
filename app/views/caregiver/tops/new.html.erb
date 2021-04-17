@@ -4,7 +4,7 @@
 </div>
 
 <div class="form-container">
-  <%= form_with model: @care_recipitent, url: :caregiver_tops do |form| %>
+  <%= form_with model: @care_recipitent, url: :caregiver_tops, local: true do |form| %>
     <%= render "error", care_recipitent: @care_recipitent %>
     <%= render "form", form: form %>
   <% end %>
