@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   config = Rails.application.config.kiroku2
   
 #職員側
-  constraints host: config[:caregiver][:host] do
     namespace :caregiver do
       root "staff_members#index"
       post '/guest', to: 'guest_sessions#create'
@@ -37,10 +36,10 @@ Rails.application.routes.draw do
         end
       end
     end
-  end
+  
 
 #家族側
-  constraints host: config[:family][:host] do
+
     namespace :family, path: config[:family][:path] do
       post '/guest', to: 'guest_sessions#create'
       get "login", to: "sessions#new", as: :login
@@ -74,6 +73,7 @@ Rails.application.routes.draw do
         end
       end
     end
-  end
 
 end
+
+
