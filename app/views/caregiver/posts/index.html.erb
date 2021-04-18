@@ -31,7 +31,9 @@
       </div>
       <div class="card-link_06">
       <p>確認したらボタンを押してください</p>
-       <%= render "share_button", post: post %>
+       <div id="post_<%= post.id %>">
+          <%= render "share_button", post: post %>
+       </div>
       </div>  
     </div>
    </div>
