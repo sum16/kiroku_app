@@ -24,4 +24,10 @@
   <div class="pagination">
     <%= paginate @events %>
   </div>
+
+  <ul class="link-list">
+    <li>
+      <%= link_to "イベントを作成する", new_caregiver_event_path, class: "btn btn--yellow btn--cubic"  %>
+    </li>
+  </ul>
 </div>

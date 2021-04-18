@@ -3,9 +3,8 @@
   <h2><%= @title %></h2>
 </div>
 
-
 <div id="generic-form">
-  <%= form_with model: @event, url: :caregiver_events do |f| %>
+  <%= form_with model: @event, url: :caregiver_events, local: true do |f| %>
     <%= render "form", f: f %>
     <div class="buttons">
       <%= f.submit "登録" %> <br>
@@ -14,4 +13,3 @@
   <% end %>
 </div>
 
-<%= link_to "トップページへ戻る", caregiver_staff_members_path %>

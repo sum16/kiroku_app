@@ -3,7 +3,6 @@ class Caregiver::EventsController < Caregiver::Base
 
   def index 
     @events = Event.order(application_start_time: :desc).page(params[:page])
-    #@events = Event.joins(:entries).select("events. *, COUNT(entries.id) AS number_of_applicants").group("events.id").order(application_start_time: :desc).includes(:registrant).page(params[:page])
   end
 
   def new 
@@ -14,9 +13,8 @@ class Caregiver::EventsController < Caregiver::Base
     event = Event.new
     event.assign_attributes(event_params)
     event.registrant_id = current_caregiver_member.id
-    if event.save!
-       flash.notice = "イベントを登録しました。"
-       redirect_to action: :index
+    if event.save
+       redirect_to caregiver_events_path, notice: "イベントを登録しました。"
     else
        flash.now.alert = "入力に誤りがあります。"
        render :new
