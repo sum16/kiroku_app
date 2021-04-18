@@ -28,4 +28,5 @@ class Caregiver < ApplicationRecord
   def press_button?(post)
     self.share_buttons.exists?(post_id: post.id)
   end
+
 end

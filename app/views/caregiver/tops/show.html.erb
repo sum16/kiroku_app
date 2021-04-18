@@ -9,7 +9,6 @@
 
   <table border="5", class="table-page">
       <tr bgcolor="pink">
-        <th bgcolor="	#E0FFFF">利用者情報</th>
         <th>姓</th>
         <th>名前</th>
         <th>姓(カナ)</th>
@@ -26,13 +25,12 @@
       </tr>
 
       <tr>
-        <td></td>
         <td><%= @care_recipitent.family_name %></td>
         <td><%= @care_recipitent.given_name %></td>
         <td><%= @care_recipitent.family_name_kana %></td>
         <td><%= @care_recipitent.given_name_kana %></td>
         <td><%= @care_recipitent.age %></td>
-        <td> <%= @care_recipitent.gender %></td>
+        <td> <%= judge_gender(@care_recipitent.gender) %></td>
         <td><%= @care_recipitent.birthday %></td>
         <td><%= @care_recipitent.degree_of_care_required %></td>
         <td><%= @care_recipitent.degree_of_support_required %></td>

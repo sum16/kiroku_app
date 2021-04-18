@@ -3,14 +3,11 @@
    <h2><%= @title %></h2>
 </div>
 
-
 <% @care_recipitents.each do |f| %>
+  <p class="center-p">作成日：<%= f.created_at.to_s(:jp_time)%></p>
 
-  <p>作成日：<%= f.created_at.to_s(:jp_time)%></p>
-
- <table border="5">
+ <table border="5", align="center">
     <tr bgcolor="pink">
-      <th bgcolor="	#E0FFFF">利用者情報</th>
       <th>名字</th>
       <th>名前</th>
       <th>名字(カナ)</th>
@@ -25,29 +22,29 @@
       <th>備考欄</th>
       <th>担当スタッフ</th>
       <th><%= link_to "詳細",caregiver_top_path(f.id) %></th>
-      <th><%= button_to "削除",caregiver_top_path(f.id), method: :delete %></th>
-      
+      <th><%= button_to "削除",caregiver_top_path(f.id), method: :delete %></th> 
     </tr>
     <tr>
-      <td></td>
-      <td><%= f.family_name %></td>
-      <td><%= f.given_name %></td>
-      <td><%= f.family_name_kana %></td>
-      <td><%= f.given_name_kana %></td>
-      <td><%= f.age %></td>
-      <td> <%= f.gender %></td>
-      <td><%= f.birthday %></td>
-      <td><%= f.degree_of_care_required %></td>
-      <td><%= f.degree_of_support_required %></td>
-      <td><%= f.past_disease%></td>
-      <td><%= f.current_disease %></td>
-      <td><%= f.remarks %></td>
-      <td><%= f.caregiver.name %></td>
-      
+      <td align="center"><%= f.family_name %></td>
+      <td align="center"><%= f.given_name %></td>
+      <td align="center"><%= f.family_name_kana %></td>
+      <td align="center"><%= f.given_name_kana %></td>
+      <td align="center"><%= f.age %></td>
+      <td align="center"> <%= judge_gender(f.gender) %></td>
+      <td align="center"><%= f.birthday %></td>
+      <td align="center"><%= f.degree_of_care_required %></td>
+      <td align="center"><%= f.degree_of_support_required %></td>
+      <td align="center"><%= f.past_disease%></td>
+      <td align="center"><%= f.current_disease %></td>
+      <td align="center"><%= f.remarks %></td>
+      <td align="center"><%= f.caregiver.name %></td>
     </tr> 
   </table>
-
 <% end %>
 
 
-<%= link_to "利用者情報の登録", new_caregiver_top_path %>
+
+<ul class="link-list">
+  <li><%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %></li>
+</ul>
+

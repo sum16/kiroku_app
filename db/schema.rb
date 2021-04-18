@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_055034) do
+ActiveRecord::Schema.define(version: 2021_04_18_112939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 2021_04_15_055034) do
     t.string "family_name_kana"
     t.string "given_name_kana"
     t.integer "age"
-    t.integer "gender"
     t.integer "degree_of_care_required"
     t.integer "degree_of_support_required"
     t.date "birthday"
@@ -111,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_055034) do
     t.bigint "caregiver_id"
     t.text "past_disease"
     t.text "current_disease"
+    t.string "gender"
     t.index ["caregiver_id"], name: "index_care_recipitents_on_caregiver_id"
     t.index ["family_name_kana", "given_name_kana"], name: "index_care_recipitents_on_family_name_kana_and_given_name_kana"
   end
