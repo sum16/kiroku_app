@@ -3,7 +3,7 @@
 
 
 <%= render "error_form", family: @family %>
-  <%= form_with model: @family, url: :family_families do |form| %>
+  <%= form_with model: @family, url: :family_families, local: true do |form| %>
   <%= render "form", form: form %>
   <% end %>
 </div>
