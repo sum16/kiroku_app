@@ -24,7 +24,7 @@
           <%= a.number_field :hign_blood_pressure, placeholder: "100", required: true, class: "Form-Item-Input" %>
         </div>
         <div class="Form-Item">
-          <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>血圧(上)</p>
+          <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>血圧(下)</p>
           <%= a.number_field :low_blood_pressure, placeholder: "120", required: true, class: "Form-Item-Input" %>
         </div>
         <div class="Form-Item">
@@ -47,7 +47,7 @@
       <%= form.fields_for :bathing_days, @family.bathing_days.build  do |b| %>
         <div class="Form-Item">
           <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>入浴したらチェック</p>
-          <%= b.check_box :judge_bath, required: true, class: "Form-Item-Input" %>
+          <%= b.check_box :judge_bath, class: "Form-Item-Input" %>
         </div>
       <% end %>
 
@@ -145,8 +145,8 @@
           <%= e.time_field :behavior_time, required: true, class: "Form-Item-Input" %>
         </div>
         <div class="Form-Item">
-            <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">任意</span>活動の記録</p>
-            <%= e.text_area :action_record, class: "Form-Item-Textarea" %>
+            <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>活動の記録</p>
+            <%= e.text_area :action_record, required: true, class: "Form-Item-Textarea" %>
         </div>
       <% end %>
         <%= form.submit "登録", class: "Form-Btn" %>

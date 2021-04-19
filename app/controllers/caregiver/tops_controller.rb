@@ -45,7 +45,7 @@ class Caregiver::TopsController  < Caregiver::Base
 
   def care_recipitent_params
     params.require(:care_recipitent).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :age, :gender, :birthday,
-      :degree_of_care_required, :degree_of_support_required, :remarks, :suspend, :current_disease, :past_disease)
+      :degree_of_care_required, :degree_of_support_required, :remarks, :suspend, :current_disease, :past_disease, :emergency_destination, :key_person, :key_person_phone_number)
   end
 
   def set_care_recipitent

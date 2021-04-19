@@ -52,5 +52,17 @@
       <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>過去に患った疾患</p>
       <%= form.text_field  :past_disease, class: "Form-Item-Input" %>
     </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>緊急搬送先の病院</p>
+      <%= form.text_field  :emergency_destination, class: "Form-Item-Input" %>
+    </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>キーパーソン</p>
+      <%= form.text_field  :key_person, class: "Form-Item-Input" %>
+    </div>
+    <div class="Form-Item">
+      <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>キーパーソンの連絡先</p>
+      <%= form.text_field  :key_person_phone_number, class: "Form-Item-Input" %>
+    </div>
       <%= form.submit "登録", class: "Form-Btn" %>
   </div>

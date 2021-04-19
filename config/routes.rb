@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   
 
 #家族側
-
     namespace :family, path: config[:family][:path] do
       post '/guest', to: 'guest_sessions#create'
       get "login", to: "sessions#new", as: :login
