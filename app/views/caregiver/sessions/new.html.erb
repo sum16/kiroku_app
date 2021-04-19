@@ -4,14 +4,14 @@
 </div>
 
 <div class="form-container">
-  <%= form_with(url: :caregiver_session, local: true)  do |f| %>
-    <%= render "form", f: f %>
- <% end %>
-  <div class="btn-wrapper">
-    <%= button_to "ゲストユーザー様", caregiver_guest_path, method: :post, class: "button_to2" %>
-    <p>or</p>
-    <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %>
-</div>
+    <%= form_with(url: :caregiver_session, local: true)  do |f| %>
+      <%= render "form", f: f %>
+  <% end %>
+    <div class="btn-wrapper">
+      <%= button_to "ゲストユーザー様", caregiver_guest_path, method: :post, class: "button_to2" %>
+      <p>or</p>
+      <%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %>
+    </div>
 </div>
 
 
