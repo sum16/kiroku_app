@@ -6,7 +6,7 @@
 <div class="table-wrapper">
   <% p = EventPresenter.new(@event, self) %>
 
-  <table class="attributes">
+  <table class="attributes" >
     <tr>
       <th>タイトル</th><td><%= p.title %></td></tr>
     <tr>
@@ -29,11 +29,17 @@
     <tr>
   </table>
 
-<div class="description"><%= p.description %></div>
-
-<%= render "entries_form" if @event.entries.count > 0%>
-
+  <div class="card-5">
+  <h3 class="content-1">イベント内容</h3>
+  <p class="content-2">
+    <%= p.description %>
+  </p>
 </div>
 
-<%= link_to "戻る", caregiver_events_path %>
+<%#= render "entries_form" if @event.entries.count > 0%>
+  <ul class="link-list">
+    <li><%= link_to "戻る", caregiver_events_path, class: "btn btn--yellow btn--cubic" %></li>
+  </ul>
+</div>
+
 
