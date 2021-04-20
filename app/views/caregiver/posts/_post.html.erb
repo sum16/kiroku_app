@@ -1,10 +1,1 @@
- <td><%= post.title %></td>
-    <% if current_caregiver_member.press_button?(post.id) %>
-      <td>
-        <%= link_to 'いいねを外す', caregiver_destroy_share_button_path(post), method: :DELETE, remote: true %><%= post.share_buttons.count %> 
-      </td>
-    <% else %>
-       <td>
-        <%= link_to 'いいね', caregiver_create_share_button_path(post), method: :POST, remote: true %><%= post.share_buttons.count %>
-       </td>
-    <% end %>
+<li class="post"><%= link_to post.title %></li>

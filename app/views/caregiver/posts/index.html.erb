@@ -10,23 +10,17 @@
       <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
     </form>
     <ul class="js-messages">
-      <%#= render partial: 'post', collection: @posts %>
+      <%= render partial: 'post', collection: @posts %>
     </ul>
 </div>
   <!--検索フォーム-->
 
 
-
-
 <% @posts.each do |post| %>
-<tr id="post_<%= post.id %>">
-  <%= render "post", post: post %>
-</tr>
+<div id="post_<%= post.id %>">
+  <%= render "title_post", post: post %>
+</div>
 <% end %>
-
-
-
-
 
 
 <ul class="link-list">

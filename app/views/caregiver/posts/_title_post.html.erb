@@ -1,0 +1,26 @@
+<div class="caregiver-page">
+  <div class="l-wrapper_06">
+    <div class="card_06">
+      <div class="card-content_06">
+        <p class="card-title_06"><%= link_to post.title, caregiver_post_path(post.id) %></p>
+        <p class="card-text_06">内容: <%= post.body %></p>
+        <p class="card-text_06">投稿者: <%= post.caregiver.name %></p>
+      </div>
+      <div class="card-link_06">
+      <p>確認したらボタンを押してください</p>
+        <% if current_caregiver_member.press_button?(post.id) %>
+          <%= link_to  caregiver_destroy_share_button_path(post), class: "like-link", method: :DELETE, remote: true do %> 
+           <i class="fas fa-thumbs-up fa-2x">いいねを外す</i>
+          <% end %>
+         
+       <% else %>
+           <%= link_to caregiver_create_share_button_path(post), class: "like-link", method: :POST, remote: true do %>
+            <i class="far fa-thumbs-up fa-2x">いいね</i>
+            <% end %>
+       <% end %>
+       <%= post.share_buttons.count %>
+      </div>
+    </div>
+  </div>
+</div>
+ 
