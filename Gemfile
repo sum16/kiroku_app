@@ -51,8 +51,8 @@ group :test do
   gem 'webdrivers'
 end
 
-group :production, :staging do
-  gem 'unicorn'
+group :production do
+  gem 'dotenv-rails'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
