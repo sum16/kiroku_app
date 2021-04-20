@@ -6,13 +6,16 @@
 
 想定しているユーザーは２種類です。
   ①福祉施設に従事している職員
-  ②ご家族の様子を記録したいご家族
+  ②入所者の様子を記録したいご家族
 
 # なぜ作ったのか
 私は以前に社会福祉士や介護福祉士として勤務していました。
 その際に外泊や外出された入所様の薬の飲み忘れや、食事や排泄の有無、状態の変化などはご家族様の記憶をもとに業務記録を入力していました。
 こういった記憶に頼った情報は事実と異なる場合も考えられるため、思わぬ事故に通じる可能性があると感じました。
 その時の経験を元に、このような問題を解決するためCareFarmを作りました。
+
+# ER図 
+https://qiita.com/godasper/private/506eeeeecec42140b065
 
 # URL 
 職員側　
@@ -40,8 +43,11 @@ http://my-portfolio3298.work/family
     Youtubeのapiを使用
 
 
+# AWS構成
+![aws_flow](https://user-images.githubusercontent.com/66477859/115424404-a4ffdf80-a239-11eb-9b8b-2463e84dc35c.jpg)
 
-使用技術
+
+# 使用技術
 * Rails 6.0.3.5 
 * Ruby 2.6.6
 * PostgreSQL 13.1
@@ -52,10 +58,16 @@ http://my-portfolio3298.work/family
 * Puma 4.3.7
 * Capistrano3
 * Rspec 4.0.2
+* YouTube Data API 
 
 
+# テスト
+・Rspec
+  単体テスト(model)
+  機能テスト(request)
+  統合テスト(system)
 
-アウトプットツール
+
+# アウトプットツール
 Qiita
-今回のアプリのER図や技術発信情報をご確認いただけます。
 https://qiita.com/godasper/private/d7be578907cec6c5e594
