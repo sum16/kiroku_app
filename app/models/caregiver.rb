@@ -25,8 +25,8 @@ class Caregiver < ApplicationRecord
   validates :name, format: { with: HUMAN_NAME_REGEXP }
  
   
-  def press_button?(post)
-    self.share_buttons.exists?(post_id: post.id)
+  def press_button?(post_id)
+    share_buttons.where(post_id: post_id).exists?
   end
 
 end

@@ -10,35 +10,24 @@
       <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
     </form>
     <ul class="js-messages">
-      <%= render partial: 'post', collection: @posts %>
+      <%#= render partial: 'post', collection: @posts %>
     </ul>
-  </div>
+</div>
   <!--検索フォーム-->
 
 
-<div id="share-button">
-</div>
 
 
 <% @posts.each do |post| %>
-<div class="caregiver-page">
-  <div class="l-wrapper_06">
-    <div class="card_06"> 
-      <div class="card-content_06">
-        <p class="card-title_06"><%= link_to post.title, caregiver_post_path(post.id) %></p>
-        <p class="card-text_06">内容: <%= post.body %></p>
-        <p class="card-text_06">投稿者: <%= post.caregiver.name %></p>
-      </div>
-      <div class="card-link_06">
-      <p>確認したらボタンを押してください</p>
-       <div id="post_<%= post.id %>">
-          <%= render "share_button", post: post %>
-       </div>
-      </div>  
-    </div>
-   </div>
-  </div>
+<tr id="post_<%= post.id %>">
+  <%= render "post", post: post %>
+</tr>
 <% end %>
+
+
+
+
+
 
 <ul class="link-list">
    <li>
