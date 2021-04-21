@@ -20,7 +20,7 @@ class Caregiver::SessionsController < Caregiver::Base
   def destroy
        current_caregiver_member.login_records.create!(type: "logged_out")
        session.delete(:caregiver_id)
-       redirect_to caregiver_staff_members_path, notice: "ログアウトしました。"
+       redirect_to caregiver_root_path, notice: "ログアウトしました。"
   end
   
   
