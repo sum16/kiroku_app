@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
 #職員側
     namespace :caregiver do
-      root "staff_members#index"
+      root "staff_members#main"
       post '/guest', to: 'guest_sessions#create'
       resources :tops
       resources :customer_informations

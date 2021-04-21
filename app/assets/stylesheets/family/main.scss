@@ -13,7 +13,7 @@ body {
   padding: 180px 0 100px 0;
   background-image: url(family-title5.png);
   background-size: cover;
-  color: white;
+  color: c;
   text-align: center;
 }
 
@@ -22,8 +22,12 @@ body {
   letter-spacing: 5px;
 }
 
- .btn-wrapper {
-   margin-top: 35px;
+.btn-wrapper {
+  margin-top: 80px;
+}
+
+.section {
+  margin-top: 50px;
 }
 
 /*ボタン*/
@@ -41,5 +45,25 @@ input.button_to2{
 
 input.button_to2:hover{
   background-color: #f9c500;
+}
+
+
+/*マーカーアニメーション*/
+ 
+.marker-animation.active{
+  background-position: -100% .5em;
+}
+
+.marker-animation {
+  background-image: -webkit-linear-gradient(left, transparent 50%, rgb(168,213,226) 50%);
+  background-image: -moz-linear-gradient(left, transparent 50%, rgb(168,213,226) 50%);
+  background-image: -ms-linear-gradient(left, transparent 50%, rgb(168,213,226) 50%);
+  background-image: -o-linear-gradient(left, transparent 50%, rgb(168,213,226) 50%);
+  background-image: linear-gradient(left, transparent 50%, rgb(168,213,226) 50%);
+  background-repeat: repeat-x;
+  background-size: 200% .8em;
+  background-position: 0 .5em;
+  transition: all 2s ease;
+  font-weight: bold;
 }
 

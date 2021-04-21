@@ -5,6 +5,10 @@ class Caregiver::StaffMembersController < Caregiver::Base
   before_action :login?, only: %i[ index show edit ]
   before_action :set_caregiver, only: %i[ show edit ]
 
+  def main
+
+  end
+  
   def index
     @caregivers = Caregiver.order(created_at: :desc)
     @caregivers_paginate = @caregivers.page(params[:page])

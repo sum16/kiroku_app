@@ -29,7 +29,8 @@ jobs:
             name: install dependencies
             command: |
               gem install bundler -v 2.1.4
-              bundle install yarn install --check-files
+              bundle install
+              yarn install --check-files
 
         # bundle キャッシュを保存する。
         - save_cache:

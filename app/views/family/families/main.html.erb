@@ -4,14 +4,19 @@
             <h1>Let's keep a record!</h1>
             <h1>介護の記録を取ろう!</h1>
 
-            <p><strong>Kirokuはオンラインでできる介護の記録サービスです。</strong></p>
-        
-        </div>
-        <div class="btn-wrapper">
-           <%= link_to "まずは登録から", new_family_family_path, class: "btn btn--yellow btn--cubic"  %>
-          <p>or sign up</p>
-           <%= link_to "ログイン", family_login_path, class: "btn btn--yellow btn--cubic" %>
-          <%= button_to "ゲストユーザー様", family_guest_path, method: :post, class: "button_to2" %>
+            <p><strong class="marker-animation">Kirokuはオンラインでできる介護の記録サービスです。</strong></p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
   </div>
@@ -19,9 +24,16 @@
   <div class="section">
       <h2>このcare_farmの特徴</h2>
       <div class="slick">
-        <div><%= image_tag 'kiroku-face-1', class: "slider" %></div>
-        <div><%= image_tag 'kiroku-face-2', class: "slider" %></div>
+        <div><%#= image_tag 'kiroku-face-1', class: "slider" %></div>
+        <div><%#= image_tag 'kiroku-face-2', class: "slider" %></div>
       </div>
+  </div>
+
+  <div class="btn-wrapper">
+    <%= link_to "まずは登録から", new_family_family_path, class: "btn btn--yellow btn--cubic"  %>
+    <p>or</p>
+    <%= link_to "ログイン", family_login_path, class: "btn btn--yellow btn--cubic" %>
+    <%= button_to "ゲストユーザー様", family_guest_path, method: :post, class: "button_to2" %>
   </div>
 
 
