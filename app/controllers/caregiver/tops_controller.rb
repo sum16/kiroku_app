@@ -2,7 +2,7 @@ class Caregiver::TopsController  < Caregiver::Base
   before_action :set_care_recipitent, only: %i[ show edit ]
 
   def index
-    @care_recipitents = CareRecipitent.includes(:caregiver)
+    @care_recipitents = CareRecipitent.includes(:caregiver).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
