@@ -1,7 +1,7 @@
 require "csv"
 
 class Caregiver::StaffMembersController < Caregiver::Base
-  before_action :already_login?, only: %i[ new create ]
+  before_action :already_login?, only: %i[ new create main ]
   before_action :login?, only: %i[ index show edit ]
   before_action :set_caregiver, only: %i[ show edit ]
 
