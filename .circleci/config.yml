@@ -6,10 +6,9 @@ jobs:
         - image: circleci/ruby:2.6.6-node
           environment:
             #自身の登録しているユーザ
-            POSTGRES_USER: yasuyuki
-            PG_HOST: 127.0.0.1
+            PGUSER: yasuyuki
+            PGHOST: 127.0.0.1
             RAILS_ENV: test
-            port: 5432
             RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
         #データベースとバージョン
         - image: circleci/postgres:13.2
