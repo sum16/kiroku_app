@@ -15,9 +15,9 @@
         <h3>バイタル</h3>
       </div>
       <%= form.fields_for :vitals, @family.vitals.build do |a| %>
-        <div class="Form-Item">
+         <div class="Form-Item">
           <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>体温</p>
-          <%= a.number_field  :temperature, placeholder: "36.0", class: "Form-Item-Input" %>℃
+          <%= a.number_field :temperature, step: '0.1', placeholder: "36.0", class: "Form-Item-Input" %>℃
         </div>
         <div class="Form-Item">
           <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>血圧(上)</p>
