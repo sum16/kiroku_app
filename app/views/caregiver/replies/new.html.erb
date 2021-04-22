@@ -5,7 +5,7 @@
 
 <%#= confirm_caregiver_message_reply_path%>
 <div id="generic-form" class="table-wrapper">
-  <%= form_with model: @reply, url: caregiver_message_reply_path(@message) do |f| %>
+  <%= form_with model: @reply, url: caregiver_message_reply_path(@message), local: true do |f| %>
     <%= render "form", f: f %>
     <div class="buttons">
       <%= f.submit "送信" %> <br>
