@@ -27,6 +27,8 @@ development:
 test:
   <<: *default
   database: kiroku_test
+  RAILS_ENV: test
+  port: 5432
 
 
 production:
