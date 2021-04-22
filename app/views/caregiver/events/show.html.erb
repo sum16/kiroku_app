@@ -36,7 +36,9 @@
   </p>
 </div>
 
-<%#= render "entries_form" if @event.entries.count > 0%>
+<br>
+<h2>参加者</h2>
+<%= render "entries_form" if @event.entries.count > 0%>
   <ul class="link-list">
     <li><%= link_to "戻る", caregiver_events_path, class: "btn btn--yellow btn--cubic" %></li>
   </ul>
