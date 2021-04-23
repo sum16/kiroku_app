@@ -2,7 +2,7 @@ class Caregiver::PostsController < Caregiver::Base
   before_action :set_post, only: %i[ show edit ]
 
   def index
-    @posts = Post.order(created_at: :desc).includes(:caregiver).page(params[:page])
+    @posts = Post.order(created_at: :desc).includes(:caregiver).page(params[:page]).per(5)
   end
 
   def new

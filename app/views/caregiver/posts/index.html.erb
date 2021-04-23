@@ -15,12 +15,14 @@
 </div>
   <!--検索フォーム-->
 
-
 <% @posts.each do |post| %>
-<div id="post_<%= post.id %>">
-  <%= render "title_post", post: post %>
-</div>
+  <div id="post_<%= post.id %>">
+    <%= render "title_post", post: post %>
+  </div>
 <% end %>
+<div class="pagination">
+  <%= paginate @posts %>
+</div>
 
 
 <ul class="link-list">

@@ -10,7 +10,8 @@
      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
      <%= javascript_pack_tag 'caregiver' %>
      <script src="https://kit.fontawesome.com/44fd517c53.js" crossorigin="anonymous"></script>
-     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>	
+     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+     
      <script>
         $(window).scroll(function (){
           $(".marker-animation").each(function(){
@@ -18,7 +19,7 @@
             var scroll = $(window).scrollTop(); //スクロールの位置を取得
             var windowHeight = $(window).height(); //ウインドウの高さを取得
             if (scroll > position - windowHeight){ //スクロール位置が要素の位置を過ぎたとき
-              $(this).addClass('active'); //クラス「active」を与える
+              $(this).addClass('active'); //クラス「active」を追加
             }
           });
         });
