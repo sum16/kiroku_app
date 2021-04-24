@@ -1,2 +1,0 @@
-module Caregiver::AdminCareRecipitentHelper
-end

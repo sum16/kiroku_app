@@ -1,0 +1,32 @@
+<%= form_with(model: support_process_record, local: true) do |form| %>
+  <% if support_process_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(support_process_record.errors.count, "error") %> prohibited this support_process_record from being saved:</h2>
+
+      <ul>
+        <% support_process_record.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contents %>
+    <%= form.text_area :contents %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

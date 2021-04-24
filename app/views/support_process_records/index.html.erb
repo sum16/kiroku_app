@@ -1,0 +1,40 @@
+<%= javascript_pack_tag 'support_process_record' %>
+
+ <div id="app">
+      <p>{{ message }}</p>
+      <p>{{ message2 }}</p>
+      <button v-on:click="changeMsg">Change</button> 
+</div>
+
+
+
+
+<h1>Support Process Records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Contents</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_process_records.each do |support_process_record| %>
+      <tr>
+        <td><%= support_process_record.title %></td>
+        <td><%= support_process_record.name %></td>
+        <td><%= support_process_record.contents %></td>
+        <td><%= link_to 'Show', support_process_record %></td>
+        <td><%= link_to 'Edit', edit_support_process_record_path(support_process_record) %></td>
+        <td><%= link_to 'Destroy', support_process_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support Process Record', new_support_process_record_path %>

@@ -70,6 +70,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.action_controller.allow_forgery_protection = false
+
   config.web_console.whitelisted_ips = [ "172.16.0.0/12"]
 
   config.hosts << "127.0.0.1"

@@ -1,2 +1,0 @@
-module CareRecipitent::IntakeWatersHelper
-end

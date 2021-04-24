@@ -1,2 +1,0 @@
-module Caregiver::GuestSessionsHelper
-end

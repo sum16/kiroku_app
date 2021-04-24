@@ -1,2 +1,0 @@
-module Caregiver::ShareButtonsHelper
-end

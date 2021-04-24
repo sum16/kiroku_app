@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @support_process_record.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @support_process_record.name %>
+</p>
+
+<p>
+  <strong>Contents:</strong>
+  <%= @support_process_record.contents %>
+</p>
+
+<%= link_to 'Edit', edit_support_process_record_path(@support_process_record) %> |
+<%= link_to 'Back', support_process_records_path %>

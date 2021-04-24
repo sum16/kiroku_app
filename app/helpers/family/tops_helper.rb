@@ -1,2 +1,0 @@
-module Family::TopsHelper
-end

@@ -1,2 +1,0 @@
-module Caregiver::AjaxHelper
-end

@@ -1,0 +1,2 @@
+class SupportProcessRecord < ApplicationRecord
+end

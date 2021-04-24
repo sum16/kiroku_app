@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  
+  resources :support_process_records
   config = Rails.application.config.kiroku2
   
 #職員側
     namespace :caregiver do
       root "staff_members#main"
       post '/guest', to: 'guest_sessions#create'
-      resources :tops
+          resources :tops
       resources :customer_informations
       resources :events do
         resources :entries, only: [] do
