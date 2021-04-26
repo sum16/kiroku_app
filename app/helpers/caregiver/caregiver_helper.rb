@@ -1,4 +1,3 @@
-
 module Caregiver::CaregiverHelper
   require "html_builder"
   include HtmlBuilder

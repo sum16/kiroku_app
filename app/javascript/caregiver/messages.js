@@ -9,5 +9,5 @@ function update_number_of_unprocessed_message() {
 
 $(document).ready(() => {
   if ($("#number_of_unprocessed_messages").length)
-    window.setInterval(update_number_of_unprocessed_message, 1000 * 60)
+    window.setInterval(update_number_of_unprocessed_message, 1000 * 30)
 })

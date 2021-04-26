@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
   layout :set_layout
 
   class Forbidden < ActionController::ActionControllerError
@@ -8,12 +7,11 @@ class ApplicationController < ActionController::Base
   class IpAdressRejected < ActionController::ActionControllerError
   end
   
-  include ErrorHandlers if Rails.env.production?
-  
+  include ErrorHandlers if Rails.env.development?
 
   private
 
-   def set_layout
+  def set_layout
     if params[:controller].match(%r{\A(|caregiver|family)/})
       Regexp.last_match[1]
     end
@@ -36,7 +34,5 @@ class ApplicationController < ActionController::Base
   def  reject_non_xhr
     raise ActionController::BadRequest unless request.xhr?
   end
-
-  
 
 end

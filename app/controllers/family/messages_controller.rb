@@ -16,9 +16,9 @@ class Family::MessagesController < Family::Base
      message = FamilyMessage.new(family_message_params)
      message.family = current_family
      message.caregiver_id = 1
-     if  message.save!
+     if  message.save
         flash.notice = "お問い合わせを送信しました。"
-        redirect_to family_families_path
+        redirect_to dashboard_family_families_path
      else
         flash.now.alert = "入力に誤りがあります。"
         render :new

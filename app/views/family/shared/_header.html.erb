@@ -10,10 +10,13 @@
   <ul>
     <% if current_family %>
       <li>
-        <%= link_to "HOME", family_families_path %>
+        <%= link_to "HOME", dashboard_family_families_path %>
       </li>
       <li>
          <%= link_to "アカウント情報", family_account_path %>
+      </li>
+      <li>
+        <%= link_to "問い合わせ", :new_family_message if current_family %>
       </li>
       <li>
         <%= button_to "ログアウト", family_logout_path, method: :delete, class: "header-button" %> 
