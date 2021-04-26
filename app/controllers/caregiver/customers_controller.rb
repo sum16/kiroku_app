@@ -15,7 +15,7 @@ class Caregiver::CustomersController < Caregiver::Base
     @customer = Customer.new(customer_params)
       if @customer.save
         flash.notice = "利用情報を追加しました"
-        redirect_to caregiver_staff_member_customer_path(current_caregiver_member.id, @customer.id)
+        redirect_to caregiver_staff_member_customers_path
       else
         flash.now.alert = "入力に誤りがあります。"
         render :new
@@ -32,7 +32,7 @@ class Caregiver::CustomersController < Caregiver::Base
     customer = Customer.find(params[:id])
     if customer.update(customer_params)
        flash.notice = "家族情報を更新しました。"
-       redirect_to caregiver_staff_members_path
+       redirect_to caregiver_staff_member_customers_path
     else
        flash.now.alert = "入力に誤りがあります。"
        render :new
@@ -43,7 +43,7 @@ class Caregiver::CustomersController < Caregiver::Base
     customer = Customer.find(params[:id])
     customer.destroy!
     flash.notice = "顧客アカウントを削除しました"
-    redirect_to :caregiver_staff_member_customers
+    redirect_to caregiver_staff_member_customers_path
   end
 
 
