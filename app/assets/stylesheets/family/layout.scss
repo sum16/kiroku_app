@@ -140,8 +140,11 @@ input.button_to:hover {
   }
 }
 
-.slick-slide img {
+.slick-slide {
+  margin-top: 50px;
+img {
   margin:0 auto
+}
 }
 
 .section {

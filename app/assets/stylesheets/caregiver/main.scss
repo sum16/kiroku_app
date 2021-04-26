@@ -21,6 +21,7 @@ body {
 
 .section {
   margin-top: 50px;
+
 }
 
 .top-wrapper h1 {
@@ -49,6 +50,7 @@ input.button_to2:hover{
   background-color: #f9c500;
 }
 
+/*slick*/
 .slider {
   height: 500px;
   width : 700px;
@@ -65,8 +67,11 @@ input.button_to2:hover{
   }
 }
 
-.slick-slide img {
+.slick-slide {
+  margin-top: 50px;
+img {
   margin:0 auto
+}
 }
 
 /*マーカーアニメーション*/
