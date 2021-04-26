@@ -13,4 +13,6 @@ ja:
         name: 名前
         age: 年齢
         password_digest: パスワード
+        password: パスワード
+        password_confirmation: パスワード(確認)
 
