@@ -28,7 +28,7 @@ https://qiita.com/godasper/private/506eeeeecec42140b065
 
 # URL 
 職員側　
-http://my-portfolio3298.work/caregiver
+http://my-portfolio3298.work/
 
 家族側
 http://my-portfolio3298.work/family

@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      customer_address: 住所
+    attributes:
+      customer_address:
+        postal_code: 郵便番号を7桁の数字で入力してください
+
+
