@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   config = Rails.application.config.kiroku2
   
 #職員側
+    root to: "caregiver/staff_members#main"
     namespace :caregiver do
-      root "staff_members#main"
       post '/guest', to: 'guest_sessions#create'
           resources :tops
       resources :customer_informations
