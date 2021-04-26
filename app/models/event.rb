@@ -5,7 +5,6 @@ class Event < ApplicationRecord
   #belong_toの引数に任意の名前をしている
   belongs_to :registrant, class_name: "Caregiver"
 
-
   #クラスメソッドattributeは、モデルクラスにインスタンス変数を読み書きできる属性を定義(DBには保存されない) = 仮装フィールドを生成
   attribute :application_start_date, :date, default: Date.today
   attribute :application_start_hour, :integer, default: 9
@@ -28,12 +27,6 @@ class Event < ApplicationRecord
       self.application_end_minute = application_end_time.min
     end
   end
-  
-  #イベントへの申し込みがあるときにfalse、ないときにtrueを返す
-  def deletable? 
-    entries.empty?
-  end
-
 
   before_validation :set_application_start_time
   before_validation :set_application_end_time

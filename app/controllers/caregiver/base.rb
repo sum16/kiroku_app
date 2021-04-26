@@ -8,7 +8,7 @@ class Caregiver::Base < ApplicationController
 
   def already_login?
     unless current_caregiver_member.nil? 
-      redirect_to caregiver_staff_member_path(current_caregiver_member.id), notice: "すでにログインしています"
+      redirect_to dashboard_caregiver_staff_members_path, notice: "すでにログインしています"
     end
   end
 
@@ -20,7 +20,6 @@ class Caregiver::Base < ApplicationController
       @current_caregiver_member ||= Caregiver.find_by(id: caregiver_id)
     end
   end
-
 
   #ゲストユーザー様ログイン
   def guest_login(caregiver)

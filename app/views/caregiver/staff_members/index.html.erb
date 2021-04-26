@@ -20,12 +20,12 @@
           <div class="original-profile-body">
             <div class="original-profile-right">
               <% if current_caregiver_member %>
-                <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(current_caregiver_member.id) %></span>
+                <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(caregiver.id) %></span>
                 </p>
                 <div class="staff">
-                  <%= link_to "詳細", caregiver_staff_member_path(current_caregiver_member), class: "staff" %>
+                  <%= link_to "詳細", caregiver_staff_member_path(caregiver), class: "staff" %>
                 </div>
-                <div class="staff"><%= button_to "削除", caregiver_staff_member_path(current_caregiver_member),
+                <div class="staff"><%= button_to "削除", caregiver_staff_member_path(caregiver),
                  method: :delete, data: { confirm: "本当に削除しますか？"} %>
                 </div>
               <% end %>      

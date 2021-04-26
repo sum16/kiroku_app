@@ -50,13 +50,13 @@ class Caregiver::StaffMembersController < Caregiver::Base
 
   def destroy
     caregiver = Caregiver.find(params[:id])
-    if caregiver.destroy 
-       flash.now.alert = "イベントを運営中のため削除できません。"
-       redirect_to caregiver_staff_members_path, notice: "アカウント情報を削除しました。"
+    if caregiver.deletable?
+       caregiver.destroy!
+       flash.notice = "スタッフを削除しました。"
     else
-      flash.now.alert = "イベントを運営中のため削除できません。"
-      render :index
+      flash.alert = "イベントを運営中のため削除できません。"
     end
+    redirect_to caregiver_staff_members_path
   end
 
   #CSV出力 
@@ -81,7 +81,7 @@ class Caregiver::StaffMembersController < Caregiver::Base
       end
       send_data(csv_data, filename: "vital.csv")
   end
-    #CSV出力終わり
+  #CSV出力終わり
 
   private
 

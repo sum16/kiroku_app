@@ -48,7 +48,7 @@ class Caregiver::EventsController < Caregiver::Base
    else
       flash.alert = "このイベントは削除できません"
    end
-    redirect_to action: :index
+    redirect_to caregiver_events_path
   end
 
   private 

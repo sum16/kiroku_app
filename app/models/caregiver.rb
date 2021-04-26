@@ -18,15 +18,19 @@ class Caregiver < ApplicationRecord
     validates :age
     validates :password_digest
   end
-  
+
   #８文字〜１２文字制限
   #validates :password_digest, presence: true, length: { minimum: 8, maximum: 15}
 
   validates :name, format: { with: HUMAN_NAME_REGEXP }
  
-  
   def press_button?(post_id)
     share_buttons.where(post_id: post_id).exists?
+  end
+
+  #イベントへの申し込みがあるときにfalse、ないときにtrueを返す
+  def deletable? 
+    events.empty?
   end
 
 end
