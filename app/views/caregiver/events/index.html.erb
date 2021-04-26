@@ -4,7 +4,6 @@
 </div>
   
 <div class="table-wrapper">
-
   <table class="listing">
     <tr>
       <th>タイトル</th>
@@ -16,15 +15,11 @@
       <th>登録職員</th>
       <th>アクション</th>
     </tr>
-
     <%= render partial: "event", collection: @events %>
-
   </table>
-
   <div class="pagination">
     <%= paginate @events %>
   </div>
-
   <ul class="link-list">
     <li>
       <%= link_to "イベントを作成する", new_caregiver_event_path, class: "btn btn--yellow btn--cubic"  %>

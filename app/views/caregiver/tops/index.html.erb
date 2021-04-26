@@ -1,11 +1,10 @@
-<% @title="利用者情報一覧" %>
+<% @title="入居者情報一覧" %>
 <div class="page-title">
    <h2><%= @title %></h2>
 </div>
 
 <% @care_recipitents.each do |f| %>
-  <p class="center-p">作成日：<%= f.created_at.to_s(:jp_time)%></p>
-
+ <p class="center-p">作成日：<%= f.created_at.to_s(:jp_time)%></p>
  <table border="5", align="center">
     <tr bgcolor="pink">
       <th>名字</th>
@@ -48,11 +47,9 @@
   </table>
 <% end %>
 
- <div class="pagination">
-    <%= paginate @care_recipitents %>
-  </div>
-
-
+<div class="pagination">
+  <%= paginate @care_recipitents %>
+</div>
 
 <ul class="link-list">
   <li><%= link_to "利用者情報の登録", new_caregiver_top_path, class: "btn btn--yellow btn--cubic" %></li>

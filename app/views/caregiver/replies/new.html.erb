@@ -1,8 +1,6 @@
 <% @title = "問い合わせへの返信" %>
 <h2><%= @title %></h2>
 
-
-
 <%#= confirm_caregiver_message_reply_path%>
 <div id="generic-form" class="table-wrapper">
   <%= form_with model: @reply, url: caregiver_message_reply_path(@message), local: true do |f| %>

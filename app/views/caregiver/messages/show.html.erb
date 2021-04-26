@@ -17,13 +17,12 @@
       <tr><th>件名</th><td><%= p.subject %></td></tr>
     <tr><th>作成日時</th><td class="date"><%= p.created_at %></td></tr>
   </table>
-
- 
   <div class="body"><%= p.formatted_body %></div>
 </div>
 
- <div class="tree"><%= p.tree %></div>
+<ul class="link-list">
+  <li>
+    <%= link_to "戻る", outbound_caregiver_messages_path, class: "btn btn--yellow btn--cubic" %>
+  </li>
+</ul>
 
-
-
-<%= link_to "トップページへ戻る", caregiver_staff_members_path %>

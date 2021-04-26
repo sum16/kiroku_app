@@ -3,10 +3,8 @@
    <h2><%= @title %></h2>
 </div>
 
- 
  <div class="caregiver-page"> 
   <p>作成日：<%= @care_recipitent.created_at.to_s(:jp_time)%></p>
-
   <table border="5", class="table-page">
       <tr bgcolor="pink">
         <th>姓</th>
@@ -26,7 +24,6 @@
         <th>キーパーソンの連絡先</th>
         <th>担当スタッフ</th>  
       </tr>
-
       <tr>
         <td><%= @care_recipitent.family_name %></td>
         <td><%= @care_recipitent.given_name %></td>
@@ -46,9 +43,8 @@
         <td><%= @care_recipitent.caregiver.name %></td>
       </tr> 
     </table>
-
   <div>
-    <%= link_to "利用者情報一覧画面へ", caregiver_tops_path, class: "btn btn--yellow btn--cubic" %>
+    <%= link_to "戻る", caregiver_tops_path, class: "btn btn--yellow btn--cubic" %>
     <%= link_to "編集する", edit_caregiver_top_path(@care_recipitent.id), class: "btn btn--yellow btn--cubic" %>
   </div>
 </div>

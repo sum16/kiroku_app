@@ -15,6 +15,7 @@ div#container-field {
   margin: 0 auto;
   margin-top: 30px;
   padding-bottom: 48px;
+  text-align: center;
  h2 {
    border-left: 10px solid #ff0000;
    border-bottom: 1px solid #000;
@@ -105,6 +106,9 @@ html {
   font-size: 62.5%;
 }
 
+.search-records {
+  margin-top: 70px;
+}
 
 .table-page {
   display: inline-block;

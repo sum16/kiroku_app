@@ -14,7 +14,7 @@ class Caregiver::CustomersController < Caregiver::Base
   def create 
     @customer = Customer.new(customer_params)
       if @customer.save
-        flash.notice = "利用情報を追加しました"
+        flash.notice = "家族情報を追加しました"
         redirect_to caregiver_staff_member_customers_path
       else
         flash.now.alert = "入力に誤りがあります。"
@@ -42,11 +42,9 @@ class Caregiver::CustomersController < Caregiver::Base
   def destroy
     customer = Customer.find(params[:id])
     customer.destroy!
-    flash.notice = "顧客アカウントを削除しました"
+    flash.notice = "家族情報を削除しました"
     redirect_to caregiver_staff_member_customers_path
   end
-
-
 
   private
 

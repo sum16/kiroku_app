@@ -13,7 +13,6 @@
     <tr><th>登録日時</th><td class="date"><%= @family.created_at.strftime("%Y年%m月%d日") %></td></tr>
     <tr><th>更新日時</th><td class="date"><%= @family.updated_at.strftime("%Y年%m月%d日") %></td></tr>
   </table>
-
   <ul class="link-list">
     <li>
       <%= link_to "編集", edit_family_account_path, class: "btn btn--yellow btn--cubic"  %>

@@ -6,7 +6,7 @@
 <div class="form-container">
     <%= form_with(url: :caregiver_session, local: true)  do |f| %>
       <%= render "form", f: f %>
-  <% end %>
+    <% end %>
     <div class="btn-wrapper">
       <%= button_to "ゲストユーザー様", caregiver_guest_path, method: :post, class: "button_to2" %>
       <p>or</p>

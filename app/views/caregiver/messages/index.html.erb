@@ -1,21 +1,19 @@
 <%
  @title = 
-case params[:action]
-when "index"; "全メッセージ一覧"
-when "inbound"; "問い合わせ一覧"
-when "outbound"; "返信一覧"
-when "deleted"; "メッセージ一覧(ゴミ箱)"
-else; raise
-end
+  case params[:action]
+    when "index"; "全メッセージ一覧"
+    when "inbound"; "問い合わせ一覧"
+    when "outbound"; "返信一覧"
+    when "deleted"; "メッセージ一覧(ゴミ箱)"
+    else; raise
+  end
 %>
-
 
 <div class="page-title">
   <h2><%= @title %></h2>
 </div>
 
 <div class="table-wrapper">
-
   <table class="listing">
     <tr>
       <th>種類</th>
@@ -41,8 +39,7 @@ end
     </tr>
     <% end %>
     </table>
-
-  <div class="pagination">
-  <%= paginate @messages %>
-  </div>
+    <div class="pagination">
+      <%= paginate @messages %>
+    </div>
 </div>

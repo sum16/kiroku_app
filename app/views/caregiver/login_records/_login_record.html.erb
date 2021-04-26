@@ -1,11 +1,11 @@
 <tr>
- <% unless @caregiver %>
- <td>
-  <%= login_record.caregiver.name %>
- </td>
- <% end %>
- <td><%= login_record.description %></td>
- <td class="date">
-  <%= login_record.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
- </td>
+  <% unless @caregiver %>
+    <td>
+      <%= login_record.caregiver.name %>
+    </td>
+  <% end %>
+  <td><%= login_record.description %></td>
+  <td class="date">
+    <%= login_record.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+  </td>
 </tr>

@@ -4,12 +4,10 @@
 </div>
 
 <div class="form-container">
-
   <%= form_with model: @post, url: caregiver_staff_member_post_path(current_caregiver_member), local: true do |f| %>
-   
-   <%= render "form", f: f %>
-
+    <%= render "form", f: f %>
     <div class="submit">
       <%= f.submit "登録する" %>
     </div>
   <% end %>
+</div>

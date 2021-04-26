@@ -32,19 +32,20 @@
   <li><%= link_to "受信メッセージ一覧", family_messages_path, class: "btn btn--yellow btn--cubic" %></li>
 </ul>
 
-
-<h2>記録検索</h2>
-<div class="center-p">
-  <p>日付を指定指定検索</p>
-</div>
-<div class="search">
-  <%= search_form_for @q, url: :search_family_families do |f| %>
-    <div class="Form-Item">
-      <%= f.date_field :measuring_date_gteq, required: true, class: "Form-Item-Input" %>〜
-      <%= f.date_field :measuring_date_lt, required: true, class: "Form-Item-Input" %>まで
-    </div>
-    <%= f.submit '検索', class: "Form-Btn" %>
-  <% end %>
+<div class="search-records">
+  <h2>記録検索</h2>
+  <div class="center-p">
+    <p>日付を指定指定検索</p>
+  </div>
+  <div class="search">
+    <%= search_form_for @q, url: :search_family_families do |f| %>
+      <div class="Form-Item">
+        <%= f.date_field :measuring_date_gteq, required: true, class: "Form-Item-Input" %>〜
+        <%= f.date_field :measuring_date_lt, required: true, class: "Form-Item-Input" %>まで
+      </div>
+      <%= f.submit '検索', class: "Form-Btn" %>
+    <% end %>
+  </div>
 </div>
  
 

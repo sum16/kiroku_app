@@ -3,35 +3,38 @@
    <h2><%= @title %></h2>
 </div>
 
-
 <div class="profil-container ">
-      <div class="link-list clearfix">
-            <ul>
-              <% if current_caregiver_member %>
-                    <li><%= link_to "ダッシュボード", dashboard_caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %></li>
-                  <% else %>
-                    <li><%= link_to "ログインはこちらから", caregiver_login_path, class: "btn btn--yellow btn--cubic" %></li>
-                    <li><%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %></li>
-               <% end %> 
-            </ul>
-      </div>
-      <% @caregivers.each do |caregiver| %>
+  <div class="link-list clearfix">
+    <ul>
+      <% if current_caregiver_member %>
+        <li><%= link_to "ダッシュボード", dashboard_caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %></li>
+      <% else %>
+        <li><%= link_to "ログインはこちらから", caregiver_login_path, class: "btn btn--yellow btn--cubic" %></li>
+        <li><%= link_to "職員登録はこちらから", new_caregiver_staff_member_path, class: "btn btn--yellow btn--cubic" %></li>
+      <% end %> 
+    </ul>
+  </div>
+  <% @caregivers.each do |caregiver| %>
       <div class="original-profile">
-      <div class="original-profile-title">スタッフ</div>
-            <div class="original-profile-body">
+        <div class="original-profile-title">スタッフ</div>
+          <div class="original-profile-body">
             <div class="original-profile-right">
-                  <% if current_caregiver_member %>
-                  <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(current_caregiver_member.id) %></span></p>
-                  <div class="actions"><%= button_to "削除", caregiver_staff_member_path(current_caregiver_member), method: :delete, data: { confirm: "本当に削除しますか？"} %></div>
-                  <% end %> 
-               
-                   
+              <% if current_caregiver_member %>
+                <p class="original-profile-name"><span style="border-bottom: dashed 2px #ab928c;"><%= link_to caregiver.name, caregiver_staff_member_path(current_caregiver_member.id) %></span>
+                </p>
+                <div class="staff">
+                  <%= link_to "詳細", caregiver_staff_member_path(current_caregiver_member), class: "staff" %>
+                </div>
+                <div class="staff"><%= button_to "削除", caregiver_staff_member_path(current_caregiver_member),
+                 method: :delete, data: { confirm: "本当に削除しますか？"} %>
+                </div>
+              <% end %>      
             </div>
-      </div>
-      </div>
-      <% end %>
+          </div>
+        </div>
+  <% end %>
   <div class="pagination">
-      <%= paginate @caregivers_paginate %>
+    <%= paginate @caregivers_paginate %>
   </div>
 </div>
 

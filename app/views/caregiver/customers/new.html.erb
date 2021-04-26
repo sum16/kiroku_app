@@ -3,16 +3,13 @@
   <h2><%= @title %></h2>
 </div>
 
- 
  <div id="generic-form">
- <%= form_with model: @customer, url: :caregiver_staff_member_customers, local: true do |f| %>
-
-  <%= render "error", customer: @customer %>
-
- <%= render "form", f: f %>
-  <div class="buttons">
+  <%= form_with model: @customer, url: :caregiver_staff_member_customers, local: true do |f| %>
+    <%= render "error", customer: @customer %>
+    <%= render "form", f: f %>
+    <div class="buttons">
       <%= f.submit "登録" %>
-      <%= link_to "キャンセル"%>
+      <%= link_to "キャンセル", caregiver_staff_member_customers_path %>
     </div>
   <% end %>
 </div>

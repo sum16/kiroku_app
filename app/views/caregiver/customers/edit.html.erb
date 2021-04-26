@@ -3,18 +3,15 @@
   <h2><%= @title %></h2>
 </div>
 
-
-
 <div class="link-list ">
   <%= link_to "利用者画面に戻る", caregiver_staff_member_customers_path, class: "btn btn--yellow btn--cubic"  %>
   <%= link_to "スタッフ一覧画面に戻る", caregiver_staff_members_path, class: "btn btn--yellow btn--cubic" %>
 </div>
 
- 
  <div id="generic-form">
- <%= form_with model: @customer, url: :caregiver_staff_member_customer, local: true do |f| %>
- <%= render "form", f: f %>
-  <div class="buttons">
+  <%= form_with model: @customer, url: :caregiver_staff_member_customer, local: true do |f| %>
+    <%= render "form", f: f %>
+    <div class="buttons">
       <%= f.submit "更新" %>
       <%= link_to "キャンセル"%>
     </div>
