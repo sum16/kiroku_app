@@ -1,4 +1,5 @@
 class SupportProcessRecordsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_support_process_record, only: %i[ show edit update destroy ]
 
   # GET /support_process_records or /support_process_records.json
