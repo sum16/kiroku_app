@@ -25,6 +25,9 @@
       <v-layout>
         <v-flex xs5>
           <div style="margin:10px">
+            <h2>名前を選択</h2>
+            <v-select v-model='name' :items="names" label="名前" v-on:change="abstruct"></v-select>
+            <!-- 説明 4.1 -->
             <h2>Snippets Shortcut</h2>
             <ul>
               <li v-for="snippet in snippetList"><span id='name' v-on:click="goElem(snippet.id)">[{{ snippet.name
@@ -33,11 +36,16 @@
             </ul>
           </div>
         </v-flex>
-        <v-flex xs7>
+        <v-flex xs7 style='margin:10px'>
+          <h2>Search Snippet</h2>
+          <v-text-field v-model="searchWord" v-on:keyup="abstruct" label="Input Keyword" style='margin-top:4px'>
+          </v-text-field>
           <v-card style="margin-top:10px" v-for="snippet in snippetList">
             <v-card-title primary-title>
               <a v-bind:id='snippet.id'></a> <!-- 説明 3.24 -->
-              <h3 class="headline"> {{ snippet.title }} </h3>
+              <div style="background-color:#FFCDD2">
+                <h3 class="headline">[{{ snippet.name }}] {{ snippet.title }}</h3>
+              </div>
             </v-card-title>
             <div style="margin: 10px 20px;">
               <textarea
@@ -65,6 +73,9 @@
           <v-flex d-flex>
             <v-text-field v-model="postName" label="名前" required
               style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
+            <v-select v-model='postName' :items="namesForEdit" label="Select from history"
+              style='margin:20px; margin-bottom:0px;margin-left: 0px'></v-select>
+
           </v-flex> <!-- 説明 3.19 -->
 
           <v-card-text>
@@ -156,6 +167,9 @@
         return {
           snippetList: ['', ''],
           allData: ['', ''],
+          names: ['All'],
+          namesForEdit: [],
+          name: 'ALL',
           dialogPostFlag: false,
           postTitle: '',
           postName: '',
@@ -165,6 +179,7 @@
           putName: '',
           putContents: '',
           dialogDeleteFlag: false,
+          searchWord: ''
 
         }
       },
@@ -173,13 +188,25 @@
 
       },
       methods: {
-        listSnippet: function () { // 説明 3.17
+        listSnippet: function () {
           axios.get('/support_process_records.json')
             .then(response => {
               this.allData = response.data
               this.snippetList = this.allData
+              this.listNames();
+              this.abstruct();
+            });
+        },
+        listNames: function () {
+          this.names = []
+          this.namesForEdit = []
+          this.names.push('ALL')
+          for (i = 0; i < this.allData.length; i++) {
+            if (this.names.indexOf(this.allData[i].name) == -1) { // 説明 4.3
+              this.names.push(this.allData[i].name)
+              this.namesForEdit.push(this.allData[i].name)
             }
-            );
+          }
         },
         togglePostModal: function () {
           this.dialogPostFlag = !this.dialogPostFlag
@@ -234,6 +261,26 @@
         goTop: function () {
           document.getElementById("app").scrollIntoView(true) // 説明 3.26
         },
+        abstruct: function () {
+          if (this.name == 'ALL') { // 説明 4.4
+            this.snippetList = []
+            for (i = 0; i < this.allData.length; i++) { // 説明 4.5
+              if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) { // 説明 4.7
+                this.snippetList.push(this.allData[i])
+              }
+            }
+          } else if (this.name != '') {
+            this.snippetList = []
+            for (i = 0; i < this.allData.length; i++) { // 説明 4.5
+              if (this.allData[i].name == this.name) { // 説明 4.6
+                if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) { // 説明 4.7
+                  this.snippetList.push(this.allData[i])
+                }
+              }
+            }
+          }
+        }
+
 
       }
     })
