@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   class IpAdressRejected < ActionController::ActionControllerError
   end
   
-  include ErrorHandlers if Rails.env.development?
+  include ErrorHandlers if Rails.env.production?
 
   private
 
