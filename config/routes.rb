@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   config = Rails.application.config.kiroku2
   
 #職員側
-    root to: "caregiver/staff_members#main"
+    
     namespace :caregiver do
+      root "staff_members#main"
       post '/guest', to: 'guest_sessions#create'
           resources :tops
       resources :customer_informations
@@ -41,12 +42,12 @@ Rails.application.routes.draw do
 
 #家族側
     namespace :family, path: config[:family][:path] do
+      root "families#main"
       post '/guest', to: 'guest_sessions#create'
       get "login", to: "sessions#new", as: :login
       post "login", to: "sessions#create", as: :session
       delete "logout", to: "sessions#destroy"
       get 'youtubes/index', to: "youtubes#index"
-      root "families#main"
       namespace :api, format: 'json' do
         resources :memos, only: [:index, :create]
       end

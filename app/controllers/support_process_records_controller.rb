@@ -2,25 +2,20 @@ class SupportProcessRecordsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_support_process_record, only: %i[ show edit update destroy ]
 
-  # GET /support_process_records or /support_process_records.json
   def index
     @support_process_records = SupportProcessRecord.all
   end
 
-  # GET /support_process_records/1 or /support_process_records/1.json
   def show
   end
 
-  # GET /support_process_records/new
   def new
     @support_process_record = SupportProcessRecord.new
   end
 
-  # GET /support_process_records/1/edit
   def edit
   end
 
-  # POST /support_process_records or /support_process_records.json
   def create
     @support_process_record = SupportProcessRecord.new(support_process_record_params)
 
@@ -35,7 +30,6 @@ class SupportProcessRecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /support_process_records/1 or /support_process_records/1.json
   def update
     respond_to do |format|
       if @support_process_record.update(support_process_record_params)
@@ -48,7 +42,6 @@ class SupportProcessRecordsController < ApplicationController
     end
   end
 
-  # DELETE /support_process_records/1 or /support_process_records/1.json
   def destroy
     @support_process_record.destroy
     respond_to do |format|
@@ -58,12 +51,12 @@ class SupportProcessRecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_support_process_record
       @support_process_record = SupportProcessRecord.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+
     def support_process_record_params
       params.require(:support_process_record).permit(:title, :name, :contents)
     end

@@ -4,57 +4,56 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
-  <!-- 説明 3.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@1.5/dist/vuetify.min.css" rel="stylesheet"> <!-- 説明 3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@1.5/dist/vuetify.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@1.5/dist/vuetify.js"></script>
 
-  <title>Snippet App</title>
+  <title>支援経過記録</title>
 </head>
 
 <body>
   <v-app id="app">
-    <v-toolbar color="red lighten-3" dark>
-      <v-toolbar-title>Snippet App</v-toolbar-title>
+    <v-toolbar color="#9BA2FF">
+      <v-toolbar-title class="white--text">モニタリング</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat v-on:click="togglePostModal()">New Snippet</v-btn>
+      <v-btn color="white" href="/caregiver/staff_members/dashboard">Home</v-btn>
+      <v-btn color="white font-weight-bold" flat v-on:click="togglePostModal()">作成する</v-btn>
     </v-toolbar>
 
     <v-container style="height: 1000px; max-width: 2400px;">
       <v-layout>
-        <v-flex xs5>
+        <v-flex xs4>
           <div style="margin:10px">
             <h2>名前を選択</h2>
             <v-select v-model='name' :items="names" label="名前" v-on:change="abstruct"></v-select>
-            <!-- 説明 4.1 -->
-            <h2>Snippets Shortcut</h2>
+            <h2>ショートカット(クリックすると遷移)</h2>
             <ul>
-              <li v-for="snippet in snippetList"><span id='name' v-on:click="goElem(snippet.id)">[{{ snippet.name
-                  }}] {{ snippet.title }}</span></li> <!-- 説明 3.23 -->
-
+              <li v-for="record in RecordList"><span id='name' v-on:click="goElem(record.id)">[{{ record.name
+                  }}] {{ record.title }}</span></li>
             </ul>
           </div>
         </v-flex>
-        <v-flex xs7 style='margin:10px'>
-          <h2>Search Snippet</h2>
-          <v-text-field v-model="searchWord" v-on:keyup="abstruct" label="Input Keyword" style='margin-top:4px'>
+        <v-flex xs8 style='margin:10px'>
+          <h2>検索する</h2>
+          <v-text-field v-model="searchWord" v-on:keyup="abstruct" label="キーワードを入力" style='margin-top:4px'>
           </v-text-field>
-          <v-card style="margin-top:10px" v-for="snippet in snippetList">
+          <v-card style="margin-top:10px" v-for="record in RecordList">
             <v-card-title primary-title>
-              <a v-bind:id='snippet.id'></a> <!-- 説明 3.24 -->
-              <div style="background-color:#FFCDD2">
-                <h3 class="headline">[{{ snippet.name }}] {{ snippet.title }}</h3>
+              <a v-bind:id='record.id'></a>
+              <div style="background-color:#FFF176">
+                <h3 class="headline">[{{ record.name }}] {{ record.title }}</h3>
               </div>
             </v-card-title>
             <div style="margin: 10px 20px;">
               <textarea
-                style='width:100%; height:300px; background-color:#efefef; padding:3px'> {{ snippet.contents }} </textarea>
+                style='width:100%; height:300px; background-color:#efefef; padding:3px'> {{ record.contents }} </textarea>
             </div>
 
             <v-card-actions>
-              <v-btn flat color="red" v-on:click="togglePutModal(snippet.id)">Update</v-btn>
-              <v-btn flat color="gray" v-on:click="toggleDeleteModal(snippet.id)">Delete</v-btn>
+              <v-btn flat color="red" v-on:click="togglePutModal(record.id)">編集
+              </v-btn>
+              <v-btn flat color="gray" v-on:click="toggleDeleteModal(record.id)">削除</v-btn>
               <v-spacer></v-spacer>
               <v-btn flat color="red" v-on:click="goTop">トップへ</v-btn>
             </v-card-actions>
@@ -65,21 +64,21 @@
       <!-- モーダル -->
       <v-dialog v-model="dialogPostFlag" width="800" persistent>
         <v-card>
-          <v-card-title class="headline red lighten-3 white--text" primary-title>
-            Create Form
+          <v-card-title class="headline deep-purple white--text" primary-title>
+            作成する
           </v-card-title>
           <v-text-field v-model="postTitle" label="タイトル" required style='margin:20px; margin-top:30px'>
-          </v-text-field> <!-- 説明 3.19 -->
+          </v-text-field>
           <v-flex d-flex>
             <v-text-field v-model="postName" label="名前" required
               style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
             <v-select v-model='postName' :items="namesForEdit" label="Select from history"
               style='margin:20px; margin-bottom:0px;margin-left: 0px'></v-select>
 
-          </v-flex> <!-- 説明 3.19 -->
+          </v-flex>
 
           <v-card-text>
-            <p>Snippet</p>
+            <p>内容</p>
             <div style='width:100%;'>
               <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px'
                 v-model='postContents'></textarea>
@@ -89,11 +88,11 @@
 
           <v-card-actions>
             <v-btn color="#grey lighten-4" flat v-on:click="togglePostModal">
-              Cancel
+              キャンセル
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn color="red" flat v-on:click="postSnippet">
-              Add Snippet
+              投稿
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -101,8 +100,8 @@
 
       <v-dialog v-model="dialogPutFlag" width="800" persistent>
         <v-card>
-          <v-card-title class="headline red lighten-3 white--text" primary-title>
-            Edit Form
+          <v-card-title class="deep-purple white--text" primary-title>
+            編集
           </v-card-title>
 
           <v-text-field v-model="putTitle" label="タイトル" required style='margin:20px; margin-top:30px'>
@@ -112,7 +111,7 @@
               style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
           </v-flex>
           <v-card-text>
-            <p>Snippet</p>
+            <p>内容</p>
             <div style='width:100%;'>
               <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px'
                 v-model='putContents'></textarea>
@@ -123,11 +122,11 @@
 
           <v-card-actions>
             <v-btn color="#grey lighten-4" flat v-on:click="togglePutModal">
-              Cancel
+              キャンセル
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn color="red" flat v-on:click="putSnippet">
-              Update Snippet
+              更新する
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -135,8 +134,8 @@
       <!-- 削除モーダル -->
       <v-dialog v-model="dialogDeleteFlag" width="400">
         <v-card>
-          <v-card-title class="headline red lighten-3 white--text" primary-title>
-            Confirm
+          <v-card-title class="headline deep-purple white--text" primary-title>
+            確認画面
           </v-card-title>
           <v-spacer></v-spacer>
           <v-card-text>
@@ -148,7 +147,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="red" flat v-on:click="deleteSnippet()">
-              Delete
+              削除
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -165,7 +164,7 @@
       el: '#app',
       data() {
         return {
-          snippetList: ['', ''],
+          RecordList: ['', ''],
           allData: ['', ''],
           names: ['All'],
           namesForEdit: [],
@@ -184,15 +183,15 @@
         }
       },
       mounted() {
-        this.listSnippet();
+        this.listRecord();
 
       },
       methods: {
-        listSnippet: function () {
+        listRecord: function () {
           axios.get('/support_process_records.json')
             .then(response => {
               this.allData = response.data
-              this.snippetList = this.allData
+              this.RecordList = this.allData
               this.listNames();
               this.abstruct();
             });
@@ -202,7 +201,7 @@
           this.namesForEdit = []
           this.names.push('ALL')
           for (i = 0; i < this.allData.length; i++) {
-            if (this.names.indexOf(this.allData[i].name) == -1) { // 説明 4.3
+            if (this.names.indexOf(this.allData[i].name) == -1) {
               this.names.push(this.allData[i].name)
               this.namesForEdit.push(this.allData[i].name)
             }
@@ -214,20 +213,20 @@
         postSnippet: function () {
           axios.post('/support_process_records.json', { title: this.postTitle, name: this.postName, contents: this.postContents })
             .then(response => {
-              this.listSnippet();  // 説明 3.21
+              this.listRecord();
               this.postTitle = ''
-              this.postLanguage = ''
+              this.postName = ''
               this.postContents = ''
             }
             );
 
-          this.dialogPostFlag = !this.dialogPostFlag // 説明 3.22
+          this.dialogPostFlag = !this.dialogPostFlag
         },
         togglePutModal: function (id) {
           axios.get('/support_process_records/' + id + '.json')
             .then(response => {
               this.putTitle = response.data.title
-              this.putLanguage = response.data.language
+              this.putName = response.data.name
               this.putContents = response.data.contents
             }
             );
@@ -236,9 +235,9 @@
           this.dialogPutFlag = !this.dialogPutFlag
         },
         putSnippet: function () {
-          axios.put('/support_process_records/' + this.id + '.json', { title: this.putTitle, language: this.putLanguage, contents: this.putContents })
+          axios.put('/support_process_records/' + this.id + '.json', { title: this.putTitle, name: this.putName, contents: this.putContents })
             .then(response => {
-              this.listSnippet();
+              this.listRecord();
             }
             );
           this.dialogPutFlag = !this.dialogPutFlag
@@ -246,7 +245,7 @@
         deleteSnippet: function () {
           axios.delete('/support_process_records/' + this.id + '.json')
             .then(response => {
-              this.listSnippet();
+              this.listRecord();
             }
             );
           this.dialogDeleteFlag = !this.dialogDeleteFlag
@@ -256,25 +255,25 @@
           this.dialogDeleteFlag = !this.dialogDeleteFlag
         },
         goElem: function (id) {
-          document.getElementById(id).scrollIntoView(true) // 説明 3.25
+          document.getElementById(id).scrollIntoView(true)
         },
         goTop: function () {
-          document.getElementById("app").scrollIntoView(true) // 説明 3.26
+          document.getElementById("app").scrollIntoView(true)
         },
         abstruct: function () {
-          if (this.name == 'ALL') { // 説明 4.4
-            this.snippetList = []
-            for (i = 0; i < this.allData.length; i++) { // 説明 4.5
-              if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) { // 説明 4.7
-                this.snippetList.push(this.allData[i])
+          if (this.name == 'ALL') {
+            this.RecordList = []
+            for (i = 0; i < this.allData.length; i++) {
+              if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) {
+                this.RecordList.push(this.allData[i])
               }
             }
           } else if (this.name != '') {
-            this.snippetList = []
-            for (i = 0; i < this.allData.length; i++) { // 説明 4.5
-              if (this.allData[i].name == this.name) { // 説明 4.6
-                if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) { // 説明 4.7
-                  this.snippetList.push(this.allData[i])
+            this.RecordList = []
+            for (i = 0; i < this.allData.length; i++) {
+              if (this.allData[i].name == this.name) {
+                if ((this.allData[i].contents.indexOf(this.searchWord) !== -1) || (this.allData[i].title.indexOf(this.searchWord) !== -1) || (this.allData[i].name.indexOf(this.searchWord) !== -1)) {
+                  this.RecordList.push(this.allData[i])
                 }
               }
             }
