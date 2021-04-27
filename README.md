@@ -28,7 +28,7 @@ https://qiita.com/godasper/private/506eeeeecec42140b065
 
 # URL 
 職員側　
-http://my-portfolio3298.work/
+http://my-portfolio3298.work/caregiver
 
 家族側
 http://my-portfolio3298.work/family
@@ -44,7 +44,9 @@ http://my-portfolio3298.work/family
 ・ユーザー登録、ログイン機能(更新、削除)  
 ・ゲストユーザーログイン機能  
 ・投稿機能(一覧表示、詳細表示、新規登録)  
-・投稿検索機能、確認ボタン機能(Ajax)  
+・投稿検索機能(Ajax)、確認ボタン機能(Ajax) 
+・モニタリング作成機能(SPA)
+    バックエンドにrails、フロントにVue.jsを使用 
 ・顧客情報管理(一覧表示、詳細表示、新規登録、更新、削除)  
 ・顧客情報の検索  
 ・ログイン、ログアウト記録の閲覧  
@@ -61,9 +63,9 @@ http://my-portfolio3298.work/family
 ・記録検索機能  
 ・イベント申し込み、キャンセル機能  
 ・問い合わせ機能(返信の管理含む)  
-・メッセージ機能(一部ajax)  
+・メッセージ機能  
 ・youtube閲覧機能(Youtubeのapiを使用)  
-・メモ機能  
+・メモ機能
   バックエンドにrails、フロントにVue.jsを使用  
 ・ページネーション機能  
 
@@ -72,7 +74,7 @@ http://my-portfolio3298.work/family
 ![aws_flow](https://user-images.githubusercontent.com/66477859/115424404-a4ffdf80-a239-11eb-9b8b-2463e84dc35c.jpg)
 
 # 制作時間
-350h
+400h
 
 # 使用技術
 * Rails 6.0.3.5 
